@@ -1,0 +1,44 @@
+@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
+
+/*
+colors to use:
+#E46F3B - orang (orange)
+#190D08 - blac  (black)
+#88972D - geen  (green)
+#9B3B23 - poo   (brown)
+#948474 - stone (grey)
+
+fonts to use:
+headers:
+font-family: "Luckiest Guy", cursive;
+
+subheaders:
+font-family: "Montserrat", sans-serif;
+font-weight: 400;
+font-style: italic;
+
+body text:
+font-family: "Mulish", sans-serif;
+*/
+
+
+*{box-sizing: border-box; font-family: sans-serif;}
+
+body {
+    font-family: "Mulish", sans-serif;
+    font-size: 1.2rem;
+    color: #190D08;
+    background-color: #948474;
+}
+
+h1 {
+    font-family: "Luckiest Guy", cursive;
+    font-size: 3rem;
+
+}
+h2, h3, h4, h5, h6 {
+    font-family: "Montserrat", sans-serif;
+    font-weight: 700;
+    font-style: italic;
+}
+
