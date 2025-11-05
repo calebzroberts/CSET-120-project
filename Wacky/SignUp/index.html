@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Wacky Burger - Sign Up</title>
+        <link rel="stylesheet" type="text/css" href="../../StyleSheets/style.css">
+        <link rel="shortcut icon" href="images/Wacky_Burger_Character_Logo-transparent.png" type="image/x-icon">
+    </head>
+    <body>
+        <header>
+
+            <nav>
+
+                <ul>
+
+                    <li><a class="CurrentlyOn" onclick="SmartHref('Home')">Menu</a></li>
+                    
+                    <li><a onclick="SmartHref('Menu')">Login</a></li>
+
+                    <li><a onclick="SmartHref('About')">Login</a></li>
+
+                    <li><a onclick="SmartHref('Login')">Login</a></li>
+
+                </ul>
+
+            </nav>
+            
+        </header>
+        <article>
+            
+            <h1>Sign Up</h1>
+                
+                <form id="signupForm" action="mailto:" method="post">
+
+                <label for="first-name">First name:</label>
+                <input type="text" name="first-name" id="first-name" placeholder="First name" required>
+
+                <label for="last-name">Last name:</label>
+                <input type="text" name="last-name" id="last-name" placeholder="Last name" required>
+
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" placeholder="Email" required>
+
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" placeholder="Enter password" required>
+
+                <label for="confirm-password">Confirm password:</label>
+                <input type="password" name="password" id="password" placeholder="Confirm password" required>
+
+                <button type="submit" id="submit">Sign Up</button>
+                </form>
+                <p id="signupMessage"></p>
+                <p>Already have an account? <br><a href="">Login here</a>.</p>
+
+        </article>
+        
+        <footer>
+            <p>Copyright &copy; 2025 by Wacky Burger. All rights reserved.</p>
+            <p>This page was last updated on xx/xx/20xx</p>
+        </footer>
+        
+        <script src="../../JavaScript/signup.js"></script>
+
+        <script src="../../JavaScript/SHref.js"></script>
+    </body>
+</html>
