@@ -26,13 +26,13 @@
 
                 <ul>
 
-                    <li><a class="CurrentlyOn" onclick="SmartHref('Home')">Home</a></li>
+                    <li><a onclick="SmartHref('Home')">Home</a></li>
                     
                     <li><a onclick="SmartHref('Menu')">Menu</a></li>
 
                     <li><a onclick="SmartHref('About')">About</a></li>
 
-                    <li><a onclick="SmartHref('Login')">Login</a></li>
+                    <li><a class="CurrentlyOn" onclick="SmartHref('Login')">Login</a></li>
 
                 </ul>
 
@@ -48,13 +48,13 @@
                 
                 <form id="loginForm">
 
-                <label for="email">Email:</label>
-                <input type="email" name="email" id="email" placeholder="Email" required>
+                    <label for="email">Email:</label>
+                    <input type="email" name="email" id="email" placeholder="Email" required>
 
-                <label for="password">Password:</label>
-                <input type="password" name="password" id="password" placeholder="Enter password" required>
+                    <label for="password">Password:</label>
+                    <input type="password" name="password" id="password" placeholder="Enter password" required>
 
-                <button type="submit" id="submit">Sign Up</button>
+                    <button type="submit" id="submit">Login</button>
                 </form>
 
                 <p id="loginMessage"></p>
@@ -67,7 +67,7 @@
             <p>This page was last updated on xx/xx/20xx</p>
         </footer>
         
-        <script src="../../JavaScript/signup.js"></script>
+        <script src="../../JavaScript/login.js"></script>
 
         <script src="../../JavaScript/SHref.js"></script>
     </body>

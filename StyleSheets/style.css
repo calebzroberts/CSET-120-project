@@ -74,6 +74,7 @@ button:hover {
 
 .Link{color: #9B3B23;}
 .Link:hover{color: #bc472a;}
+.TransformCenter{position: relative; left: 50%; transform: translateX(-50%);}
 
 /* Header */
 header{top: 0; box-shadow: 0px -100px 10px 100px; background-color: #E46F3B; position: fixed; left: 0; right: 0; height: 150px; z-index: 1000;}
@@ -81,7 +82,6 @@ header div{margin-left: 5%; float: left; width: 150px; text-align: center; heigh
 header img{width: 100%; background-image: radial-gradient(#9B3B23 0%, #E46F3B 75% 100%);}
 header h1{text-align: center; height: 150px; align-content: center; font-size: 300%;}
 header h1 a{color: #190D08; font-family: "Luckiest Guy", cursive;}
-
 
 nav{margin-right: 5%; float: right; height: 150px; align-content: center; width: 800px; border-left: 3px dashed #9B3B23;}
 nav ul{padding-left: 0; text-align: center;}
@@ -93,6 +93,9 @@ header ul li a{color: #9B3B23; transition: 0.25s;}
 header ul li a:hover{color: #bc472a;}
 .CurrentlyOn{color: #190D08;}
 .CurrentlyOn:hover{color: #4e2919;}
+
+#Profile{margin-left: 20px; padding: 0; width: 100px; height: 100px; border-radius: 100px; display: inline-block; border: 3px #9B3B23 dashed; cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%);}
+#Profile img{margin: 0; width: 90px; border-radius: 100px; position: relative; top: 50%; transform: translateY(-50%);}
 
 /* Article */
 article{background-color: rgba(255, 255, 255, 0.1); margin: 5%; padding: 5%;}

@@ -29,9 +29,9 @@
 
                 <ul>
 
-                    <li><a class="CurrentlyOn" onclick="SmartHref('Home')">Home</a></li>
+                    <li><a onclick="SmartHref('Home')">Home</a></li>
                     
-                    <li><a onclick="SmartHref('Menu')">Menu</a></li>
+                    <li><a class="CurrentlyOn" onclick="SmartHref('Menu')">Menu</a></li>
 
                     <li><a onclick="SmartHref('About')">About</a></li>
 
@@ -50,66 +50,6 @@
             <h2>Check out our food items we have for sale!</h2>
 
             <div id="menuContainer">
-                <div class="menuItem">
-                    <img class="itemImage" src="../../images/monster-burger.jpg">
-                    <h3 class="foodName">Wacky Burger Jr.</h3>
-                    <p class="itemPrice">$10.99</p>
-                    <div class="quantityBlock">
-                        <p>Quantity:</p>
-                        <input class="cartQuantity" type="number" value="1" min="0">
-                    </div>
-                    <button class="addToCartButton" onclick="AddToCart(this)">Add to Cart</button>
-                </div>
-                <div class="menuItem">
-                    <img class="itemImage" src="../../images/funky-french-fries.jpg">
-                    <h3 class="foodName">Freaky French Fries</h3>
-                    <p class="itemPrice">$8.99</p>
-                    <div class="quantityBlock">
-                        <p>Quantity:</p>
-                        <input class="cartQuantity" type="number" value="1" min="0">
-                    </div>
-                    <button class="addToCartButton" onclick="AddToCart(this)">Add to Cart</button>
-                </div>
-                <div class="menuItem">
-                    <img class="itemImage" src="../../images/lettuce-burger.jpg">
-                    <h3 class="foodName">Yummers Lettuce Burger</h3>
-                    <p class="itemPrice">$12.99</p>
-                    <div class="quantityBlock">
-                        <p>Quantity:</p>
-                        <input class="cartQuantity" type="number" value="1" min="0">
-                    </div>
-                    <button class="addToCartButton" onclick="AddToCart(this)">Add to Cart</button>
-                </div>
-                <div class="menuItem">
-                    <img class="itemImage" src="../../images/lettuce-wrap-burger.jpg">
-                    <h3 class="foodName">Titanic Burger</h3>
-                    <p class="itemPrice">$11.99</p>
-                    <div class="quantityBlock">
-                        <p>Quantity:</p>
-                        <input class="cartQuantity" type="number" value="1" min="0">
-                    </div>
-                    <button class="addToCartButton" onclick="AddToCart(this)">Add to Cart</button>
-                </div>
-                <div class="menuItem">
-                    <img class="itemImage" src="../../images/pickle-burger.jpg">
-                    <h3 class="foodName">Pickley Burger</h3>
-                    <p class="itemPrice">$9.99</p>
-                    <div class="quantityBlock">
-                        <p>Quantity:</p>
-                        <input class="cartQuantity" type="number" value="1" min="0">
-                    </div>
-                    <button class="addToCartButton" onclick="AddToCart(this)">Add to Cart</button>
-                </div>
-                <div class="menuItem">
-                    <img class="itemImage" src="../../images/tomato-burger.jpg">
-                    <h3 class="foodName">Tomater Hater Burger</h3>
-                    <p class="itemPrice">$13.99</p>
-                    <div class="quantityBlock">
-                        <p>Quantity:</p>
-                        <input class="cartQuantity" type="number" value="1" min="0">
-                    </div>
-                    <button class="addToCartButton" onclick="AddToCart(this)">Add to Cart</button>
-                </div>
                 
             </div>
 
@@ -132,6 +72,8 @@
         
         <script src="../../JavaScript/javascript.js"></script>
 
+        <script src="../../JavaScript/menuDatabase.js"></script>
+        
         <script src="../../JavaScript/menuPage.js"></script>
 
         <script src="../../JavaScript/SHref.js"></script>

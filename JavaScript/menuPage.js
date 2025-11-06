@@ -1,4 +1,29 @@
-var cart = [];
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+//load the menu items from local storage
+function LoadMenu() {
+    const menuContainer = document.getElementById("menuContainer");
+    menuContainer.innerHTML = "";
+
+    for (let item of menu) {
+        const div = document.createElement("div");
+        div.classList.add("menuItem");
+
+        div.innerHTML = `
+            <img class="itemImage" src="${item.imageUrl}">
+            <h3 class="foodName">${item.name}</h3>
+            <p class="itemPrice">$${item.price.toFixed(2)}</p>
+            <div class="quantityBlock">
+                <p>Quantity:</p>
+                <input class="cartQuantity" type="number" value="1" min="0">
+            </div>
+            <button class="addToCartButton" onclick="AddToCart(this)">Add to Cart</button>
+        `;
+
+        menuContainer.append(div);
+    }
+}
+
 
 //function added to the add to cart buttons
 function AddToCart(button)
@@ -45,6 +70,9 @@ function AddToCart(button)
 
     //resets purchase button back to normal
     UpdatePurchaseText("Click below to purchase.");
+
+    //reset visible item quantities:
+    ResetItemQuantities();
 }
 
 function PurchaseItems()
@@ -82,12 +110,11 @@ function UpdateItemQuantity(thisIndex, thisQuantity)
 
 function UpdateVisibleCart()
 {
-    const cartSection = document.getElementById("cartSection");
+    SaveCart();
 
-    //reset cart section
+    const cartSection = document.getElementById("cartSection");
     cartSection.innerHTML = ``;
 
-    //for each item in the cart, make a new item in the cart area
     for (let i = 0; i < cart.length; i++)
     {
         let newCartItem = document.createElement("div");
@@ -102,7 +129,7 @@ function UpdateVisibleCart()
 
                 <div class="cartItemQuantityBlock">
                     <p>Quantity:</p>
-                    <input class="cartItemQuantity" type="number" value="${cart[i].itemQuantity}" onchange="UpdateItemQuantity(0, this.value)" min="0">
+                    <input class="cartItemQuantity" type="number" value="${cart[i].itemQuantity}" onchange="UpdateItemQuantity(${i}, this.value)" min="0">
                     <button onclick="RemoveItem(${i})">Remove</button>
                 </div>
             </div>
@@ -113,9 +140,8 @@ function UpdateVisibleCart()
     
     UpdateTotal();
     UpdateAddToCartButtons();
-    ResetItemQuantities();
-
 }
+
 
 //updates total text at bottom of cart
 function UpdateTotal()
@@ -218,11 +244,19 @@ function ResetItemQuantities() {
     }
 }
 
+function SaveCart() {
+    localStorage.setItem("cart", JSON.stringify(cart));
+}
+
+
+//Initialize the menu on load
+LoadMenu();
 
 //reset cart on load
 ResetCart();
 
 //reset purchase text on load
 UpdatePurchaseText("Click below to purchase.");
+
 
 UpdateAddToCartButtons();

@@ -34,9 +34,11 @@ if (loginForm){
         }
 
         // Check if the user is a manger
-        if (managerAccount.email && password === managerAccount.password){
+        if (email === managerAccount.email && password === managerAccount.password){
             msg.textContent = `Welcome back, ${managerAccount.firstName}!`;
             msg.classList.add('success');
+
+            localStorage.setItem('currentEmail', managerAccount.email);
 
             setTimeout(() => {
                 SmartHref('Manage');
