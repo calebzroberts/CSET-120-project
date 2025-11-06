@@ -1,0 +1,13 @@
+/* Sign-Up */
+#signupMessage{
+    margin-top: 10px;
+    font-weight: bold;
+}
+
+#signupMessage.success{
+    color: green;
+}
+
+#signupMessage.error{
+    color: red;
+}

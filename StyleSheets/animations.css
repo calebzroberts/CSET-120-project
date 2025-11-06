@@ -1,0 +1,31 @@
+/* Header Hover */
+@keyframes HeaderHover{0%{color: #190D08;} 10%{color: #190D08;} 20%{color: #190D08;} 30%{color: #190D08;} 40%{color: #190D08;} 50%{color: #190D08;} 60%{color: #190D08;} 70%{color: #190D08;} 80%{color: #190D08;} 90%{color: #190D08;} 100%{color: #190D08;}}
+@keyframes HeaderHover1{0%{color: #9B3B23;} 10%{color: #190D08;} 20%{color: #190D08;} 30%{color: #190D08;} 40%{color: #190D08;} 50%{color: #190D08;} 60%{color: #190D08;} 70%{color: #190D08;}80%{color: #190D08;} 90%{color: #190D08;} 100%{color: #190D08;}}
+@keyframes HeaderHover2{0%{color: #190D08;} 10%{color: #9B3B23;} 20%{color: #190D08;} 30%{color: #190D08;} 40%{color: #190D08;} 50%{color: #190D08;} 60%{color: #190D08;} 70%{color: #190D08;} 80%{color: #190D08;} 90%{color: #190D08;} 100%{color: #190D08;}}
+@keyframes HeaderHover3{0%{color: #190D08;} 10%{color: #190D08;} 20%{color: #9B3B23;} 30%{color: #190D08;} 40%{color: #190D08;} 50%{color: #190D08;} 60%{color: #190D08;} 70%{color: #190D08;} 80%{color: #190D08;} 90%{color: #190D08;} 100%{color: #190D08;}}
+@keyframes HeaderHover4{0%{color: #190D08;} 10%{color: #190D08;} 20%{color: #190D08;} 30%{color: #9B3B23;} 40%{color: #190D08;} 50%{color: #190D08;} 60%{color: #190D08;} 70%{color: #190D08;} 80%{color: #190D08;} 90%{color: #190D08;} 100%{color: #190D08;}}
+@keyframes HeaderHover5{0%{color: #190D08;} 10%{color: #190D08;} 20%{color: #190D08;} 30%{color: #190D08;} 40%{color: #9B3B23;} 50%{color: #190D08;} 60%{color: #190D08;} 70%{color: #190D08;} 80%{color: #190D08;} 90%{color: #190D08;} 100%{color: #190D08;}}
+@keyframes HeaderHover6{0%{color: #190D08;} 10%{color: #190D08;} 20%{color: #190D08;} 30%{color: #190D08;} 40%{color: #190D08;} 50%{color: #9B3B23;} 60%{color: #190D08;} 70%{color: #190D08;} 80%{color: #190D08;} 90%{color: #190D08;} 100%{color: #190D08;}}
+@keyframes HeaderHover7{0%{color: #190D08;} 10%{color: #190D08;} 20%{color: #190D08;} 30%{color: #190D08;} 40%{color: #190D08;} 50%{color: #190D08;} 60%{color: #9B3B23;} 70%{color: #190D08;} 80%{color: #190D08;} 90%{color: #190D08;} 100%{color: #190D08;}}
+@keyframes HeaderHover8{0%{color: #190D08;} 10%{color: #190D08;} 20%{color: #190D08;} 30%{color: #190D08;} 40%{color: #190D08;} 50%{color: #190D08;} 60%{color: #190D08;} 70%{color: #9B3B23;} 80%{color: #190D08;} 90%{color: #190D08;} 100%{color: #190D08;}}
+@keyframes HeaderHover9{0%{color: #190D08;} 10%{color: #190D08;} 20%{color: #190D08;} 30%{color: #190D08;} 40%{color: #190D08;} 50%{color: #190D08;} 60%{color: #190D08;} 70%{color: #190D08;} 80%{color: #9B3B23;} 90%{color: #190D08;} 100%{color: #190D08;}}
+@keyframes HeaderHover10{0%{color: #190D08;} 10%{color: #190D08;} 20%{color: #190D08;} 30%{color: #190D08;} 40%{color: #190D08;} 50%{color: #190D08;} 60%{color: #190D08;} 70%{color: #190D08;} 80%{color: #190D08;} 90%{color: #9B3B23;} 100%{color: #190D08;}}
+@keyframes HeaderHover11{0%{color: #190D08;} 10%{color: #190D08;} 20%{color: #190D08;} 30%{color: #190D08;} 40%{color: #190D08;} 50%{color: #190D08;} 60%{color: #190D08;} 70%{color: #190D08;} 80%{color: #190D08;} 90%{color: #190D08;} 100%{color: #9B3B23;}}
+h1:hover .HH1{animation: linear HeaderHover1 0.25s;}
+h1:hover .HH2{animation: linear HeaderHover2 0.25s;}
+h1:hover .HH3{animation: linear HeaderHover3 0.25s;}
+h1:hover .HH4{animation: linear HeaderHover4 0.25s;}
+h1:hover .HH5{animation: linear HeaderHover5 0.25s;}
+h1:hover .HH6{animation: linear HeaderHover6 0.25s;}
+h1:hover .HH7{animation: linear HeaderHover7 0.25s;}
+h1:hover .HH8{animation: linear HeaderHover8 0.25s;}
+h1:hover .HH9{animation: linear HeaderHover9 0.25s;}
+h1:hover .HH10{animation: linear HeaderHover10 0.25s;}
+h1:hover .HH11{animation: linear HeaderHover11 0.25s;}
+
+/* Error Message */
+@keyframes shake{
+    0%, 100% { transform: translateX(0); }
+    25% { transform: translateX(-5px); }
+    75% { transform: translateX(5px); }
+}

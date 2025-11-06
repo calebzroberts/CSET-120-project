@@ -4,31 +4,62 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Wacky Burger - Login</title>
-        <link rel="stylesheet" type="text/css" href="../../StyleSheets/style.css">
-        <link rel="shortcut icon" href="images/Wacky_Burger_Character_Logo-transparent.png" type="image/x-icon">
 
+        <link rel="stylesheet" type="text/css" href="../../StyleSheets/imports.css">
+        <link rel="stylesheet" type="text/css" href="../../StyleSheets/animations.css">
+        <link rel="stylesheet" type="text/css" href="../../StyleSheets/style.css">
+
+        <link rel="shortcut icon" href="images/Wacky_Burger_Character_Logo-transparent.png" type="image/x-icon">
+        <link rel="icon" type="x-icon" href="../../images/Wacky_Burger_Character_Logo-transparent.png">
     </head>
     <body>
+        
         <header>
+
+            <div>
+
+                <img src="../../images/Wacky_Burger_Character_Logo-transparent.png" alt="Wacky Logo">
+
+            </div>
 
             <nav>
 
                 <ul>
 
-                    <li><a class="CurrentlyOn" onclick="SmartHref('Home')">Menu</a></li>
+                    <li><a class="CurrentlyOn" onclick="SmartHref('Home')">Home</a></li>
                     
-                    <li><a onclick="SmartHref('Menu')">Login</a></li>
+                    <li><a onclick="SmartHref('Menu')">Menu</a></li>
 
-                    <li><a onclick="SmartHref('About')">Login</a></li>
+                    <li><a onclick="SmartHref('About')">About</a></li>
 
                     <li><a onclick="SmartHref('Login')">Login</a></li>
 
                 </ul>
 
             </nav>
+
+            <h1><a class="HH1">W</a><a class="HH2">a</a><a class="HH3">c</a><a class="HH4">k</a><a class="HH5">y</a> <a class="HH6">B</a><a class="HH7">u</a><a class="HH8">r</a><a class="HH9">g</a><a class="HH10">e</a><a class="HH11">r</a></h1>
+            
         </header>
-        <article id="main">
+
+        <article>
+            
             <h1>Login</h1>
+                
+                <form id="loginForm">
+
+                <label for="email">Email:</label>
+                <input type="email" name="email" id="email" placeholder="Email" required>
+
+                <label for="password">Password:</label>
+                <input type="password" name="password" id="password" placeholder="Enter password" required>
+
+                <button type="submit" id="submit">Sign Up</button>
+                </form>
+
+                <p id="loginMessage"></p>
+                <p>Don't have an account? <br><a onclick="SmartHref('SignUp')" class="Link">Sign up here</a>.</p>
+
         </article>
         
         <footer>
@@ -36,7 +67,7 @@
             <p>This page was last updated on xx/xx/20xx</p>
         </footer>
         
-        <script src="../../JavaScript/javascript.js"></script>
+        <script src="../../JavaScript/signup.js"></script>
 
         <script src="../../JavaScript/SHref.js"></script>
     </body>

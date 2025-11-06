@@ -92,15 +92,19 @@ function UpdateVisibleCart()
     {
         let newCartItem = document.createElement("div");
         newCartItem.innerHTML = `
-            <div class="menuItem">
-                <img class="itemImage" src="${cart[i].imageUrl}">
-                <h3 class="foodName">${cart[i].itemName}</h3>
-                <p class="itemPrice">${cart[i].itemPrice}</p>
-                <div class="quantityBlock">
-                    <p>Quantity:</p>
-                    <input class="cartQuantity" type="number" value="1" onchange="UpdateItemQuantity(0, this.value)" min="0">
+            <div class="cartItem">
+                <div class="cartItemNameBlock">
+                    <img class="cartItemImage" src="${cart[i].imageUrl}">
+                    <h3 class="cartItemName">${cart[i].itemName}</h3>
                 </div>
-                <button onclick="RemoveItem(${i})">Remove</button>
+
+                <p class="cartItemPrice">$${cart[i].itemPrice}</p>
+
+                <div class="cartItemQuantityBlock">
+                    <p>Quantity:</p>
+                    <input class="cartItemQuantity" type="number" value="${cart[i].itemQuantity}" onchange="UpdateItemQuantity(0, this.value)" min="0">
+                    <button onclick="RemoveItem(${i})">Remove</button>
+                </div>
             </div>
         `;
 
@@ -108,6 +112,9 @@ function UpdateVisibleCart()
     }
     
     UpdateTotal();
+    UpdateAddToCartButtons();
+    ResetItemQuantities();
+
 }
 
 //updates total text at bottom of cart
@@ -183,8 +190,39 @@ function ResetCart()
     UpdateTotal();
 }
 
+//used to go through and update buttons if item in cart to say so and gray it out
+function UpdateAddToCartButtons()
+{
+    let buttons = document.getElementsByClassName("addToCartButton");
+    for (let i = 0; i < buttons.length; i++)
+    {
+        let parent = buttons[i].parentElement;
+        let title = parent.querySelector(".foodName").textContent;
+        if (CheckItemInCart(title))
+        {
+            buttons[i].innerText = "In Cart";
+
+        }
+        else
+        {
+            buttons[i].innerText = "Add to Cart";
+        }
+    }
+}
+
+function ResetItemQuantities() {
+    let quantities = document.getElementsByClassName("cartQuantity");
+    for (let i = 0; i < quantities.length; i++)
+    {
+        quantities[i].value = 1;
+    }
+}
+
+
 //reset cart on load
 ResetCart();
 
 //reset purchase text on load
 UpdatePurchaseText("Click below to purchase.");
+
+UpdateAddToCartButtons();

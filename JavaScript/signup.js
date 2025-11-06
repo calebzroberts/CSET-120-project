@@ -32,14 +32,26 @@ if (signupForm){
             return;
         }
 
+        // Store information into local storage (for demo purposes only)
         localStorage.setItem('wb_firstName', firstName);
         localStorage.setItem('wb_lastName', lastName);
         localStorage.setItem('wb_email', email);
         localStorage.setItem('wb_password', password);
 
+        // Success
         msg.textContent = 'Accoubt Created - You may now log in.'
         msg.classList.add('success');
         
         signupForm.reset();
     });
 };
+
+
+// Error animation
+function triggerErrorAnimation(element){
+    element.classList.add('error');
+    element.style.animation = 'shake 0.3s';
+    element.addEventListener('animationend', () =>{
+        element.style.animation = '';
+    }, {once: true});
+}

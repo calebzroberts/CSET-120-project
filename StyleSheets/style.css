@@ -1,5 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Luckiest+Guy&family=Montserrat:ital,wght@0,100..900;1,100..900&family=Mulish:ital,wght@0,200..1000;1,200..1000&display=swap');
-
 /*
 colors to use:
 #E46F3B - orang (orange)
@@ -21,7 +19,7 @@ body text:
 font-family: "Mulish", sans-serif;
 */
 
-
+/* Undefined */
 *{
     box-sizing: border-box; 
     font-family: sans-serif;
@@ -74,105 +72,49 @@ button:hover {
     transform: scale(1.1);
 }
 
+.Link{color: #9B3B23;}
+.Link:hover{color: #bc472a;}
+
 /* Header */
-header a{color: #190D08;}
-
-header
-{
-    top: 0;
-    box-shadow: 0px -100px 10px 100px;
-    background-color: #E46F3B; 
-    position: fixed; 
-    left: 0; 
-    right: 0;
-    height: 150px;
-    z-index: 1000;
-}
-
+header{top: 0; box-shadow: 0px -100px 10px 100px; background-color: #E46F3B; position: fixed; left: 0; right: 0; height: 150px; z-index: 1000;}
 header div{margin-left: 5%; float: left; width: 150px; text-align: center; height: 150px; border-right: 3px dashed #9B3B23;}
 header img{width: 100%; background-image: radial-gradient(#9B3B23 0%, #E46F3B 75% 100%);}
 header h1{text-align: center; height: 150px; align-content: center; font-size: 300%;}
+header h1 a{color: #190D08; font-family: "Luckiest Guy", cursive;}
+
 
 nav{margin-right: 5%; float: right; height: 150px; align-content: center; width: 800px; border-left: 3px dashed #9B3B23;}
-nav ul{padding-left: 0; display: inline;}
+nav ul{padding-left: 0; text-align: center;}
 nav ul *{display: inline;}
-nav ul li{padding: 10px;}
+nav ul li{padding: 10px 20px; border: 3px #9B3B23 dashed; border-radius: 10px; cursor: pointer;}
 nav ul li *{font-family: "Mulish", sans-serif; font-weight: 900;}
 
+header ul li a{color: #9B3B23; transition: 0.25s;}
+header ul li a:hover{color: #bc472a;}
+.CurrentlyOn{color: #190D08;}
+.CurrentlyOn:hover{color: #4e2919;}
+
 /* Article */
-article{background-color: rgba(255, 255, 255, 0.1); margin-left: 5%; margin-right: 5%; margin-top: 5%}
+article{background-color: rgba(255, 255, 255, 0.1); margin: 5%; padding: 5%;}
 section{margin-top: 100px;}
 
+/* Footer */
+footer{
+    background-color: #E46F3B; 
+    position: relative;
+    top: 100%;
+    left: 0;
+    right: 0;
+    height: 100px;
+}
+
+footer p{
+    text-align: center;
+    margin: 1rem;
+}
+
 /* Home */
-
-
-/*MENU*/
-#menuContainer {
-    width: 80%;
-    margin: 2rem auto;
-    display: flex;
-    flex-wrap: wrap;
-}
-
-.menuItem {
-    width:30%;
-    padding:1rem;
-    margin: 0.5rem;
-    background-color: white;
-
-    border: 5px solid #9B3B23;
-    border-radius: 2rem;
-    text-align: center;
-}
-
-.foodName {
-    font-size: 1.8rem;
-}
-
-.itemImage {
-    width: 80%;
-    border-radius: 1rem;
-}
-
-.itemPrice {
-    
-}
-
-.quantityBlock {
-    display: flex;
-    width:100%;
-    justify-content: center;
-
-    margin: 0.5rem;
-}
-
-.quantityBlock p {
-    font-size: 1rem;
-    font-weight: 900;
-    padding-right: 1rem;
-}
-.cartQuantity {
-    font-family: "Mulish", Arial, Helvetica, sans-serif;
-    width: 50px;
-
-    border: 3px solid #190D08;
-    border-radius: 10px;
-    padding: 0.1rem 0rem 0.1rem 0.3rem;
-}
-
-#checkoutItems {
-    text-align: center;
-}
-
-#checkoutItems h2 {
-    color:#9B3B23;
-}
-
-
-    
-
-/* CONTACT */
-#contact form{
+#contact form, #signupForm, #loginForm{
     display: flex;
     flex-direction: column;
     padding: 2rem;
@@ -202,19 +144,4 @@ section{margin-top: 100px;}
 #contact #submit:hover{
     text-shadow: 0 0 8px #333;
     transform: translateY(-3px);
-}
-
-/* footer */
-footer{
-    background-color: #E46F3B; 
-    position: relative;
-    top: 100%;
-    left: 0;
-    right: 0;
-    height: 100px;
-}
-
-footer p{
-    text-align: center;
-    margin: 1rem;
 }

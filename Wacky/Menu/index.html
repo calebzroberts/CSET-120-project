@@ -4,20 +4,34 @@
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
         <title>Wacky Burger - Menu</title>
+
+        <link rel="stylesheet" type="text/css" href="../../StyleSheets/imports.css">
+        <link rel="stylesheet" type="text/css" href="../../StyleSheets/animations.css">
         <link rel="stylesheet" type="text/css" href="../../StyleSheets/style.css">
+        <link rel="stylesheet" type="text/css" href="../../StyleSheets/menu.css">
+        <link rel="stylesheet" type="text/css" href="../../StyleSheets/menu.css">
+
         <link rel="shortcut icon" href="images/Wacky_Burger_Character_Logo-transparent.png" type="image/x-icon">
+        <link rel="icon" type="x-icon" href="../../images/Wacky_Burger_Character_Logo-transparent.png">
 
     </head>
     <body>
+        
         <header>
+
+            <div>
+
+                <img src="../../images/Wacky_Burger_Character_Logo-transparent.png" alt="Wacky Logo">
+
+            </div>
 
             <nav>
 
                 <ul>
 
-                    <li><a onclick="SmartHref('Home')">Home</a></li>
-
-                    <li><a class="CurrentlyOn" onclick="SmartHref('Menu')">Menu</a></li>
+                    <li><a class="CurrentlyOn" onclick="SmartHref('Home')">Home</a></li>
+                    
+                    <li><a onclick="SmartHref('Menu')">Menu</a></li>
 
                     <li><a onclick="SmartHref('About')">About</a></li>
 
@@ -26,7 +40,11 @@
                 </ul>
 
             </nav>
+
+            <h1><a class="HH1">W</a><a class="HH2">a</a><a class="HH3">c</a><a class="HH4">k</a><a class="HH5">y</a> <a class="HH6">B</a><a class="HH7">u</a><a class="HH8">r</a><a class="HH9">g</a><a class="HH10">e</a><a class="HH11">r</a></h1>
+            
         </header>
+
         <article id="main">
             <h1>Menu</h1>
             <h2>Check out our food items we have for sale!</h2>
@@ -34,88 +52,68 @@
             <div id="menuContainer">
                 <div class="menuItem">
                     <img class="itemImage" src="../../images/monster-burger.jpg">
-                    <h3 class="foodName">Monster Burger</h3>
+                    <h3 class="foodName">Wacky Burger Jr.</h3>
                     <p class="itemPrice">$10.99</p>
                     <div class="quantityBlock">
                         <p>Quantity:</p>
-                        <input class="cartQuantity" type="number" value="1" onchange="UpdateItemQuantity(0, this.value)" min="0">
+                        <input class="cartQuantity" type="number" value="1" min="0">
                     </div>
-                    <button onclick="AddToCart(this)">Add to Cart</button>
+                    <button class="addToCartButton" onclick="AddToCart(this)">Add to Cart</button>
                 </div>
                 <div class="menuItem">
-                    <img class="itemImage" src="../../images/monster-burger.jpg">
-                    <h3 class="foodName">Monster Burger</h3>
-                    <p class="itemPrice">$10.99</p>
+                    <img class="itemImage" src="../../images/funky-french-fries.jpg">
+                    <h3 class="foodName">Freaky French Fries</h3>
+                    <p class="itemPrice">$8.99</p>
                     <div class="quantityBlock">
                         <p>Quantity:</p>
-                        <input class="cartQuantity" type="number" value="1" onchange="UpdateItemQuantity(0, this.value)" min="0">
+                        <input class="cartQuantity" type="number" value="1" min="0">
                     </div>
-                    <button onclick="AddToCart(this)">Add to Cart</button>
+                    <button class="addToCartButton" onclick="AddToCart(this)">Add to Cart</button>
                 </div>
                 <div class="menuItem">
-                    <img class="itemImage" src="../../images/monster-burger.jpg">
-                    <h3 class="foodName">Monster Burger</h3>
-                    <p class="itemPrice">$10.99</p>
+                    <img class="itemImage" src="../../images/lettuce-burger.jpg">
+                    <h3 class="foodName">Yummers Lettuce Burger</h3>
+                    <p class="itemPrice">$12.99</p>
                     <div class="quantityBlock">
                         <p>Quantity:</p>
-                        <input class="cartQuantity" type="number" value="1" onchange="UpdateItemQuantity(0, this.value)" min="0">
+                        <input class="cartQuantity" type="number" value="1" min="0">
                     </div>
-                    <button onclick="AddToCart(this)">Add to Cart</button>
+                    <button class="addToCartButton" onclick="AddToCart(this)">Add to Cart</button>
                 </div>
                 <div class="menuItem">
-                    <img class="itemImage" src="../../images/monster-burger.jpg">
-                    <h3 class="foodName">Monster Burger</h3>
-                    <p class="itemPrice">$10.99</p>
+                    <img class="itemImage" src="../../images/lettuce-wrap-burger.jpg">
+                    <h3 class="foodName">Titanic Burger</h3>
+                    <p class="itemPrice">$11.99</p>
                     <div class="quantityBlock">
                         <p>Quantity:</p>
-                        <input class="cartQuantity" type="number" value="1" onchange="UpdateItemQuantity(0, this.value)" min="0">
+                        <input class="cartQuantity" type="number" value="1" min="0">
                     </div>
-                    <button onclick="AddToCart(this)">Add to Cart</button>
+                    <button class="addToCartButton" onclick="AddToCart(this)">Add to Cart</button>
                 </div>
                 <div class="menuItem">
-                    <img class="itemImage" src="../../images/monster-burger.jpg">
-                    <h3 class="foodName">Monster Burger</h3>
-                    <p class="itemPrice">$10.99</p>
+                    <img class="itemImage" src="../../images/pickle-burger.jpg">
+                    <h3 class="foodName">Pickley Burger</h3>
+                    <p class="itemPrice">$9.99</p>
                     <div class="quantityBlock">
                         <p>Quantity:</p>
-                        <input class="cartQuantity" type="number" value="1" onchange="UpdateItemQuantity(0, this.value)" min="0">
+                        <input class="cartQuantity" type="number" value="1" min="0">
                     </div>
-                    <button onclick="AddToCart(this)">Add to Cart</button>
+                    <button class="addToCartButton" onclick="AddToCart(this)">Add to Cart</button>
                 </div>
                 <div class="menuItem">
-                    <img class="itemImage" src="../../images/monster-burger.jpg">
-                    <h3 class="foodName">Monster Burger</h3>
-                    <p class="itemPrice">$10.99</p>
+                    <img class="itemImage" src="../../images/tomato-burger.jpg">
+                    <h3 class="foodName">Tomater Hater Burger</h3>
+                    <p class="itemPrice">$13.99</p>
                     <div class="quantityBlock">
                         <p>Quantity:</p>
-                        <input class="cartQuantity" type="number" value="1" onchange="UpdateItemQuantity(0, this.value)" min="0">
+                        <input class="cartQuantity" type="number" value="1" min="0">
                     </div>
-                    <button onclick="AddToCart(this)">Add to Cart</button>
+                    <button class="addToCartButton" onclick="AddToCart(this)">Add to Cart</button>
                 </div>
-                <div class="menuItem">
-                    <img class="itemImage" src="../../images/monster-burger.jpg">
-                    <h3 class="foodName">Monster Burger</h3>
-                    <p class="itemPrice">$10.99</p>
-                    <div class="quantityBlock">
-                        <p>Quantity:</p>
-                        <input class="cartQuantity" type="number" value="1" onchange="UpdateItemQuantity(0, this.value)" min="0">
-                    </div>
-                    <button onclick="AddToCart(this)">Add to Cart</button>
-                </div>
-                <div class="menuItem">
-                    <img class="itemImage" src="../../images/monster-burger.jpg">
-                    <h3 class="foodName">Monster Burger</h3>
-                    <p class="itemPrice">$10.99</p>
-                    <div class="quantityBlock">
-                        <p>Quantity:</p>
-                        <input class="cartQuantity" type="number" value="1" onchange="UpdateItemQuantity(0, this.value)" min="0">
-                    </div>
-                    <button onclick="AddToCart(this)">Add to Cart</button>
-                </div>
+                
             </div>
 
             <div id="cartSection">
-
             </div>
 
             <p>Total:</p>
@@ -123,7 +121,7 @@
 
             <div id="checkoutItems">
                 <h2 id="purchaseMsg">Check out below!</h2>
-                <button>Checkout</button>
+                <button onclick="PurchaseItems();">Checkout</button>
             </div>
         </article>
         
