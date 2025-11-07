@@ -8,8 +8,9 @@
         <link rel="stylesheet" type="text/css" href="../../StyleSheets/imports.css">
         <link rel="stylesheet" type="text/css" href="../../StyleSheets/animations.css">
         <link rel="stylesheet" type="text/css" href="../../StyleSheets/style.css">
+        <link rel="stylesheet" type="text/css" href="../../StyleSheets/messages.css">
 
-        <link rel="shortcut icon" href="images/Wacky_Burger_Character_Logo-transparent.png" type="image/x-icon">
+        <link rel="shortcut icon" href="../../images/Wacky_Burger_Character_Logo-transparent.png" type="image/x-icon">
         <link rel="icon" type="x-icon" href="../../images/Wacky_Burger_Character_Logo-transparent.png">
     </head>
     <body>
@@ -33,6 +34,10 @@
                     <li><a onclick="SmartHref('About')">About</a></li>
 
                     <li><a class="CurrentlyOn" onclick="SmartHref('Login')">Login</a></li>
+
+                    <li id="ManageLink"><a onclick="SmartHref('Manage')">Manage</a></li>
+
+                    <li id="Profile"></li>
 
                 </ul>
 
@@ -70,5 +75,8 @@
         <script src="../../JavaScript/login.js"></script>
 
         <script src="../../JavaScript/SHref.js"></script>
+
+        <script src="../../JavaScript/isManager.js"></script>
+
     </body>
 </html>

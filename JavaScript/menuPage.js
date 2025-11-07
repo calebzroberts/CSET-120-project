@@ -1,6 +1,10 @@
+let currentEmail = localStorage.getItem("currentEmail") || "Guest";
+let firstName = localStorage.getItem("currentFirstName") || "";
+let lastName = localStorage.getItem("currentLastName") || "";
+
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 
-//load the menu items from local storage
+// Load the menu items from local storage
 function LoadMenu() {
     const menuContainer = document.getElementById("menuContainer");
     menuContainer.innerHTML = "";
@@ -25,77 +29,86 @@ function LoadMenu() {
 }
 
 
-//function added to the add to cart buttons
-function AddToCart(button)
-{
-    //gets items to add to the cart
-    let itemImg = "";
-    let title = "";
-    let price = "";
-    let quantity = 0;
-
-    //get parent of item
+// Function added to the add to cart buttons
+function AddToCart(button){
     const parentDiv = button.parentElement;
 
-    //gets individual items
     const img = parentDiv.querySelector(".itemImage");
     const titleBox = parentDiv.querySelector(".foodName");
     const priceBox = parentDiv.querySelector(".itemPrice");
     const itemQuantity = parentDiv.querySelector(".cartQuantity");
-    
 
-    //assigns image for cart
-    itemImg = img.src;
-    title = titleBox.textContent;
-    price = priceBox.textContent;
-    quantity = itemQuantity.value;
+    // Gets items to add to the cart
+    let itemImg = img.src;
+    let title = titleBox.textContent;
+    let price = Number(priceBox.textContent.slice(1));
+    let quantity = parseInt(itemQuantity.value);
 
-    //turn price into a number
-    price = Number(price.slice(1));
+    const thisCartItem = { imageUrl: itemImg, itemName: title, itemPrice: price, itemQuantity: quantity };
 
-    const thisCartItem = {imageUrl: itemImg, itemName: title, itemPrice: price, itemQuantity: quantity};
-
-    //first checks to make sure this will not add a duplicate
-    if (CheckItemInCart(title) === true)
-    {
-        //give duplicate warning message
+    if (CheckItemInCart(title)){
         UpdatePurchaseText("You already have this in your cart!");
-
         return;
     }
-    
 
     cart.push(thisCartItem);
     UpdateVisibleCart();
-
-    //resets purchase button back to normal
     UpdatePurchaseText("Click below to purchase.");
-
-    //reset visible item quantities:
     ResetItemQuantities();
 }
 
-function PurchaseItems()
-{
-    if (cart.length === 0)
-    {
+function PurchaseItems(){
+    if (cart.length === 0){
         UpdatePurchaseText("You don't have anything in your cart!");
         return;
     }
-    ResetCart();
 
-    UpdatePurchaseText("We sent your order in. Thanks for ordering!");
+    // Prompt guest users for their name and email if they are not logged in
+
+    if (currentEmail === "Guest"){
+        firstName = prompt("Enter your first name:") || "";
+        lastName = prompt("Enter your last name:") || "";
+        currentEmail = prompt("Enter your email:") || "";
+    }
+
+    if (!firstName || !lastName || !currentEmail){
+        UpdatePurchaseText("Name and email are required for guest checkout.");
+        return;
+    }
+
+    localStorage.setItem("currentFirstName", firstName);
+    localStorage.setItem("currentLastName", lastName);
+    localStorage.setItem("currentEmail", currentEmail);
+
+const total = cart.reduce((sum, item) => sum + item.itemPrice * item.itemQuantity, 0);
+
+const order = {
+    customerEmail: currentEmail,
+    customerFirstName: firstName,
+    customerLastName: lastName,
+    date: new Date().toLocaleString(),
+    items: cart,
+    total: total
+};
+
+const existingOrders = JSON.parse(localStorage.getItem("orders")) || [];
+existingOrders.push(order);
+localStorage.setItem("orders", JSON.stringify(existingOrders));
+
+// Redirect to checkout page
+localStorage.setItem("currentOrder", JSON.stringify(order));
+window.location.href = "../../HTML/Checkout/index.html";
 }
 
 function UpdatePurchaseText(text)
 {
-    let purchaseButton = document.getElementById("purchaseMsg");
+    const purchaseButton = document.getElementById("purchaseMsg");
     purchaseButton.innerText = text;
 }
 
 function UpdateItemQuantity(thisIndex, thisQuantity)
 {
-    cart[thisIndex].itemQuantity = thisQuantity;
+    cart[thisIndex].itemQuantity = Number(thisQuantity);
 
     //remove item if quantity becomes 0
     if (thisQuantity < 1)
@@ -171,19 +184,8 @@ function RemoveItem(thisIndex)
 }
 
 //used to see if there is an item in the cart
-function CheckItemInCart(name)
-{
-    for (let i = 0; i < cart.length; i++)
-    {
-        if (cart[i].itemName === name)
-        {
-            
-            return true;
-            
-        }
-    }
-
-    return false;
+function CheckItemInCart(name){
+    return cart.some(item => item.itemName === name);
 }
 
 //update the quantity if duplicate in cart
@@ -205,15 +207,14 @@ function GetDuplicateIndex(name)
 
 function ResetCart()
 {
-    //reset cart variable
-    cart = [];
-    
     const cartSection = document.getElementById("cartSection");
 
-    //reset cart section
+    //Reset cart section
+
     cartSection.innerHTML = ``;
 
     UpdateTotal();
+    UpdateAddToCartButtons();
 }
 
 //used to go through and update buttons if item in cart to say so and gray it out
@@ -227,11 +228,13 @@ function UpdateAddToCartButtons()
         if (CheckItemInCart(title))
         {
             buttons[i].innerText = "In Cart";
+            buttons[i].disabled = true;
 
         }
         else
         {
             buttons[i].innerText = "Add to Cart";
+            buttons[i].disabled = false;
         }
     }
 }
@@ -252,8 +255,6 @@ function SaveCart() {
 //Initialize the menu on load
 LoadMenu();
 
-//reset cart on load
-ResetCart();
 
 //reset purchase text on load
 UpdatePurchaseText("Click below to purchase.");

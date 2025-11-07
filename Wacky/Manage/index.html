@@ -7,13 +7,14 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>Wacky Burger - Home</title>
+        <title>Wacky Burger - Manager Dashboard</title>
 
         <link rel="stylesheet" type="text/css" href="../../StyleSheets/imports.css">
         <link rel="stylesheet" type="text/css" href="../../StyleSheets/animations.css">
         <link rel="stylesheet" type="text/css" href="../../StyleSheets/style.css">
+        <link rel="stylesheet" href="../../StyleSheets/managerStyle.css">
 
-        <link rel="shortcut icon" href="images/Wacky_Burger_Character_Logo-transparent.png" type="image/x-icon">
+        <link rel="shortcut icon" href="../../images/Wacky_Burger_Character_Logo-transparent.png" type="image/x-icon">
         <link rel="icon" type="x-icon" href="../../images/Wacky_Burger_Character_Logo-transparent.png">
 
     </head>
@@ -39,6 +40,10 @@
 
                     <li><a onclick="SmartHref('Login')">Login</a></li>
 
+                    <li id="ManageLink"><a onclick="SmartHref('Manage')">Manage</a></li>
+
+                    <li id="Profile"></li>
+
                 </ul>
 
             </nav>
@@ -51,6 +56,36 @@
         
             <h1>Manager Dashboard</h1>
             <p>Welcome, Manager! Here you can manage menu items and check orders.</p>
+
+            <div id="editItemsContainer">
+                <div class="editMenuItem">
+                    <img class="editItemImage" src="../../images/monster-burger.jpg">
+                    <h3 class="editFoodName">Monster Burger</h3>
+                    <p class="editItemPrice">$15.99</p>
+                    <p class="editQuantityBlock">Max Quantity: 10</p>
+                    <button class="editItemButton" onclick="">Edit Details</button>
+                    <button class="removeItemButton" onclick="">Remove Item</button>
+                </div>
+
+                <div class="editMenuItem">
+                    <h4>Image URL:</h4>
+                    <textarea class="imageUrlEditBlock">../../images/monster-burger.jpg</textarea>
+
+                    <h4>Item Name:</h4>
+                    <input type="text" class="nameEditBlock" value="Monster Burger">
+
+                    <h4>Item Price:</h4>
+                    <input type="number" class="priceEditBlock" value="15.99">
+
+                    <h4>Max Quantity:</h4>
+                    <input type="number" class="maxQuantityEditBlock" value="10">
+
+                    <button class="editItemButton" onclick="">Confirm Details</button>
+                </div>
+                </div>
+            
+
+            <button onclick="">Add New Item</button>
 
             <button onclick="SmartHref('Home')">Return to Home</button>
         </article>
@@ -65,6 +100,8 @@
         <script src="../../JavaScript/login.js"></script>
 
         <script src="../../JavaScript/SHref.js"></script>
+
+        <script src="../../JavaScript/isManager.js"></script>
 
     </body>
     

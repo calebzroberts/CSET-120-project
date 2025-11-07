@@ -14,7 +14,7 @@
         <link rel="stylesheet" type="text/css" href="../../StyleSheets/animations.css">
         <link rel="stylesheet" type="text/css" href="../../StyleSheets/style.css">
 
-        <link rel="shortcut icon" href="images/Wacky_Burger_Character_Logo-transparent.png" type="image/x-icon">
+        <link rel="shortcut icon" href="../../images/Wacky_Burger_Character_Logo-transparent.png" type="image/x-icon">
         <link rel="icon" type="x-icon" href="../../images/Wacky_Burger_Character_Logo-transparent.png">
 
     </head>
@@ -43,7 +43,7 @@
 
                     <li id="ManageLink"><a onclick="SmartHref('Manage')">Manage</a></li>
 
-                    <li id="Profile"><img src="../../images/user-headshot.png" alt="Profile"></li>
+                    <li id="Profile"></li>
 
                 </ul>
 
@@ -56,26 +56,40 @@
         <article>
 
             <section id="hero">
+                <img src="../../images/Wacky_Burger_Character_Logo-transparent.png" width="30%" alt="WackymanBurgerguyTheWackestOfHistoryAndTheWackestOfToday. xXWackyGamerBurgerIsSoSimga67AlphaPackgod21Xx">
 
                 <h1>Welcome to Wacky Burger</h1>
 
                 <p><blockquote>Food that satisfies your wacky needs.</blockquote></p>
 
-                <img src="../../images/Wacky_Burger_Character_Logo-transparent.png" width="10%" class="TransformCenter" alt="WackymanBurgerguyTheWackestOfHistoryAndTheWackestOfToday. xXWackyGamerBurgerIsSoSimga67AlphaPackgod21Xx">
 
             </section>
 
-            <section id="menu-preview">
+            <section id="menuPreview">
 
                 <h2>Take a glimpse at our menu!</h2>
+                <p>These are our featured items of the day.</p>
 
-                <p></p>
+                <div id="menuCarouselContainer">
+                    <div class="carouselViewport">
+                        <div id="menuPreviewWindow"></div>
+                    </div>
+
+                    <!-- Move these here (outside viewport but inside container) -->
+                    <a class="prev" onclick="slideMenu(-1)">&#10094;</a>
+                    <a class="next" onclick="slideMenu(1)">&#10095;</a>
+                </div>
+
+
+            
+                                
+                <button onclick="SmartHref('Menu')">Check It Out!</button>
 
             </section>
             
             <section id="contact">
 
-                <h2></h2>
+                <h2>Contact Us</h2>
 
                 <p></p>
 
@@ -107,10 +121,14 @@
             <p>This page was last updated on xx/xx/20xx</p>
 
         </footer>
+        
+        <script src="../../JavaScript/menuDatabase.js"></script>
 
         <script src="../../JavaScript/javascript.js"></script>
 
         <script src="../../JavaScript/SHref.js"></script>
+
+        <script src="../../JavaScript/isManager.js"></script>
 
     </body>
 

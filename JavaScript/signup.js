@@ -39,7 +39,7 @@ if (signupForm){
         localStorage.setItem('wb_password', password);
 
         // Success
-        msg.textContent = 'Accoubt Created - You may now log in.'
+        msg.textContent = 'Account Created - You may now log in.'
         msg.classList.add('success');
         
         signupForm.reset();

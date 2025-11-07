@@ -1,0 +1,42 @@
+/* Set All FlexBoxClasses To This */
+[class*="flex"]{display: flex; box-sizing: border-box; float: left; padding: 5px;}
+
+/* Main Container that contains the FlexBoxClasses */
+.flexBoxContainer{display: block;}
+
+/* FlexBox Classes */
+.flex1{width: 100%;}
+.flex2{width: 50%;}
+.flex3{width: 33.33%;}
+.flex4{width: 25%;}
+.flex5{width: 20%;}
+.flex6{width: 16.66%;}
+.flex7{width: 14.28%;}
+.flex8{width: 12.5%;}
+.flex9{width: 11.11%;}
+.flex10{width: 10%;}
+
+/* Special FlexBox Classes */
+.flexWhyWouldYouUseThis{width: 1%;}
+
+.flex95{width: 95%;}
+.flex90{width: 90%;}
+.flex85{width: 85%;}
+.flex80{width: 80%;}
+.flex75{width: 75%;}
+.flex70{width: 70%;}
+.flex65{width: 65%;}
+.flex60{width: 60%;}
+.flex55{width: 55%;}
+.flex45{width: 45%;}
+.flex40{width: 40%;}
+.flex35{width: 35%;}
+.flex30{width: 30%;}
+.flex15{width: 15%;}
+.flex5{width: 5%;}
+
+.flex67{width: 67%;}
+.flex61{width: 61%;}
+.flex41{width: 41%;}
+.flex42{width: 42%;}
+.flex21{width: 21%;}

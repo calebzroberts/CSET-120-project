@@ -1,0 +1,49 @@
+/*NON-EDITING MODE MENU*/
+#editItemsContainer {
+    margin: 2rem 0;
+    display: flex;
+    flex-wrap: wrap;
+}
+.editMenuItem {
+    width:30%;
+    padding:1rem;
+    margin: 0.5rem;
+    background-color: white;
+
+    border: 5px solid #9B3B23;
+    border-radius: 2rem;
+    text-align: center;
+}
+.editFoodName {
+    font-size: 1.8rem;
+}
+.editItemImage {
+    width: 80%;
+    border-radius: 1rem;
+}
+.editQuantityBlock{
+    font-size: 1rem;
+    font-weight: 900;
+    padding-right: 1rem;
+}
+.editMaxQuantity {
+    width: 50px;
+}
+
+/*EDIT MODE OF ITEMS*/
+
+
+.imageUrlEditBlock, .nameEditBlock, .priceEditBlock, .maxQuantityEditBlock {
+    width: 100%;
+    margin-bottom: 10px;
+    font-size: 1.1rem;
+}
+
+
+.editMaxQuantity, .imageUrlEditBlock, .nameEditBlock, .priceEditBlock, .maxQuantityEditBlock {
+    font-family: "Mulish", Arial, Helvetica, sans-serif;
+
+    border: 3px solid #190D08;
+    border-radius: 10px;
+    padding: 0.1rem 0rem 0.1rem 0.3rem;
+}

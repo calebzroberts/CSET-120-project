@@ -3,15 +3,17 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Wacky Burger - Sign Up</title>
+        <title>Wacky Burger - Menu</title>
 
         <link rel="stylesheet" type="text/css" href="../../StyleSheets/imports.css">
-            <link rel="stylesheet" type="text/css" href="../../StyleSheets/messages.css"><link rel="stylesheet" type="text/css" href="../../StyleSheets/animations.css">
+        <link rel="stylesheet" type="text/css" href="../../StyleSheets/animations.css">
         <link rel="stylesheet" type="text/css" href="../../StyleSheets/style.css">
-    
+        <link rel="stylesheet" type="text/css" href="../../StyleSheets/menu.css">
+        <link rel="stylesheet" type="text/css" href="../../StyleSheets/menu.css">
 
         <link rel="shortcut icon" href="../../images/Wacky_Burger_Character_Logo-transparent.png" type="image/x-icon">
         <link rel="icon" type="x-icon" href="../../images/Wacky_Burger_Character_Logo-transparent.png">
+
     </head>
     <body>
         
@@ -27,7 +29,7 @@
 
                 <ul>
 
-                    <li><a class="CurrentlyOn" onclick="SmartHref('Home')">Home</a></li>
+                    <li><a onclick="SmartHref('Home')">Home</a></li>
                     
                     <li><a onclick="SmartHref('Menu')">Menu</a></li>
 
@@ -47,32 +49,10 @@
             
         </header>
 
-        <article>
-            
-            <h1>Sign Up</h1>
-                
-                <form id="signupForm">
-
-                <label for="first-name">First name:</label>
-                <input type="text" name="first-name" id="first-name" placeholder="First name" required>
-
-                <label for="last-name">Last name:</label>
-                <input type="text" name="last-name" id="last-name" placeholder="Last name" required>
-
-                <label for="email">Email:</label>
-                <input type="email" name="email" id="email" placeholder="Email" required>
-
-                <label for="password">Password:</label>
-                <input type="password" name="password" id="password" placeholder="Enter password" required>
-
-                <label for="confirm-password">Confirm password:</label>
-                <input type="password" name="password" id="confirmPassword" placeholder="Confirm password" required>
-
-                <button type="submit" id="submit">Sign Up</button>
-                </form>
-                <p id="signupMessage"></p>
-                <p>Already have an account? <br><a onclick="SmartHref('Login')" class="Link">Login here</a>.</p>
-
+        <article id="main">
+            <div id="receiptContainer"></div>
+            <button id="downloadPDF">Download Receipt (PDF)</button>
+            <button onclick="window.location.SmartHref=''"></button>
         </article>
         
         <footer>
@@ -80,7 +60,11 @@
             <p>This page was last updated on xx/xx/20xx</p>
         </footer>
         
-        <script src="../../JavaScript/signup.js"></script>
+        <script src="../../JavaScript/javascript.js"></script>
+
+        <script src="../../JavaScript/menuDatabase.js"></script>
+        
+        <script src="../../JavaScript/menuPage.js"></script>
 
         <script src="../../JavaScript/SHref.js"></script>
 

@@ -75,6 +75,7 @@ button:hover {
 .Link{color: #9B3B23;}
 .Link:hover{color: #bc472a;}
 .TransformCenter{position: relative; left: 50%; transform: translateX(-50%);}
+#ManageLink{display: none;}
 
 /* Header */
 header{top: 0; box-shadow: 0px -100px 10px 100px; background-color: #E46F3B; position: fixed; left: 0; right: 0; height: 150px; z-index: 1000;}
@@ -94,8 +95,7 @@ header ul li a:hover{color: #bc472a;}
 .CurrentlyOn{color: #190D08;}
 .CurrentlyOn:hover{color: #4e2919;}
 
-#Profile{margin-left: 20px; padding: 0; width: 100px; height: 100px; border-radius: 100px; display: inline-block; border: 3px #9B3B23 dashed; cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%);}
-#Profile img{margin: 0; width: 90px; border-radius: 100px; position: relative; top: 50%; transform: translateY(-50%);}
+#Profile{margin-left: 20px; padding: 0; width: 100px; height: 100px; border-radius: 100px; display: inline-block; border: 3px #9B3B23 dashed; cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%); background-size: 100%;}
 
 /* Article */
 article{background-color: rgba(255, 255, 255, 0.1); margin: 5%; padding: 5%;}
@@ -126,7 +126,7 @@ footer p{
     margin: 0 auto;
 }
 
-#contact input, textarea{
+#contact input, textarea, #signupForm input, #loginForm input{
     border: 1px solid #333;
     border-radius: 6px;
     padding: 0.75rem;
@@ -135,7 +135,7 @@ footer p{
     margin-bottom: 10px;
 }
 
-#contact #submit{
+#submit{
     border: none;
     padding: 0.75rem .5rem;
     border-radius: 6px;
@@ -144,7 +144,74 @@ footer p{
     margin-top: 10px;
 }
 
-#contact #submit:hover{
+#submit:hover{
     text-shadow: 0 0 8px #333;
     transform: translateY(-3px);
+}
+
+section {
+    text-align: center;
+}
+
+/*MENU PREVIEW*/
+#menuCarouselContainer {
+    max-width: 1000px;
+    margin: 2rem auto;
+    position: relative;
+}
+
+.carouselViewport {
+    overflow: hidden;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+}
+
+#menuPreviewWindow {
+    display: flex;
+    transition: transform 0.5s ease;
+    gap: 1rem;
+}
+
+.homeMenuItem {
+    flex: 0 0 calc((100% - 2rem) / 3); /* accounts for gaps */
+    box-sizing: border-box;
+    padding: 1rem;
+    background-color: white;
+    border: 5px solid #9B3B23;
+    border-radius: 2rem;
+    text-align: center;
+}
+
+.homeItemImage {
+    width: 80%;
+    border-radius: 1rem;
+}
+
+/* Arrows (move them OUTSIDE the overflow area) */
+.prev, .next {
+    cursor: pointer;
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    color: white;
+    font-weight: bold;
+    font-size: 22px;
+    padding: 14px 18px;
+    border-radius: 50%;
+    user-select: none;
+    z-index: 5;
+    transition: 0.3s;
+}
+
+.prev:hover, .next:hover {
+    color: #190D08;
+}
+
+.prev {
+    left: -45px; /* Now visible outside box */
+}
+
+.next {
+    right: -45px;
 }

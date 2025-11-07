@@ -1,5 +1,5 @@
 /*MENU*/
-#menuContainer {
+#menuContainer, #menuPreviewWindow {
     width: 80%;
     margin: 2rem auto;
     display: flex;
@@ -21,9 +21,6 @@
 .itemImage {
     width: 80%;
     border-radius: 1rem;
-}
-.itemPrice {
-    
 }
 .quantityBlock {
     display: flex;

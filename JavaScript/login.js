@@ -3,7 +3,8 @@ const managerAccount = {
     email: 'manager@wackyburger.com',
     password: 'WackyAdmin123',
     firstName: 'Manager',
-    lastName: 'Account'
+    lastName: 'Account',
+    EncyptedEmail: 'YldGdVlXZGxja0IzWVdOcmVXSjFjbWRsY2k1amIyMD0='
 };
 
 
@@ -38,7 +39,9 @@ if (loginForm){
             msg.textContent = `Welcome back, ${managerAccount.firstName}!`;
             msg.classList.add('success');
 
-            localStorage.setItem('currentEmail', managerAccount.email);
+            const encodedEmail = btoa(managerAccount.email);
+            const trueEncodedEmail = btoa(encodedEmail);
+            localStorage.setItem('currentEmail', trueEncodedEmail);
 
             setTimeout(() => {
                 SmartHref('Manage');
