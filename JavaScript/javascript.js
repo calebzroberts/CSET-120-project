@@ -1,3 +1,4 @@
+//FOR HOME PAGE USE ONLY
 const fullMenu = JSON.parse(localStorage.getItem('menu')) || [];
 const visibleItems = 3;
 let currentIndex = 0;

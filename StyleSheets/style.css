@@ -98,23 +98,21 @@ header ul li a:hover{color: #bc472a;}
 #Profile{margin-left: 20px; padding: 0; width: 100px; height: 100px; border-radius: 100px; display: inline-block; border: 3px #9B3B23 dashed; cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%); background-size: 100%;}
 
 /* Article */
-article{background-color: rgba(255, 255, 255, 0.1); margin: 5%; padding: 5%;}
+article{background-color: rgba(255, 255, 255, 0.1); margin: 5%; padding: 5%; margin-top: calc(5% + 150px); border-radius: 100px;}
+section:first-child{margin-top: 0px;}
 section{margin-top: 100px;}
 
 /* Footer */
-footer{
-    background-color: #E46F3B; 
-    position: relative;
-    top: 100%;
-    left: 0;
-    right: 0;
-    height: 100px;
-}
+footer{background-color: #E46F3B; position: relative; top: 100%; left: 0; right: 0; height: 150px; padding: 0% 5%;}
+footer div{width: 40%; border-right: #9B3B23 3px dashed; height: 150px; align-content: center; float: left; padding: 0% 5%;}
+footer p{text-align: center; color: #9B3B23;}
 
-footer p{
-    text-align: center;
-    margin: 1rem;
-}
+footer ul{list-style-type: none; border: #9B3B23 3px dashed; border-radius: 10px; width: 15%; float: right; position: relative; top: 50%; transform: translateY(-50%);}
+footer li{padding: 0; text-align: center; border-top: #9B3B23 3px dashed;}
+footer li:first-child{border-top: none;}
+
+footer a{color: #9B3B23; transition: 0.25s;}
+footer a:hover{color: #bc472a;}
 
 /* Home */
 #contact form, #signupForm, #loginForm{

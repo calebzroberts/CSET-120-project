@@ -6,17 +6,18 @@ function LoadMenu() {
     const menuContainer = document.getElementById("menuContainer");
     menuContainer.innerHTML = "";
 
-    for (let item of menu) {
+    let menu = JSON.parse(localStorage.getItem('menu')) || [];
+    for (let i = 0; i < menu.length; i++) {
         const div = document.createElement("div");
         div.classList.add("menuItem");
 
         div.innerHTML = `
-            <img class="itemImage" src="${item.imageUrl}">
-            <h3 class="foodName">${item.name}</h3>
-            <p class="itemPrice">$${item.price.toFixed(2)}</p>
+            <img class="itemImage" src="${menu[i].imageUrl}">
+            <h3 class="foodName">${menu[i].name}</h3>
+            <p class="itemPrice">$${menu[i].price}</p>
             <div class="quantityBlock">
                 <p>Quantity:</p>
-                <input class="cartQuantity" type="number" value="1" min="0">
+                <input class="cartQuantity" type="number" value="1" min="0" max="${menu[i].maxQuantity}">
             </div>
             <button class="addToCartButton" onclick="AddToCart(this)">Add to Cart</button>
         `;
@@ -112,7 +113,7 @@ function UpdateVisibleCart()
 
                 <div class="cartItemQuantityBlock">
                     <p>Quantity:</p>
-                    <input class="cartItemQuantity" type="number" value="${cart[i].itemQuantity}" onchange="UpdateItemQuantity(${i}, this.value)" min="0">
+                    <input class="cartItemQuantity" type="number" value="${cart[i].itemQuantity}" onchange="UpdateItemQuantity(${i}, this.value)" min="0" max="${menu[i].maxQuantity}">
                     <button onclick="RemoveItem(${i})">Remove</button>
                 </div>
             </div>

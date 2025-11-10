@@ -63,7 +63,7 @@ if (loginForm){
 
             localStorage.setItem("currentEmail", email);
             localStorage.setItem("currentFirstName", storedFirstName);
-            localStorage.setItem("currentEmail", storedLastName
+            localStorage.setItem("currentLastName", storedLastName
             );
 
             // Redirect after a short delay

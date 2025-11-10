@@ -33,9 +33,9 @@
 
                     <li><a onclick="SmartHref('About')">About</a></li>
 
-                    <li><a class="CurrentlyOn" onclick="SmartHref('Login')">Login</a></li>
-
                     <li id="ManageLink"><a onclick="SmartHref('Manage')">Manage</a></li>
+
+                    <li><a id="logInOutButton" onclick="LogInOut(); SmartHref('Login')">Login</a></li>
 
                     <li id="Profile"></li>
 
@@ -68,8 +68,35 @@
         </article>
         
         <footer>
-            <p>Copyright &copy; 2025 by Wacky Burger. All rights reserved.</p>
-            <p>This page was last updated on xx/xx/20xx</p>
+
+            <ul>
+
+                <li><a class="CurrentlyOn" onclick="SmartHref('Home')">Home</a></li>
+                        
+                <li><a onclick="SmartHref('Menu')">Menu</a></li>
+
+                <li><a onclick="SmartHref('About')">About</a></li>
+
+                <li><a onclick="SmartHref('Login')">Login</a></li>
+
+                <li id="ManageLink2"><a onclick="SmartHref('Manage')">Manage</a></li>
+
+            </ul>
+
+            <div>
+
+                <p>Copyright &copy; 2025 by Wacky Burger. All rights reserved.</p>
+
+                <p>This page was last updated on xx/xx/20xx</p>
+                
+            </div>
+
+            <div>
+                
+                <h3 id="FunFact">Sample Text That Has A Wolfy That Ragebaits Owen :3</h3>
+
+            </div>
+
         </footer>
         
         <script src="../../JavaScript/login.js"></script>
