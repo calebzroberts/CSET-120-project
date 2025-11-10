@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+    <head>
+        <meta charset="UTF-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+        <title>Wacky Burger - Guest Checkout</title>
+
+        <link rel="stylesheet" type="text/css" href="../../../StyleSheets/imports.css">
+        <link rel="stylesheet" type="text/css" href="../../../StyleSheets/animations.css">
+        <link rel="stylesheet" type="text/css" href="../../../StyleSheets/style.css">
+        <link rel="stylesheet" type="text/css" href="../../../StyleSheets/menu.css">
+        <link rel="stylesheet" type="text/css" href="../../../StyleSheets/menu.css">
+
+        <link rel="shortcut icon" href="../../../images/Wacky_Burger_Character_Logo-transparent.png" type="image/x-icon">
+        <link rel="icon" type="x-icon" href="../../../images/Wacky_Burger_Character_Logo-transparent.png">
+
+    </head>
+    <body>
+        
+        <header>
+
+            <div>
+
+                <img src="../../../images/Wacky_Burger_Character_Logo-transparent.png" alt="Wacky Logo">
+
+            </div>
+
+            <nav>
+
+                <ul>
+
+                    <li><a onclick="SmartHref('Home')">Home</a></li>
+                    
+                    <li><a onclick="SmartHref('Menu')">Menu</a></li>
+
+                    <li><a onclick="SmartHref('About')">About</a></li>
+
+                    <li><a onclick="SmartHref('Login')">Login</a></li>
+
+                    <li id="ManageLink"><a onclick="SmartHref('Manage')">Manage</a></li>
+
+                    <li id="Profile"></li>
+
+                </ul>
+
+            </nav>
+
+            <h1><a class="HH1">W</a><a class="HH2">a</a><a class="HH3">c</a><a class="HH4">k</a><a class="HH5">y</a> <a class="HH6">B</a><a class="HH7">u</a><a class="HH8">r</a><a class="HH9">g</a><a class="HH10">e</a><a class="HH11">r</a></h1>
+            
+        </header>
+
+        <article id="main">
+            <h2>Guest Checkout</h2>
+
+            <div id="cartSummary"></div>
+
+            <form id="guestCheckoutForm">
+                <input type="text" id="firstName" placeholder="First name" required>
+                <input type="text"  id="lastName" placeholder="Last name" required>
+                <input type="email"  id="email" placeholder="Email" required>
+                <button type="submit">Place Order</button>
+            </form>
+
+            <button id="downloadPDF">Download Receipt (PDF)</button>
+        </article>
+        
+        <footer>
+            <p>Copyright &copy; 2025 by Wacky Burger. All rights reserved.</p>
+            <p>This page was last updated on xx/xx/20xx</p>
+        </footer>
+        
+        <script src="../../../JavaScript/javascript.js"></script>
+
+        <script src="../../../JavaScript/menuDatabase.js"></script>
+        
+        <script src="../../../JavaScript/menuPage.js"></script>
+
+        <script src="../../../JavaScript/SHref.js"></script>
+
+        <script src="../../../JavaScript/isManager.js"></script>
+
+    </body>
+</html>

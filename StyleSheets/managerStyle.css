@@ -4,7 +4,7 @@
     display: flex;
     flex-wrap: wrap;
 }
-.editMenuItem {
+.mgrMenuItem, .editingModeMenuItem {
     width:30%;
     padding:1rem;
     margin: 0.5rem;
@@ -14,19 +14,19 @@
     border-radius: 2rem;
     text-align: center;
 }
-.editFoodName {
+.mgrFoodName {
     font-size: 1.8rem;
 }
-.editItemImage {
+.mgrItemImage {
     width: 80%;
     border-radius: 1rem;
 }
-.editQuantityBlock{
+.mgrQuantityBlock{
     font-size: 1rem;
     font-weight: 900;
     padding-right: 1rem;
 }
-.editMaxQuantity {
+.mgrMaxQuantity {
     width: 50px;
 }
 

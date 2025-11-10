@@ -61,6 +61,11 @@ if (loginForm){
             msg.textContent = `Welcome back, ${storedFirstName || ''} ${storedLastName || ''}!`.trim();
             msg.classList.add('success');
 
+            localStorage.setItem("currentEmail", email);
+            localStorage.setItem("currentFirstName", storedFirstName);
+            localStorage.setItem("currentEmail", storedLastName
+            );
+
             // Redirect after a short delay
             setTimeout(() => {
                 SmartHref('Home');

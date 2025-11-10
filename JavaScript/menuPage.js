@@ -1,8 +1,5 @@
-let currentEmail = localStorage.getItem("currentEmail") || "Guest";
-let firstName = localStorage.getItem("currentFirstName") || "";
-let lastName = localStorage.getItem("currentLastName") || "";
-
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
+const isLoggedIn = !!localStorage.getItem("wb_email")
 
 // Load the menu items from local storage
 function LoadMenu() {
@@ -29,7 +26,7 @@ function LoadMenu() {
 }
 
 
-// Function added to the add to cart buttons
+// Purchase Logic
 function AddToCart(button){
     const parentDiv = button.parentElement;
 
@@ -63,42 +60,15 @@ function PurchaseItems(){
         return;
     }
 
-    // Prompt guest users for their name and email if they are not logged in
-
-    if (currentEmail === "Guest"){
-        firstName = prompt("Enter your first name:") || "";
-        lastName = prompt("Enter your last name:") || "";
-        currentEmail = prompt("Enter your email:") || "";
+    if (isLoggedIn) {
+        window.location.href = "../../Wacky/Checkout/User/" // User Checkout
+    } else{
+        window.location.href = "../../Wacky/Checkout/Guest" // Guest Checkout
     }
-
-    if (!firstName || !lastName || !currentEmail){
-        UpdatePurchaseText("Name and email are required for guest checkout.");
-        return;
-    }
-
-    localStorage.setItem("currentFirstName", firstName);
-    localStorage.setItem("currentLastName", lastName);
-    localStorage.setItem("currentEmail", currentEmail);
-
-const total = cart.reduce((sum, item) => sum + item.itemPrice * item.itemQuantity, 0);
-
-const order = {
-    customerEmail: currentEmail,
-    customerFirstName: firstName,
-    customerLastName: lastName,
-    date: new Date().toLocaleString(),
-    items: cart,
-    total: total
-};
-
-const existingOrders = JSON.parse(localStorage.getItem("orders")) || [];
-existingOrders.push(order);
-localStorage.setItem("orders", JSON.stringify(existingOrders));
-
-// Redirect to checkout page
-localStorage.setItem("currentOrder", JSON.stringify(order));
-window.location.href = "../../HTML/Checkout/index.html";
+    SaveCart();
 }
+
+// Cart Management Fuctions
 
 function UpdatePurchaseText(text)
 {
@@ -261,3 +231,5 @@ UpdatePurchaseText("Click below to purchase.");
 
 
 UpdateAddToCartButtons();
+
+UpdateVisibleCart();

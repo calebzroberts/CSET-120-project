@@ -58,16 +58,16 @@
             <p>Welcome, Manager! Here you can manage menu items and check orders.</p>
 
             <div id="editItemsContainer">
-                <div class="editMenuItem">
-                    <img class="editItemImage" src="../../images/monster-burger.jpg">
-                    <h3 class="editFoodName">Monster Burger</h3>
-                    <p class="editItemPrice">$15.99</p>
-                    <p class="editQuantityBlock">Max Quantity: 10</p>
+                <div class="mgrMenuItem">
+                    <img class="mgrItemImage" src="../../images/monster-burger.jpg">
+                    <h3 class="mgrFoodName">Monster Burger</h3>
+                    <p class="mgrItemPrice">$15.99</p>
+                    <p class="mgrQuantityBlock">Max Quantity: 10</p>
                     <button class="editItemButton" onclick="">Edit Details</button>
                     <button class="removeItemButton" onclick="">Remove Item</button>
                 </div>
 
-                <div class="editMenuItem">
+                <div class="editingModeMenuItem">
                     <h4>Image URL:</h4>
                     <textarea class="imageUrlEditBlock">../../images/monster-burger.jpg</textarea>
 
@@ -87,6 +87,8 @@
 
             <button onclick="">Add New Item</button>
 
+            <button id="saveButton" onclick="SaveChanges();">Save Changes</button>
+
             <button onclick="SmartHref('Home')">Return to Home</button>
         </article>
 
@@ -96,6 +98,8 @@
         </footer>
 
         <script src="../../JavaScript/manage.js"></script>
+
+        <script src="../../JavaScript/menuDatabase.js"></script>
 
         <script src="../../JavaScript/login.js"></script>
 
