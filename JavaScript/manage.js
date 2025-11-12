@@ -4,8 +4,12 @@ const currentEmail = localStorage.getItem('currentEmail');
 //get the current menu
 const currentMenu = JSON.parse(localStorage.getItem('menu')) || [];
 
+//get the current orders
+const ordersList = JSON.parse(localStorage.getItem('orders')) || [];
+
 //onpage items
 const menuSection = document.getElementById("editItemsContainer");
+const orderSection = document.getElementById("ordersContainer");
 
 //array of items that are being edited - allows the menu to know if that item is being edited and display that accordingly
 let editIndeces = [];
@@ -20,6 +24,7 @@ if (currentEmail !== 'YldGdVlXZGxja0IzWVdOcmVXSjFjbWRsY2k1amIyMD0='){
 function FillMenuItems()
 {
     menuSection.innerHTML = ``;
+    
 
     for (let i = 0; i < currentMenu.length; i++)
     {
@@ -68,6 +73,56 @@ function FillMenuItems()
     }
 }
 
+//Fills the orders dynamically from the orders database
+function FillOrdersList()
+{
+    orderSection.innerHTML = "";
+
+    for (let i = 0; i < ordersList.length; i++)
+    {
+        //only show unfulfilled orders
+        if (ordersList[i].fulfilled === true) continue;
+
+        let newOrderItem = document.createElement("div");
+
+        newOrderItem.classList.add(`mgrOrderItem`);
+        newOrderItem.onclick = () => ToggleOrderInfo(newOrderItem);
+
+        newOrderItem.innerHTML = `
+            <div class="primaryInfo">
+                <h3 class="orderId">Order #${ordersList[i].orderId}</h3>
+                <p class="orderCustName">Customer: ${ordersList[i].customerName}</p>
+                <p class="orderCustEmail">Email: ${ordersList[i].customerEmail}</p>
+                <p class="orderTotal">Total: $${ordersList[i].total}</p>
+                <p class="orderDate">Placed on ${ordersList[i].fulfillmentDate}</p>
+                <p class="pickupDelivery">${ordersList[i].pickupOrDelivery}</p>
+            </div>
+
+            <div class="secondaryInfo">
+                <div class="orderFoodItem">
+                    <h4 class="orderFoodItemName">1. Wacky Burger</h4>
+                    <p class="orderFoodItemPrice">Price/each: $10.99</p>
+                    <p class="orderFoodItemQuantity">Qty: 2</p>
+                </div>
+                <div class="orderFoodItem">
+                    <h4 class="orderFoodItemName">2. Wacky Burger</h4>
+                    <p class="orderFoodItemPrice">Price/each: $10.99</p>
+                    <p class="orderFoodItemQuantity">Qty: 2</p>
+                </div>
+                <div class="orderFoodItem">
+                    <h4 class="orderFoodItemName">3. Wacky Burger</h4>
+                    <p class="orderFoodItemPrice">Price/each: $10.99</p>
+                    <p class="orderFoodItemQuantity">Qty: 2</p>
+                </div>
+            </div>
+        `;
+
+        orderSection.append(newOrderItem);
+    }
+
+    
+}
+
 //puts menu item in edit mode with text boxes
 function EditMenuItem(value)
 {
@@ -96,6 +151,16 @@ function CancelEdit(value)
     //remove item from edit list and then reload the display menu to show the normal menu for it
     editIndeces = editIndeces.filter(index => index !== value);
 
+    //if the name is blank (prolly new item) delete it entirely
+    if (currentMenu[value].imageUrl === "" && 
+        currentMenu[value].name === "" &&
+        currentMenu[value].price === "" &&
+        currentMenu[value].maxQuantity === ""
+    )
+    {
+        currentMenu.splice(value, 1);
+    }
+
     FillMenuItems();
 }
 
@@ -113,6 +178,30 @@ function ConfirmDetails(buttonObject, value)
 
     //remove item from edit list and reload visible menu
     editIndeces = editIndeces.filter(index => index !== value);
+
+    //if the name is blank (prolly new item) delete it entirely
+    if (currentMenu[value].imageUrl === "" && 
+        currentMenu[value].name === "" &&
+        currentMenu[value].price === "" &&
+        currentMenu[value].maxQuantity === ""
+    )
+    {
+        currentMenu.splice(value, 1);
+    }
+
+    FillMenuItems();
+}
+
+//add item to the list and puts it in edit mode
+function AddNewItem()
+{
+    currentMenu.push({
+        imageUrl:"",
+        name:"",
+        price:"",
+        maxQuantity:""
+    });
+    editIndeces.push(currentMenu.length - 1);
     FillMenuItems();
 }
 
@@ -123,5 +212,39 @@ function SaveChanges()
     document.getElementById(`saveButton`).innerText = `Saved`;
 }
 
+//Toggle the menu on and the orders off
+function DisplayMenu()
+{
+    document.getElementById("viewOrdersToggle").style.display = "none";
+    document.getElementById("editItemsToggle").style.display = "block";
+}
+
+//Toggle orders on and menu off
+function ViewOrders()
+{
+    document.getElementById("viewOrdersToggle").style.display = "block";
+    document.getElementById("editItemsToggle").style.display = "none";
+}
+
+//Toggle the secondary info for the order (items, primarily)
+function ToggleOrderInfo(thisObject) {
+    const secondary = thisObject.querySelector('.secondaryInfo');
+
+    // Get the computed display (actual visible state)
+    const currentDisplay = window.getComputedStyle(secondary).display;
+
+    if (currentDisplay !== "none") {
+        secondary.style.display = "none";
+    } else {
+        secondary.style.display = "flex";
+    }
+}
+
 //fill menu items on startup of page
 FillMenuItems();
+
+//display menu editing by default
+DisplayMenu();
+
+//fill order items on page load
+FillOrdersList();

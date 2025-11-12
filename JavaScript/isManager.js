@@ -45,3 +45,9 @@ function LogInOut()
 }
 
 //manager headshot image name: "manager-headshot"
+
+// Decrypts Email //
+function GetEmail(){
+    var UncryptedEmail = btoa(currentEmail)
+    return(UncryptedEmail)
+}

@@ -1,6 +1,5 @@
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
 const cartSummary = document.getElementById("cartSummary");
-const downloadPDFBtn = document.getElementById("downloadPDF");
 const guestCheckoutForm = document.getElementById("guestCheckoutForm");
 
 // Display cart items
@@ -36,14 +35,21 @@ guestCheckoutForm.addEventListener("submit", function(e){
     }
 
     const total = cart.reduce((sum, item) => sum + item.itemPrice * item.itemQuantity, 0);
+    const pickupOrDelivery = document.getElementById("pickupOrDelivery").value;
 
     const order = {
+        orderId:Date.now(),
+        customerName: `${firstName} ${lastName}`,
         customerEmail: email,
-        customerFirstName: firstName,
-        customerLastname: lastName,
-        date: new Date().toLocaleString(),
-        items: cart,
-        total: total
+        items: cart.map(i => ({
+            itemName: i.itemName,
+            itemPrice: i.itemPrice,
+            itemQuantity: i.itemQuantity
+        })),
+        total: total,
+        fulfilled: false,
+        fulfilled: null,
+        pickupOrDelivery: pickupOrDelivery
     };
 
     const existingOrders = JSON.parse(localStorage.getItem("orders")) || [];
@@ -55,36 +61,9 @@ guestCheckoutForm.addEventListener("submit", function(e){
     localStorage.removeItem("cart");
     cart.length = 0;
     displayCart();
-    setTimeout(() => {window.location.href = "../../Menu.html";}, 500);
+
+    // Redirect to receipt page
+    setTimeout(() => {window.location.href = "../../receipt/index.html";}, 500);
 });
-
-// PDF download
-
-if (downloadPDFBtn){
-    downloadPDFBtn.addEventListener("click", () => {
-        if (cart.length === 0) {
-            alert("Cart is empty, nothing to download.");
-            return;
-        }
-
-        const doc = new jsPDF();
-        doc.setFontSize(16);
-        doc.text("Wacky Burger Receipt", 10, 10);
-
-        let y = 20;
-        let total = 0;
-
-        cart.forEach(item => {
-            const itemTotal = (item.itemPrice * item.itemQuantity).toFixed(2);
-            total += Number(itemTotal);
-            doc.text(`${item.itemName} x${item.itemQuantity} - $${itemTotal}`, 10, y);
-            y += 10;
-        });
-        
-        doc.text(`Total: $${total.toFixed(2)}`, 10, y + 10);
-
-        doc.save("WackyBurger_Receipt.pdf");
-    });
-}
 
 displayCart();

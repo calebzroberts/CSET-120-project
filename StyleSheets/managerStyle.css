@@ -47,3 +47,52 @@
     border-radius: 10px;
     padding: 0.1rem 0rem 0.1rem 0.3rem;
 }
+
+/*ORDER VIEWING ITEM STYLING*/
+#ordersContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.mgrOrderItem {
+    width: 100%;
+    padding:1rem;
+    margin: 0.5rem;
+    background-color: white;
+
+    border: 5px solid #9B3B23;
+    border-radius: 2rem;
+}
+
+.mgrOrderItem .primaryInfo {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: 1rem;
+    margin-bottom: .5rem;
+
+    border-bottom: 5px #9B3B23 dashed; 
+}
+
+.mgr .primaryInfo * {
+    margin: .5rem 2rem;
+}
+
+.mgrOrderItem .orderId {
+    font-size: 30px;
+}
+
+.mgrOrderItem .secondaryInfo {
+    display: none;
+    flex-wrap: wrap;
+}
+
+.mgrOrderItem .orderFoodItem {
+    width: fit-content;
+
+    padding: 1rem 2rem;
+    margin: .5rem 1rem;
+
+    border: 3px #9B3B23 solid; 
+    border-radius: 10px;
+}

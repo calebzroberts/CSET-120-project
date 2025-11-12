@@ -32,13 +32,13 @@
 
                 <ul>
 
-                    <li><a class="CurrentlyOn" onclick="SmartHref('Home')">Home</a></li>
+                    <li><a onclick="SmartHref('Home')">Home</a></li>
                     
                     <li><a onclick="SmartHref('Menu')">Menu</a></li>
 
                     <li><a onclick="SmartHref('About')">About</a></li>
 
-                    <li id="ManageLink"><a onclick="SmartHref('Manage')">Manage</a></li>
+                    <li id="ManageLink"><a class="CurrentlyOn" onclick="SmartHref('Manage')">Manage</a></li>
 
                     <li><a id="logInOutButton" onclick="LogInOut(); SmartHref('Login');">Login</a></li>
 
@@ -56,40 +56,55 @@
         
             <h1>Manager Dashboard</h1>
             <p>Welcome, Manager! Here you can manage menu items and check orders.</p>
+            
+            <button class="displaymenuButton" onclick="DisplayMenu();">Edit Menu</button>
 
-            <div id="editItemsContainer">
-                <div class="mgrMenuItem">
-                    <img class="mgrItemImage" src="../../images/monster-burger.jpg">
-                    <h3 class="mgrFoodName">Monster Burger</h3>
-                    <p class="mgrItemPrice">$15.99</p>
-                    <p class="mgrQuantityBlock">Max Quantity: 10</p>
-                    <button class="editItemButton" onclick="">Edit Details</button>
-                    <button class="removeItemButton" onclick="">Remove Item</button>
+            <button class="viewOrdersButton" onclick="ViewOrders();">View Orders</button>
+
+            <div id="editItemsToggle">
+                <div id="editItemsContainer">
+                
                 </div>
 
-                <div class="editingModeMenuItem">
-                    <h4>Image URL:</h4>
-                    <textarea class="imageUrlEditBlock">../../images/monster-burger.jpg</textarea>
+                <button onclick="AddNewItem();">Add New Item</button>
 
-                    <h4>Item Name:</h4>
-                    <input type="text" class="nameEditBlock" value="Monster Burger">
+                <button id="saveButton" onclick="SaveChanges();">Save Changes</button>
+            </div>
+            
+            
+            <div id="viewOrdersToggle">
+                <div id="ordersContainer">
+                    <div class="mgrOrderItem" onclick="ToggleOrderInfo(this);">
+                        <div class="primaryInfo">
+                            <h3 class="orderId">Order #0</h3>
+                            <p class="orderCustName">Customer: Wacky Burger</p>
+                            <p class="orderCustEmail">Email: wacky@wacky.com</p>
+                            <p class="orderTotal">Total: $59.99</p>
+                            <p class="pickupDelivery">Pickup</p>
+                        </div>
 
-                    <h4>Item Price:</h4>
-                    <input type="number" class="priceEditBlock" value="15.99">
-
-                    <h4>Max Quantity:</h4>
-                    <input type="number" class="maxQuantityEditBlock" value="10">
-
-                    <button class="cancelEditButton" onclick="">Cancel</button>
-
-                    <button class="editItemButton" onclick="">Confirm Details</button>
+                        <div class="secondaryInfo">
+                            <div class="orderFoodItem">
+                                <h4 class="orderFoodItemName">1. Wacky Burger</h4>
+                                <p class="orderFoodItemPrice">Price/each: $10.99</p>
+                                <p class="orderFoodItemQuantity">Qty: 2</p>
+                            </div>
+                            <div class="orderFoodItem">
+                                <h4 class="orderFoodItemName">2. Wacky Burger</h4>
+                                <p class="orderFoodItemPrice">Price/each: $10.99</p>
+                                <p class="orderFoodItemQuantity">Qty: 2</p>
+                            </div>
+                            <div class="orderFoodItem">
+                                <h4 class="orderFoodItemName">3. Wacky Burger</h4>
+                                <p class="orderFoodItemPrice">Price/each: $10.99</p>
+                                <p class="orderFoodItemQuantity">Qty: 2</p>
+                            </div>
+                        </div>
+                    </div>
                 </div>
-                </div>
+            </div>
             
 
-            <button onclick="">Add New Item</button>
-
-            <button id="saveButton" onclick="SaveChanges();">Save Changes</button>
 
             <button onclick="SmartHref('Home')">Return to Home</button>
         </article>
@@ -129,6 +144,8 @@
         <script src="../../JavaScript/manage.js"></script>
 
         <script src="../../JavaScript/menuDatabase.js"></script>
+
+        <script src="../../JavaScript/orderDatabase.js"></script>
 
         <script src="../../JavaScript/login.js"></script>
 
