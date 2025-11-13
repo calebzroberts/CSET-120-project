@@ -9,7 +9,6 @@
         <link rel="stylesheet" type="text/css" href="../../../StyleSheets/animations.css">
         <link rel="stylesheet" type="text/css" href="../../../StyleSheets/style.css">
         <link rel="stylesheet" type="text/css" href="../../../StyleSheets/menu.css">
-        <link rel="stylesheet" type="text/css" href="../../../StyleSheets/menu.css">
 
         <link rel="shortcut icon" href="../../../images/Wacky_Burger_Character_Logo-transparent.png" type="image/x-icon">
         <link rel="icon" type="x-icon" href="../../../images/Wacky_Burger_Character_Logo-transparent.png">
@@ -54,10 +53,21 @@
 
             <div id="cartSummary"></div>
 
+            <div id="deliveryProgressContainer" style="margin: 10px 0;">
+                <label for="deliveryProgress">Delivery Fee Progress:</label>
+                <progress id="deliveryProgress" value="0" max="5"></progress>
+                <span id="deliveryProgressText">$0 / $5.00</span>
+            </div>
+
             <form id="guestCheckoutForm">
                 <input type="text" id="firstName" placeholder="First name" required>
                 <input type="text"  id="lastName" placeholder="Last name" required>
                 <input type="email"  id="email" placeholder="Email" required>
+                <label for="pickupDelivery">Pickup or Delivery</label>
+                <select name="pickupDelivery" id="pickupDelivery" required>
+                    <option value="pickup">Pickup</option>
+                    <option value="delivery">Delivery</option>
+                </select>
                 <button type="submit">Place Order</button>
             </form>
         </article>
@@ -93,8 +103,6 @@
             </div>
 
         </footer>
-        
-        <script src="../../../JavaScript/javascript.js"></script>
 
         <script src="../../../JavaScript/menuDatabase.js"></script>
         

@@ -11,6 +11,10 @@ const ordersList = JSON.parse(localStorage.getItem('orders')) || [];
 const menuSection = document.getElementById("editItemsContainer");
 const orderSection = document.getElementById("ordersContainer");
 
+//filter/sorting variables
+let orderDirection = `newToOld`; //newToOld or oldToNew
+let orderShow = `allItems`; //allItems or fulfilled or notFulfilled
+
 //array of items that are being edited - allows the menu to know if that item is being edited and display that accordingly
 let editIndeces = [];
 
@@ -25,7 +29,6 @@ function FillMenuItems()
 {
     menuSection.innerHTML = ``;
     
-
     for (let i = 0; i < currentMenu.length; i++)
     {
         let newMenuItem = document.createElement("div");
@@ -78,49 +81,130 @@ function FillOrdersList()
 {
     orderSection.innerHTML = "";
 
-    for (let i = 0; i < ordersList.length; i++)
+    //enables sorting. if new to old, then use that for loop, if not use the other type
+    if (orderDirection === `newToOld`)
     {
-        //only show unfulfilled orders
-        if (ordersList[i].fulfilled === true) continue;
+        for (let i = ordersList.length-1; i >= 0; i--)
+        {
+            //only show unfulfilled orders if filter applies
+            if (orderShow === `fulfilled` && ordersList[i].fulfilled === false) continue;
+            else if (orderShow === `notFulfilled` && ordersList[i].fulfilled === true) continue;
 
-        let newOrderItem = document.createElement("div");
+            let newOrderItem = document.createElement("div");
+            let newOrderItemText = ``;
 
-        newOrderItem.classList.add(`mgrOrderItem`);
-        newOrderItem.onclick = () => ToggleOrderInfo(newOrderItem);
+            newOrderItem.classList.add(`mgrOrderItem`);
+            newOrderItem.onclick = () => ToggleOrderInfo(newOrderItem);
 
-        newOrderItem.innerHTML = `
-            <div class="primaryInfo">
-                <h3 class="orderId">Order #${ordersList[i].orderId}</h3>
-                <p class="orderCustName">Customer: ${ordersList[i].customerName}</p>
-                <p class="orderCustEmail">Email: ${ordersList[i].customerEmail}</p>
-                <p class="orderTotal">Total: $${ordersList[i].total}</p>
-                <p class="orderDate">Placed on ${ordersList[i].fulfillmentDate}</p>
-                <p class="pickupDelivery">${ordersList[i].pickupOrDelivery}</p>
-            </div>
-
-            <div class="secondaryInfo">
-                <div class="orderFoodItem">
-                    <h4 class="orderFoodItemName">1. Wacky Burger</h4>
-                    <p class="orderFoodItemPrice">Price/each: $10.99</p>
-                    <p class="orderFoodItemQuantity">Qty: 2</p>
+            newOrderItemText = `
+                <div class="primaryInfo">
+                    <h3 class="orderId">Order #${ordersList[i].orderId}</h3>
+                    <p class="orderCustName">Customer: ${ordersList[i].customerName}</p>
+                    <p class="orderCustEmail">Email: ${ordersList[i].customerEmail}</p>
+                    <p class="orderTotal">Total: $${ordersList[i].total}</p>
+                    <p class="orderDate">Placed on ${ordersList[i].placementDate}</p>
+                    <p class="pickupDelivery">${ordersList[i].pickupOrDelivery}</p>
                 </div>
-                <div class="orderFoodItem">
-                    <h4 class="orderFoodItemName">2. Wacky Burger</h4>
-                    <p class="orderFoodItemPrice">Price/each: $10.99</p>
-                    <p class="orderFoodItemQuantity">Qty: 2</p>
-                </div>
-                <div class="orderFoodItem">
-                    <h4 class="orderFoodItemName">3. Wacky Burger</h4>
-                    <p class="orderFoodItemPrice">Price/each: $10.99</p>
-                    <p class="orderFoodItemQuantity">Qty: 2</p>
-                </div>
-            </div>
-        `;
 
-        orderSection.append(newOrderItem);
+                <div class="secondaryInfo">
+            `;
+
+            //add food items individually and dynamically
+            for (let j = 0; j < ordersList[i].items.length; j++)
+            {
+                newOrderItemText += `
+                <div class="orderFoodItem">
+                    <h4 class="orderFoodItemName">${j+1}. ${ordersList[i].items[j].itemName}</h4>
+                    <p class="orderFoodItemPrice">Price/each: $${ordersList[i].items[j].itemPrice}</p>
+                    <p class="orderFoodItemQuantity">Qty: ${ordersList[i].items[j].itemQuantity}</p>
+                </div>
+                `;
+            }
+
+            newOrderItemText += `</div`;
+            
+            
+
+            newOrderItem.innerHTML = newOrderItemText;
+
+            orderSection.append(newOrderItem);
+        }   
+        //only display the "No orders" if nothing is displaying
+        if (orderSection.innerHTML === "")
+        {
+            orderSection.innerHTML = `<p>No Orders to Show!</p>`;
+        }
     }
+    else
+    {
+        for (let i = 0; i < ordersList.length; i++)
+        {
+            
 
+            //only show unfulfilled orders if filter applies
+            if (orderShow === `fulfilled` && ordersList[i].fulfilled === false) continue;
+            else if (orderShow === `notFulfilled` && ordersList[i].fulfilled === true) continue;
+
+            let newOrderItem = document.createElement("div");
+            let newOrderItemText = ``;
+
+            newOrderItem.classList.add(`mgrOrderItem`);
+            newOrderItem.onclick = () => ToggleOrderInfo(newOrderItem);
+
+            newOrderItemText = `
+                <div class="primaryInfo">
+                    <h3 class="orderId">Order #${ordersList[i].orderId}</h3>
+                    <p class="orderCustName">Customer: ${ordersList[i].customerName}</p>
+                    <p class="orderCustEmail">Email: ${ordersList[i].customerEmail}</p>
+                    <p class="orderTotal">Total: $${ordersList[i].total}</p>
+                    <p class="orderDate">Placed on ${ordersList[i].placementDate}</p>
+                    <p class="pickupDelivery">${ordersList[i].pickupOrDelivery}</p>
+                </div>
+
+                <div class="secondaryInfo">
+            `;
+
+            //add food items individually and dynamically
+            for (let j = 0; j < ordersList[i].items.length; j++)
+            {
+                newOrderItemText += `
+                <div class="orderFoodItem">
+                    <h4 class="orderFoodItemName">${j+1}. ${ordersList[i].items[j].itemName}</h4>
+                    <p class="orderFoodItemPrice">Price/each: $${ordersList[i].items[j].itemPrice}</p>
+                    <p class="orderFoodItemQuantity">Qty: ${ordersList[i].items[j].itemQuantity}</p>
+                </div>
+                `;
+            }
+
+            newOrderItemText += `</div`;
+            
+
+            newOrderItem.innerHTML = newOrderItemText;
+
+            
+
+            orderSection.append(newOrderItem);
+        }
+
+        //only display the "No orders" if nothing is displaying
+        if (orderSection.innerHTML === "")
+        {
+            orderSection.innerHTML = `<p>No Orders to Show!</p>`;
+        }
+    }
     
+}
+
+//Orders list sorting and filtering functions
+function ChangeOrderSorting(value)
+{
+    orderDirection = value;
+    FillOrdersList();
+}
+function ChangeOrderFiltering(value)
+{
+    orderShow = value;
+    FillOrdersList();
 }
 
 //puts menu item in edit mode with text boxes

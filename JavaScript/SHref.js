@@ -12,6 +12,8 @@ function SmartHome(){
 
 // Something Else Lol //
 function ChangeFunFact(){
+    
+
     const FunFactArray = [
         "Wolfy is NOT appart of this website.",
         "Wacky Burger Jr. is the son of Wacky Burger!",
@@ -24,7 +26,8 @@ function ChangeFunFact(){
     ]
 
     var AL = FunFactArray.length
-    var RandomNumber = Math.round(Math.random()*AL)+1
+    var RandomNumber = Math.round(Math.random()*AL)
+    console.log(RandomNumber)
     var Fact = FunFactArray.slice(RandomNumber, RandomNumber+1)
 
     document.getElementById("FunFact").innerHTML = Fact

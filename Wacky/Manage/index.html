@@ -61,6 +61,8 @@
 
             <button class="viewOrdersButton" onclick="ViewOrders();">View Orders</button>
 
+            
+
             <div id="editItemsToggle">
                 <div id="editItemsContainer">
                 
@@ -73,6 +75,22 @@
             
             
             <div id="viewOrdersToggle">
+                
+                <div id="filterSortToggles">
+                    <label for="orderSort">Sort By</label> 
+                    <select name="orderSort" id="orderSort" onchange="ChangeOrderSorting(this.value);">
+                        <option value="newToOld">Newest to Oldest</option>
+                        <option value="oldToNew">Oldest to Newest</option>
+                    </select>
+
+                    <label for="orderFilter">Filter By</label> 
+                    <select name="orderFilter" id="orderFilter" onchange="ChangeOrderFiltering(this.value);">
+                        <option value="all">All Orders</option>
+                        <option value="fulfilled">Fulfilled Orders</option>
+                        <option value="notFulfilled">Unfulfilled Orders</option>
+                    </select>
+                </div>
+
                 <div id="ordersContainer">
                     <div class="mgrOrderItem" onclick="ToggleOrderInfo(this);">
                         <div class="primaryInfo">
