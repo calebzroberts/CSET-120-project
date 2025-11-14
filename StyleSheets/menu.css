@@ -112,6 +112,68 @@
     color:#9B3B23;
 } 
 
+
+/* CHECKOUT FORMS */
+#guestCheckoutForm, #userCheckoutForm{
+    display: flex;
+    flex-direction: column;
+    gap: 1rem;
+    max-width: 500px;
+    margin: 1rem auto;
+    padding: 2rem;
+    background-color: rgba(255, 255, 255, 0.1);
+    border: 5px solid #9B3B23;
+    border-radius: 25px;
+}
+
+#guestCheckoutForm input,
+#guestCheckoutForm select,
+#userCheckoutForm input,
+#userCheckoutForm select{
+    padding: 0.5rem 1rem;
+    font-size: 1.2rem;
+    border: 3px solid #190D08;
+    border-radius: 15px;
+    outline: none;
+    background-color: white;
+    transition: all 0.3s ease;
+}
+
+#guestCheckoutForm input:focus,
+#guestCheckoutForm select:focus,
+#userCheckoutForm input:focus,
+#userCheckoutForm select:focus{
+    border-color: #e46f3b;
+    box-shadow: 0 0 10px rgba(228, 111, 59, 0.7);
+}
+
+#deliveryAddressContainer{
+    margin-top: 0.5rem;
+    display: none;
+}
+
+/* Autofill and links */
+#guestCheckoutForm p, #userCheckoutForm p{
+    font-family: "Mulish", sans-serif;
+    font-size: 1rem;
+    color: #190D08;
+    text-align: center;
+}
+
+#guestCheckoutForm p a, #userCheckoutForm p a{
+    color: #e46f3b;
+    text-decoration: none;
+    font-weight: bold;
+}
+
+#guestCheckoutForm p a:hover, #userCheckoutForm p a:hover{
+    color: #190D08;
+    text-shadow: 0 0 5px #948474;
+}
+
+/* Cart and Receipt Summary */
+
+
 /* PROGRESS BAR */
 progress{
     width: 100%;

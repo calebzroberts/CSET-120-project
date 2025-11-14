@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+
+<html lang="en">
+    <head>
+
+        <meta charset="UTF-8">
+
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+        <title>Wacky Burger - Manager Dashboard</title>
+
+        <link rel="stylesheet" type="text/css" href="../../StyleSheets/imports.css">
+        <link rel="stylesheet" type="text/css" href="../../StyleSheets/animations.css">
+        <link rel="stylesheet" type="text/css" href="../../StyleSheets/style.css">
+        <link rel="stylesheet" href="../../StyleSheets/accountStyle.css">
+        <link rel="stylesheet" href="../../StyleSheets/messages.css">
+
+        <link rel="shortcut icon" href="../../images/Wacky_Burger_Character_Logo-transparent.png" type="image/x-icon">
+        <link rel="icon" type="x-icon" href="../../images/Wacky_Burger_Character_Logo-transparent.png">
+
+    </head>
+    <body>
+
+        <header>
+
+            <div>
+
+                <img src="../../images/Wacky_Burger_Character_Logo-transparent.png" alt="Wacky Logo">
+
+            </div>
+
+            <nav>
+
+                <ul>
+
+                    <li><a class="CurrentlyOn" onclick="SmartHref('Home')">Home</a></li>
+                    
+                    <li><a onclick="SmartHref('Menu')">Menu</a></li>
+
+                    <li><a onclick="SmartHref('About')">About</a></li>
+
+                    <li id="ManageLink"><a onclick="SmartHref('Manage')">Manage</a></li>
+
+                    <li><a id="logInOutButton" onclick="LogInOut(); SmartHref('Login')">Login</a></li>
+
+                    <li id="Profile"></li>
+
+                </ul>
+
+            </nav>
+
+            <h1><a class="HH1">W</a><a class="HH2">a</a><a class="HH3">c</a><a class="HH4">k</a><a class="HH5">y</a> <a class="HH6">B</a><a class="HH7">u</a><a class="HH8">r</a><a class="HH9">g</a><a class="HH10">e</a><a class="HH11">r</a></h1>
+            
+        </header>
+
+        <article>
+        
+            <h1>Account Dashboard</h1>
+            <p>Welcome, Manager! Here you can manage menu items and check orders.</p>
+            
+            <button class="custInfoButton" onclick="DisplayAccountDetails();">Change Your Info</button>
+
+            <button class="displayCustOrdersButton" onclick="DisplayCustomerOrders();">View Your Orders</button>
+
+            <div id="editInfoSection">
+                <div id="custInfoContainer">
+                    <div id="custInfoTitles">
+                        <label for="First Name">First Name:</label>
+                        <label for="Last Name">Last Name:</label>
+                        <label for="Email">Email:</label>
+                        <label for="Password">Password:</label>
+                    </div>
+
+                    <div id="custInfoEditBoxes">
+                        <input type="text" value="Bob" name="First Name" id="firstName">
+                        <input type="text" value="Wacky" name="Last Name" id="lastName">
+                        <input type="text" value="bob@wacky.com" name="Email" id="email">
+                        <input type="text" value="Wacky1234!" name="Password" id="password">
+                    </div>
+
+                    <div id="filledAccountInfo">
+                        <p><strong>First Name:</strong> Bob</p>
+                        <p><strong>Last Name:</strong> Wacky</p>
+                        <p><strong>Email:</strong> bob@wacky.com</p>
+                        <p><strong>Password:</strong> Wacky1234!</p>
+                    </div>
+                    
+                </div>
+
+                <button id="saveButton" onclick="SaveChanges();">Save Changes</button>
+                <button id="editButton" onclick="EditInfo();">Edit Details</button>
+
+                <p id="loginMessage"></p>
+            </div>
+            
+            
+            <div id="viewOrdersToggle">
+                
+                <div id="filterSortToggles">
+                    <label for="orderSort">Sort By</label> 
+                    <select name="orderSort" id="orderSort" onchange="ChangeOrderSorting(this.value);">
+                        <option value="newToOld">Newest to Oldest</option>
+                        <option value="oldToNew">Oldest to Newest</option>
+                    </select>
+
+                    <label for="orderFilter">Filter By</label> 
+                    <select name="orderFilter" id="orderFilter" onchange="ChangeOrderFiltering(this.value);">
+                        <option value="all">All Orders</option>
+                        <option value="fulfilled">Fulfilled Orders</option>
+                        <option value="notFulfilled">Unfulfilled Orders</option>
+                    </select>
+                </div>
+
+                <div id="ordersContainer">
+                    <div class="custOrderItem" onclick="ToggleOrderInfo(this);">
+                        <div class="primaryInfo">
+                            <h3 class="orderId">Order #0</h3>
+                            <p class="orderCustName">Customer: Wacky Burger</p>
+                            <p class="orderCustEmail">Email: wacky@wacky.com</p>
+                            <p class="orderTotal">Total: $59.99</p>
+                            <p class="pickupDelivery">Pickup</p>
+                        </div>
+
+                        <div class="secondaryInfo">
+                            <div class="orderFoodItem">
+                                <h4 class="orderFoodItemName">1. Wacky Burger</h4>
+                                <p class="orderFoodItemPrice">Price/each: $10.99</p>
+                                <p class="orderFoodItemQuantity">Qty: 2</p>
+                            </div>
+                            <div class="orderFoodItem">
+                                <h4 class="orderFoodItemName">2. Wacky Burger</h4>
+                                <p class="orderFoodItemPrice">Price/each: $10.99</p>
+                                <p class="orderFoodItemQuantity">Qty: 2</p>
+                            </div>
+                            <div class="orderFoodItem">
+                                <h4 class="orderFoodItemName">3. Wacky Burger</h4>
+                                <p class="orderFoodItemPrice">Price/each: $10.99</p>
+                                <p class="orderFoodItemQuantity">Qty: 2</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+
+
+            <button onclick="SmartHref('Home')">Return to Home</button>
+        </article>
+
+        <footer>
+
+            <ul>
+
+                <li><a class="CurrentlyOn" onclick="SmartHref('Home')">Home</a></li>
+                        
+                <li><a onclick="SmartHref('Menu')">Menu</a></li>
+
+                <li><a onclick="SmartHref('About')">About</a></li>
+
+                <li><a onclick="SmartHref('Login')">Login</a></li>
+
+                <li id="ManageLink2"><a onclick="SmartHref('Manage')">Manage</a></li>
+
+            </ul>
+
+            <div>
+
+                <p>Copyright &copy; 2025 by Wacky Burger. All rights reserved.</p>
+
+                <p>This page was last updated on xx/xx/20xx</p>
+                
+            </div>
+
+            <div>
+                
+                <h3 id="FunFact">Sample Text That Has A Wolfy That Ragebaits Owen :3</h3>
+
+            </div>
+
+        </footer>
+
+        <script src="../../JavaScript/customerAccount.js"></script>
+
+        <script src="../../JavaScript/SHref.js"></script>
+
+        <script src="../../JavaScript/isManager.js"></script>
+
+    </body>
+    
+</html>

@@ -7,6 +7,11 @@ const managerAccount = {
     EncyptedEmail: 'YldGdVlXZGxja0IzWVdOcmVXSjFjbWRsY2k1amIyMD0='
 };
 
+const usersList = JSON.parse(localStorage.getItem('accounts')) || [];
+
+let thisUserFirstName;
+let thisUserLastName;
+let thisUserEmail;
 
 const loginForm = document.getElementById('loginForm');
 
@@ -20,12 +25,6 @@ if (loginForm){
 
         msg.textContent = '';
         msg.classList.remove('success', 'error');
-
-        // Retrieve stored data from signup
-        const storedEmail = localStorage.getItem('wb_email');
-        const storedPassword = localStorage.getItem('wb_password');
-        const storedFirstName = localStorage.getItem('wb_firstName');
-        const storedLastName = localStorage.getItem('wb_lastName');
 
         // Validate fields
         if (!email || !password){
@@ -50,26 +49,25 @@ if (loginForm){
         }
 
         // Check if the account exists
-        if (!storedEmail || !storedPassword){
+        if (CheckEmailExists(email) === false){
             msg.textContent = 'No account found. Please sign up first.';
             triggerErrorAnimation(msg);
             return;
         }
 
         // Validate login credentials
-        if (email === storedEmail && password === storedPassword){
-            msg.textContent = `Welcome back, ${storedFirstName || ''} ${storedLastName || ''}!`.trim();
+        if (CheckPasswordMatches(email, password) === true){
+            msg.textContent = `Welcome back, ${thisUserFirstName || ''} ${thisUserLastName || ''}!`.trim();
             msg.classList.add('success');
 
-            localStorage.setItem("currentEmail", email);
-            localStorage.setItem("currentFirstName", storedFirstName);
-            localStorage.setItem("currentLastName", storedLastName
-            );
+            localStorage.setItem("currentEmail", thisUserEmail);
+            localStorage.setItem("currentFirstName", thisUserFirstName);
+            localStorage.setItem("currentLastName", thisUserLastName);
 
             // Redirect after a short delay
             setTimeout(() => {
-                SmartHref('Home');
-            }, 1500);
+                SmartHref('Account');
+            }, 500);
         } else{
             msg.textContent = 'Invalid email or password.';
             triggerErrorAnimation(msg);
@@ -77,6 +75,35 @@ if (loginForm){
 
         loginForm.reset();
     });
+}
+
+//Makes sure email exists in database
+function CheckEmailExists(email)
+{
+    for (let i = 0; i < usersList.length; i++)
+    {
+        if (usersList[i].email === email)
+            return true;
+    }
+    
+    return false;
+}
+
+//Makes sure password matches that email
+function CheckPasswordMatches(email, password)
+{
+    for (let i = 0; i < usersList.length; i++)
+    {
+        if (usersList[i].email === email && usersList[i].password === password)
+        {
+            thisUserFirstName = usersList[i].firstName;
+            thisUserLastName = usersList[i].lastName;
+            thisUserEmail = usersList[i].email;
+            return true;
+        }
+    }
+    
+    return false;
 }
 
 

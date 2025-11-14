@@ -9,9 +9,16 @@ if (!order){
 } else{
     let html = `
     <h2>Thank you for your purchase!</h2>
-    <p><strong>Date: </strong>${order.date || new Date().toLocaleString()}</p>
+    <p><strong>Date: </strong>${order.placementDate || new Date().toLocaleString()}</p>
     <p><strong>Customer: </strong>${order.customerName} (${order.customerEmail})</p>
     <p><strong>Pickup or Delivery: </strong>${order.pickupOrDelivery}</p>
+    `;
+
+    if(order.pickupOrDelivery === "delivery" && order.customerAddress){
+        html += `<p><strong>Delivery Address: </strong>${order.customerAddress}</p>`;
+    }
+
+    html += `
     <ul>
         ${order.items.map(i => `<li>${i.itemName} - $${i.itemPrice.toFixed(2)} x ${i.itemQuantity} = $${(i.itemPrice * i.itemQuantity).toFixed(2)}</li>`).join('')}
     </ul>
@@ -32,11 +39,11 @@ if (downloadPDFBtn && order){
 
         let y = 20;
         doc.setFontSize(12);
-        doc.text(`Date: ${order.date || new Date().toLocaleString()}`, 10, y); y += 10;
+        doc.text(`Date: ${order.placementDate || new Date().toLocaleString()}`, 10, y); y += 10;
         doc.text(`Customer: ${order.customerName}`, 10, y); y += 10;
         doc.text(`Pickup or Delivery: ${order.pickupOrDelivery}`, 10, y); y += 10;
         
-        if(order.pickupOrDelivery === "delivery" && order.customerAddresss){
+        if(order.pickupOrDelivery === "delivery" && order.customerAddress){
             doc.text(`Delivery Address: ${order.customerAddress}`, 10, y); y += 10;
         }
         

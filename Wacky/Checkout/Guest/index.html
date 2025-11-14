@@ -68,8 +68,20 @@
                     <option value="pickup">Pickup</option>
                     <option value="delivery">Delivery</option>
                 </select>
+
+                <div id="deliveryAddressContainer" style="display: none; margin-top: 10px;">
+                    <input
+                        type="text"
+                        id="deliveryAddress"
+                        placeholder="Enter delivery adrdress"
+                        style="width: 100%;"
+                    >
+                </div>
+
                 <button type="submit">Place Order</button>
             </form>
+            
+            <p>Already have an account? <br><a onclick="SmartHref2('Login')"></a>Login here</a>.</p>
         </article>
         
         <footer>

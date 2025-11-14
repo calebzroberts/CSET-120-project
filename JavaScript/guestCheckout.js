@@ -7,9 +7,31 @@ const deliveryFee = 5.00;
 const deliveryProgress = document.getElementById("deliveryProgress");
 const deliveryProgressText = document.getElementById("deliveryProgressText");
 
+// Delivery Address Toggle
+function toggleAddressField(){
+    const pickupDelivery = document.getElementById("pickupDelivery").value;
+    let addressField = document.getElementById("deliveryAddress");
+
+    if(pickupDelivery === "delivery"){
+        if(!addressField){
+            addressField = document.createElement("input");
+            addressField.type = "text";
+            addressField.id = "deliveryAddress"
+            addressField.placeholder = "Delivery Address"
+            addressField.required = true;
+            addressField.value = localStorage.getItem("currentAddress") || "";
+            cartSummary.insertAdjacentElement("afterend", addressField);
+        }
+    } else{
+        if (addressField) addressField.remove();
+    }
+}
+
+document.getElementById("pickupDelivery").addEventListener("change", toggleAddressField);
+
 function updateDeliveryProgress(subtotal){
     const value = Math.min(subtotal, deliveryFee);
-    progressBar.value = value;
+    deliveryProgress.value = value;
     deliveryProgressText.textContent = `$${value.toFixed(2)} / $${deliveryFee.toFixed(2)}`;
 }
 
@@ -18,24 +40,24 @@ function displayCart(){
     if (cart.length === 0){
         cartSummary.innerHTML = "<p>Your cart is empty.</p>";
         deliveryProgress.value = 0;
-        deliveryProgress.value = 0;
+        deliveryProgressText.textContent = "$0.00 / $5.00";
         return;
     }
 
     let html = "<ul>";
-    let total = 0;
+    let subtotal = 0;
 
     cart.forEach(item => {
         html += `<li>${item.itemName} - $${item.itemPrice} x ${item.itemQuantity}</li>`;
-        total += item.itemPrice * item.itemQuantity;
+        subtotal += item.itemPrice * item.itemQuantity;
     });
     html += `</ul><p><strong>Subtotal: $${subtotal.toFixed(2)}</strong></p>`;
     html += `<p><strong>Delivery Fee: $${deliveryFee.toFixed(2)}</strong></p>`;
     html += `<p><strong>Total: $${(subtotal + deliveryFee).toFixed(2)}</strong></p>`;
     cartSummary.innerHTML = html;
 
-    deliveryProgress.value = subtotal > deliveryFee ? deliveryFee : subtotal;
-    deliveryProgressText.innerText = `$${Math.min(subtotal, deliveryFee).toFixed(2)} / $5.00`;
+    updateDeliveryProgress(subtotal);
+    toggleAddressField();
 }
 
 // Handle form submission
@@ -45,7 +67,10 @@ guestCheckoutForm.addEventListener("submit", function(e){
     const lastName = document.getElementById("lastName").value.trim();
     const email = document.getElementById("email").value.trim();
     const pickupOrDelivery = document.getElementById("pickupDelivery").value;
-    const deliveryAddress = pickupOrDelivery === "delivery" ? document.getElementById("deliveryAddress").value.trim() : "";
+    
+    const deliveryAddress = pickupOrDelivery === "delivery"
+    ? document.getElementById("deliveryAddress").value.trim()
+    : "";
 
     if (!firstName || !lastName || !email){
         alert("All fields are required!");
@@ -64,6 +89,7 @@ guestCheckoutForm.addEventListener("submit", function(e){
         orderId:Date.now(),
         customerName: `${firstName} ${lastName}`,
         customerEmail: email,
+        customerAddress: deliveryAddress,
         items: cart.map(i => ({
             itemName: i.itemName,
             itemPrice: i.itemPrice,

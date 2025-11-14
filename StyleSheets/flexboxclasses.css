@@ -1,5 +1,5 @@
 /* Set All FlexBoxClasses To This */
-[class*="flex"]{display: flex; box-sizing: border-box; float: left; padding: 5px;}
+[class*="flex"]{display: block; box-sizing: border-box; float: left; padding: 25px;}
 
 /* Main Container that contains the FlexBoxClasses */
 .flexBoxContainer{display: block;}

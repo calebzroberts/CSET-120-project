@@ -1,0 +1,95 @@
+/*Info Change section styling*/
+#editInfoSection {
+    margin-bottom: 3rem;
+}
+
+#custInfoContainer {
+    width: 100%;
+    display: flex;
+
+    padding: 2rem 0;
+}
+
+#custInfoContainer div {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-around;
+}
+
+#custInfoEditBoxes {
+    margin-left: 2rem;
+}
+
+#custInfoEditBoxes input, #custInfoTitles label, #filledAccountInfo p {
+    margin: 0.2rem 0;
+}
+
+#custInfoTitles label {
+    font-weight: 700;
+}
+
+#custInfoEditBoxes input {
+    border: 2px solid #9B3B23;
+    border-radius: .5rem;
+
+    padding: .1rem .5rem;
+
+    font-size: 1.1rem;
+    font-family: "Mulish", Arial, Helvetica, sans-serif;
+}
+
+
+/*ORDER VIEWING ITEM STYLING*/
+#ordersContainer {
+    display: flex;
+    flex-direction: column;
+}
+
+.custOrderItem {
+    width: 100%;
+    padding:1rem;
+    margin: 0.5rem;
+    background-color: white;
+
+    border: 5px solid #9B3B23;
+    border-radius: 2rem;
+}
+
+.custOrderItem .primaryInfo {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding-bottom: 1rem;
+    margin-bottom: .5rem;
+
+    border-bottom: 5px #9B3B23 dashed; 
+}
+
+.custOrderItem .orderId {
+    font-size: 30px;
+}
+
+.custOrderItem .secondaryInfo {
+    display: none;
+    flex-wrap: wrap;
+}
+
+.custOrderItem .orderFoodItem {
+    width: fit-content;
+
+    padding: 1rem 2rem;
+    margin: .5rem 1rem;
+
+    border: 3px #9B3B23 solid; 
+    border-radius: 10px;
+}
+
+/*SORT AND FILTER DROPDOWN STYLING*/
+#filterSortToggles select {
+    border: 2px solid #9B3B23;
+    border-radius: .5rem;
+
+    font-size: 1.1rem;
+    font-family: "Mulish", Arial, Helvetica, sans-serif;
+}
