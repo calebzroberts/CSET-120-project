@@ -12,6 +12,9 @@ function CheckIfManagerThenShowATags(){
         ManageATagFooter.style.display = "block"
         Profile.style.backgroundImage = "url('../../images/manager-headshot.png')"
         Profile.style.display = "inline"
+        Profile.onclick = function() {
+            SmartHref('Manage');
+        };
         //change it to say logout
         LoginATag.innerText = "Log Out";
     } else if (currentEmail != "") {
@@ -19,6 +22,9 @@ function CheckIfManagerThenShowATags(){
         ManageATagFooter.style.display = "none"
         Profile.style.backgroundImage = "url('../../images/user-headshot.png')"
         Profile.style.display = "inline"
+        Profile.onclick = function() {
+            SmartHref('Account');
+        };
         //change it to say logout
         LoginATag.innerText = "Log Out";
     } else {
@@ -26,6 +32,7 @@ function CheckIfManagerThenShowATags(){
         ManageATagFooter.style.display = "none"
         Profile.style.backgroundImage = "url('')"
         Profile.style.display = "none"
+        Profile.onclick = '';
         //change it to say login
         LoginATag.innerText = "Log In";
     }

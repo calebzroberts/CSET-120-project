@@ -1,0 +1,179 @@
+/* Tablet: 768px - 1024px */
+@media screen and (max-width: 1024px){
+    /* Header and Nav */
+    header, nav{
+        width: 100%;
+        float: none;
+        text-align: center;
+    }
+    header div, nav{
+        width: auto;
+        margin: 0 auto;
+        border: none;
+    }
+    header h1{
+        font-size: 2.5rem;
+    }
+    nav ul li{
+        display: inline-block;
+        margin: 5px;
+        padding: 8px 12px;
+    }
+
+    /* Menu and Home Menu Carousel */
+    .homeMenuItem, .menuItem, .mgrMenuItem, .editingModeMenuItem{
+        flex: 0 0 45%;
+        margin: 1rem 1%;
+    }
+    
+    .homeItemImage, .itemImage, .mgrItemImage{
+        width: 90%;
+    }
+
+    /* Cart Items */
+    .cartItem, .custOrderItem, .mgrOrderItem{
+        flex-direction: row;
+        flex-wrap: wrap;
+        text-align: center;
+    }
+
+    .cartItemImage{
+        width: 30%;
+        margin: 0 auto;
+    }
+
+    /* Checkout Forms */
+    #guestCheckoutForm, #userCheckoutForm{
+        max-width: 90%;
+        padding: 1.5rem;
+    }
+
+    /* Progress Bar */
+    #deliveryProgressContainer{
+        width: 90%;
+    }
+
+    /* Footer */
+    footer div{
+        width: 45%;
+        margin: 0 auto;
+        border: none;
+        border-bottom: 3px dashed #9b3b23;
+        margin-bottom: 1rem;
+    }
+    footer ul{
+        width: 50%;
+        margin: 1rem auto;
+    }
+}
+
+/* Mobile: up to 767px */
+@media screen and (max-width: 767px){
+    /* Header*/
+    header{
+        height: auto;
+        padding: 1rem 0;
+    }
+
+    header img{
+        width: 60px;
+        height: auto;
+    }
+
+    header h1{
+        font-size: 2rem;
+    }
+
+    nav ul li{
+        display: block;
+        margin: 5px 0;
+        padding: 6px 10px;
+    }
+
+    /* Menu items */
+    .homeMenuItem, .menuItem, .mgrMenuItem, .editingModeMenuItem{
+        flex: 0 0 100%;
+        margin: 0.5rem 0;
+    }
+    
+    .homeItemImage, .itemImage, .mgrItemImage{
+        width: 95%;
+    }
+
+    /* Cart Items */
+    .cartItem, .custOrderItem, .mgrOrderItem{
+        flex-direction: column;
+        text-align: center;
+    }
+
+    .cartItemImage{
+        width: 60%;
+        margin: 0.5rem;
+    }
+
+    /* Checkout Forms */
+    #guestCheckoutForm, #userCheckoutForm{
+        max-width: 95%;
+        padding: 1rem;
+    }
+
+    #custInfoContainer{
+        flex-direction: column;
+    }
+
+    #custInfoContainer{
+        flex-direction: column;
+    }
+
+    #custInfoEditBoxes{
+        margin-left: 0;
+    }
+
+    /* Progress Bar */
+    #deliveryProgressContainer{
+        width: 95%;
+    }
+
+    /* Footer */
+    footer div{
+        width: 90%;
+        border: none;
+        border-bottom: 3px dashed #9b3b23;
+        margin-bottom: 1rem;
+    }
+    footer ul{
+        width: 80%;
+        margin: 1rem auto;
+    }
+}
+
+/* Extra small screens: up to 460px */
+@media screen and (max-width: 480px){
+    body{
+        font-size: 1rem;
+    }
+
+    button{
+        width: 100%;
+        font-size: 1.2rem;
+        padding: 0.5rem 1rem;
+    }
+
+    header h1{
+        font-size: 1.8rem;
+    }
+
+    nav ul li{
+        font-size: 0.9rem;
+    }
+
+    .homeMenuItem, .menuItem, .mgrMenuItem, .editingModeMenuItem{
+        flex: 0 0 100%;
+        margin: 0.3rem 0;
+        padding: 0.5rem;
+    }
+
+    #deliveryProgressText{
+        font-size: 1rem;
+    }
+}

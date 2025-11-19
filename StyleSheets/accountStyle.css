@@ -54,6 +54,7 @@
 
     border: 5px solid #9B3B23;
     border-radius: 2rem;
+    cursor: pointer;
 }
 
 .custOrderItem .primaryInfo {

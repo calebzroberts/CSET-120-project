@@ -34,29 +34,77 @@ if (downloadPDFBtn && order){
     downloadPDFBtn.addEventListener("click", () => {
         const {jsPDF} = window.jspdf;
         const doc = new jsPDF();
-        doc.setFontSize(16);
-        doc.text("Wacky Burger Receipt", 10, 10);
 
-        let y = 20;
-        doc.setFontSize(12);
-        doc.text(`Date: ${order.placementDate || new Date().toLocaleString()}`, 10, y); y += 10;
-        doc.text(`Customer: ${order.customerName}`, 10, y); y += 10;
-        doc.text(`Pickup or Delivery: ${order.pickupOrDelivery}`, 10, y); y += 10;
+        //Border
+        doc.setDrawColor("#e46f3b")
+        doc.setLineWidth(2);
+        doc.rect(5, 5, doc.internal.pageSize.width - 10, doc.internal.pageSize.height - 10);
         
-        if(order.pickupOrDelivery === "delivery" && order.customerAddress){
-            doc.text(`Delivery Address: ${order.customerAddress}`, 10, y); y += 10;
+        doc.setDrawColor("#e46f3b");
+        setLineWidth(0.3);
+        for (let i = -doc.internal.pageSize.height; i < doc.internal.pageSize.width; i += 10){
+            doc.line(i, 0, i + doc.internal.pageSize.height, doc.internal.pageSize.height);
         }
+
+        //Logo
+        const logo = new Image();
+        logo.src="../../../images/Wacky_Burger_Character_Logo-transparent.png";
         
-        order.items.forEach(item =>{
-            const itemTotal = item.itemPrice * item.itemQuantity;
-            doc.text(`${item.itemName} x${item.itemQuantity} - $${itemTotal.toFixed(2)}`, 10, y);
-            y += 10;
-        });
+        logo.onload = function(){
+            doc.addImage(logo, "PNG", 150, 10, 40, 40);
+
+            //Title
+            doc.setFont("helvetica", "bold");
+            doc.setFontSize(20);
+            doc.setTextColor("#190d08");
+            doc.text("Wacky Burger Receipt", 10, 20);
+
+            //Divider Line
+
+            doc.setDrawColor("#9b3b23");
+            doc.setLineWidth(0.5);
+            doc.line(10, 25, 200, 25);
+
+            let y = 35;
+            doc.setFont("helvetica", "normal");
+            doc.setFontSize(12);
+            doc.setTextColor("#190d08");
+
+            //Order Information
+            doc.text(`Date: ${order.placementDate || new Date().toLocaleString()}`, 10, y); y += 10;
+            doc.text(`Customer: ${order.customerName}`, 10, y); y += 10;
+            doc.text(`Pickup or Delivery: ${order.pickupOrDelivery}`, 10, y); y += 10;
         
-        doc.text(`Subtotal: $${order.subtotal.toFixed(2)}`, 10, y += 10);
-        doc.text(`Delivery Fee: $${order.deliveryFee.toFixed(2)}`, 10, y += 10);
-        doc.text(`Total: $${order.total.toFixed(2)}`, 10, y += 10);
+            if(order.pickupOrDelivery === "delivery" && order.customerAddress){
+                doc.text(`Delivery Address: ${order.customerAddress}`, 10, y); y += 10;
+            }
         
-        doc.save("WackyBurger_Receipt.pdf");
+            //Items
+            doc.setTextColor("#e46f3b");
+            order.items.forEach(item =>{
+                const itemTotal = item.itemPrice * item.itemQuantity;
+                doc.text(`${item.itemName} x${item.itemQuantity} - $${itemTotal.toFixed(2)}`, 10, y);
+                y += 8;
+            });
+
+            //Totals Section
+            y += 5;
+            doc.setDrawColor("#9b3b23");
+            doc.line(10, y, 200, y);
+            y += 5;
+        
+            doc.text(`Subtotal: $${order.subtotal.toFixed(2)}`, 10, y += 10);
+            doc.text(`Delivery Fee: $${order.deliveryFee.toFixed(2)}`, 10, y += 10);
+            doc.text(`Total: $${order.total.toFixed(2)}`, 10, y += 10);
+            
+            //Footer
+            doc.setFont("helvetica", "italic");
+            doc.setFontSize(10);
+            doc.setTextColor("#88972d");
+            doc.text("Thank you for choosing Wacky Burger! Come back soon!", 10, y + 10);
+
+            //Save PDF
+            doc.save("WackyBurger_Receipt.pdf");
+        }
     });
 }

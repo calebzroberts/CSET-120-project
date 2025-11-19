@@ -118,3 +118,30 @@ guestCheckoutForm.addEventListener("submit", function(e){
 });
 
 displayCart();
+
+
+// Delivery Address Auto-Show
+document.addEventListener("DOMContentLoaded", () => {
+    const pickupOrDeliverySelect = document.getElementById("pickupDelivery");
+    const deliveryContainer = document.getElementById("deliveryAddressContainer")
+
+    if(!pickupOrDeliverySelect || !deliveryContainer) return;
+
+    const updateDeliveryVisibility = () => {
+        if (pickupOrDeliverySelect.value === "delivery"){
+            deliveryContainer.style.display = "block";
+            deliveryContainer.style.maxHeight = "300px";
+            deliveryContainer.style.opacity = "1";
+        } else{
+            deliveryContainer.style.maxHeight ="0";
+            deliveryContainer.style.opacity = "0";
+            setTimeout(() => {
+                if (pickupOrDeliverySelect.value !== "delivery"){
+                    deliveryContainer.style.display = "none";
+                }
+            }, 300);
+        }
+    };
+    pickupOrDeliverySelect.addEventListener("change", updateDeliveryVisibility);
+    updateDeliveryVisibility();
+});

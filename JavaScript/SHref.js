@@ -27,7 +27,6 @@ function ChangeFunFact(){
 
     var AL = FunFactArray.length
     var RandomNumber = Math.round(Math.random()*AL)
-    console.log(RandomNumber)
     var Fact = FunFactArray.slice(RandomNumber, RandomNumber+1)
 
     document.getElementById("FunFact").innerHTML = Fact
