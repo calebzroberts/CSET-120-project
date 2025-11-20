@@ -47,3 +47,19 @@ LoadMenu();
 setInterval(() => {
     slideMenu(1);
 }, 4000);
+
+
+// Sidebar for mobile devices
+document.addEventListener('DOMContentLoaded', () => {
+    const hamburger = document.querySelector('.hamburger');
+    const sidebar = document.getElementById('sidebar-menu');
+    const closeBtn = sidebar.querySelector('.close-btn');
+
+    hamburger.addEventListener('click', () => {
+        sidebar.classList.add('active');
+    });
+
+    closeBtn.addEventListener('click', () => {
+        sidebar.classList.remove('active');
+    });
+});

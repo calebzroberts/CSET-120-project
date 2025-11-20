@@ -1,0 +1,19 @@
+#receiptContainer p {
+    margin: 0.7rem 0;
+}
+
+#receiptContainer li {
+    margin: .5rem 0;
+}
+
+#receiptContainer ul {
+    margin-left: 2rem;
+}
+
+#deliveryProgressContainer {
+    margin: 1rem 0;
+}
+
+#deliveryProgressContainer label {
+    font-weight: 500;
+}

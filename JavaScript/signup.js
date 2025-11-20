@@ -1,5 +1,8 @@
 const signupForm = document.getElementById('signupForm');
 
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+
 let usersList = JSON.parse(localStorage.getItem('accounts')) || [];
 
 if (signupForm){
@@ -47,8 +50,26 @@ if (signupForm){
         // Store correct JSON string
         localStorage.setItem('accounts', JSON.stringify(usersList));
 
-        msg.textContent = 'Account Created - You may now log in.';
+        msg.textContent = 'Account Created.';
         msg.classList.add('success');
+
+        //log in that new user
+        localStorage.setItem("currentEmail", email);
+        localStorage.setItem("currentFirstName", firstName);
+        localStorage.setItem("currentLastName", lastName);
+
+        // Redirect after a short delay
+        setTimeout(() => {
+            //if user has cart, then go straight to checkout, otherwise go to accoutn page
+            if (cart.length === 0)
+            {
+                SmartHref('Account');
+            }
+            else
+            {
+                SmartHref('Checkout');
+            }
+        }, 500);
 
         signupForm.reset();
     });

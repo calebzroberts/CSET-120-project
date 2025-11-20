@@ -3,12 +3,12 @@
     <head>
         <meta charset="UTF-8">
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Wacky Burger - Menu</title>
+        <title>Wacky Burger - Checkout</title>
 
         <link rel="stylesheet" type="text/css" href="../../StyleSheets/imports.css">
         <link rel="stylesheet" type="text/css" href="../../StyleSheets/animations.css">
         <link rel="stylesheet" type="text/css" href="../../StyleSheets/style.css">
-        <link rel="stylesheet" type="text/css" href="../../StyleSheets/menu.css">
+        <link rel="stylesheet" type="text/css" href="../../StyleSheets/checkout.css">
 
         <link rel="shortcut icon" href="../../images/Wacky_Burger_Character_Logo-transparent.png" type="image/x-icon">
         <link rel="icon" type="x-icon" href="../../images/Wacky_Burger_Character_Logo-transparent.png">
@@ -30,7 +30,7 @@
 
                     <li><a onclick="SmartHref('Home')">Home</a></li>
                     
-                    <li><a class="CurrentlyOn" onclick="SmartHref('Menu')">Menu</a></li>
+                    <li><a onclick="SmartHref('Menu')">Menu</a></li>
 
                     <li><a onclick="SmartHref('About')">About</a></li>
 
@@ -49,32 +49,50 @@
         </header>
 
         <article id="main">
-            <h1>Menu</h1>
-            <h2>Check out our food items we have for sale!</h2>
+            <h1>Check Out</h1>
 
-            <div id="menuContainer">
+            <div id="cartSummary"></div>
+
+
+            <div id="loginBlock">
+                <p>Have an account already?</p>
+                <button id="loginBtn" onclick="SmartHref('Login');">Log In</button>
+
+                <p>No account?</p>
+                <button id="guestCheckoutBtn" onclick="HideLoginButtons();">Check out as Guest</button>
+            </div>
+            
+
+            <form id="guestCheckoutForm">
+                <h3>Contact Info</h3>
+                <input type="text" id="firstName" placeholder="First name" required>
+                <input type="text"  id="lastName" placeholder="Last name" required>
+                <input type="email"  id="email" placeholder="Email" required>
+
+                <h3>Delivery Info</h3>
+                <select name="pickupDelivery" id="pickupDelivery" onchange="ToggleAddress()" required>
+                    <option value="pickup">Pickup</option>
+                    <option value="delivery">Delivery</option>
+                </select>
+                <div id="deliveryInfo">
+                    <input type="text"  id="deliveryAddress" placeholder="Address Line 1" name="userAddress">
+                    <input type="number"  id="zipcode" placeholder="ZIP" name="userZIP">
+                    <input type="text"  id="state" placeholder="State" name="userState">
+                </div>
                 
-            </div>
+                <p id="extraLoginText">Want to earn extra points on your purchase? <a onclick="SmartHref('Login')">Log In</a> or <a onclick="SmartHref('Signup')">Sign Up</a> today!</p>
 
-            <div id="cartSection">
-            </div>
-
-            <p>Total:</p>
-            <p id="cartTotal">$0.00</p>
-
-            <div id="checkoutItems">
-                <h2 id="purchaseMsg">Check out below!</h2>
-                <button onclick="PurchaseItems();">Checkout</button>
-            </div>
+                <button type="submit">Place Order</button>
+            </form>
         </article>
         
         <footer>
 
             <ul>
 
-                <li><a onclick="SmartHref('Home')">Home</a></li>
+                <li><a class="CurrentlyOn" onclick="SmartHref('Home')">Home</a></li>
                         
-                <li><a class="CurrentlyOn" onclick="SmartHref('Menu')">Menu</a></li>
+                <li><a onclick="SmartHref('Menu')">Menu</a></li>
 
                 <li><a onclick="SmartHref('About')">About</a></li>
 
@@ -102,7 +120,7 @@
 
         <script src="../../JavaScript/menuDatabase.js"></script>
         
-        <script src="../../JavaScript/menuPage.js"></script>
+        <script src="../../JavaScript/checkout.js"></script>
 
         <script src="../../JavaScript/SHref.js"></script>
 

@@ -1,53 +1,8 @@
-/*MENU*/
-#menuContainer, #menuPreviewWindow {
-    width: 80%;
-    margin: 2rem auto;
-    display: flex;
-    flex-wrap: wrap;
-}
-.menuItem {
-    width:30%;
-    padding:1rem;
-    margin: 0.5rem;
-    background-color: white;
-
-    border: 5px solid #9B3B23;
-    border-radius: 2rem;
+/*Main*/
+#main {
     text-align: center;
 }
-.foodName {
-    font-size: 1.8rem;
-}
-.itemImage {
-    width: 80%;
-    border-radius: 1rem;
-}
-.quantityBlock {
-    display: flex;
-    width:100%;
-    justify-content: center;
 
-    margin: 0.5rem;
-}
-.quantityBlock p {
-    font-size: 1rem;
-    font-weight: 900;
-    padding-right: 1rem;
-}
-.cartQuantity {
-    font-family: "Mulish", Arial, Helvetica, sans-serif;
-    width: 50px;
-
-    border: 3px solid #190D08;
-    border-radius: 10px;
-    padding: 0.1rem 0rem 0.1rem 0.3rem;
-}
-#checkoutItems {
-    text-align: center;
-}
-#checkoutItems h2 {
-    color:#9B3B23;
-} 
 
 /* Cart */
 #cartSection {
@@ -237,4 +192,8 @@ button{
     font-weight: bold;
     font-size: 1.2rem;
     color: #190D08;
+}
+
+#deliveryInfo input {
+    margin: .3rem;
 }

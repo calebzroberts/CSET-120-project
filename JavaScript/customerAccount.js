@@ -117,6 +117,10 @@ function CheckDetailsOk(email)
         if (usersList[i].email === email) return false;
     }
 
+    //make sure it isn't manager email either
+    if (email === "manager@wackyburger.com")
+        return false;
+
     return true;
 }
 

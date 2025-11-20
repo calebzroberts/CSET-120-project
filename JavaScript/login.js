@@ -1,3 +1,5 @@
+let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
 // Manager account information
 const managerAccount = {
     email: 'manager@wackyburger.com',
@@ -66,7 +68,15 @@ if (loginForm){
 
             // Redirect after a short delay
             setTimeout(() => {
-                SmartHref('Account');
+                //if user has cart, then go straight to checkout, otherwise go to accoutn page
+                if (cart.length === 0)
+                {
+                    SmartHref('Account');
+                }
+                else
+                {
+                    SmartHref('Checkout');
+                }
             }, 500);
         } else{
             msg.textContent = 'Invalid email or password.';

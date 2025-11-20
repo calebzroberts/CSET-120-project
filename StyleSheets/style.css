@@ -72,22 +72,36 @@ button:hover {
     transform: scale(1.1);
 }
 
-.Link{color: #9B3B23;}
-.Link:hover{color: #bc472a;}
-.TransformCenter{position: relative; left: 50%; transform: translateX(-50%);}
-#ManageLink{display: none;}
+/* Hamburger Icon */
+.hamburger{
+    display: none;
+    flex-direction: column;
+    justify-content: space-between;
+    width: 30px;
+    height: 25px;
+    cursor: pointer;
+}
+
+.bar{
+    width: 100%;
+    height: 3px;
+    background-color: #190D08;
+    border-radius: 5px;
+    transition: all 0.3s ease;
+}
 
 /* Header */
+header * {outline: red 1px solid;}
 header{top: 0; box-shadow: 0px -100px 10px 100px; background-color: #E46F3B; position: fixed; left: 0; right: 0; height: 150px; z-index: 1000;}
-header div{margin-left: 5%; float: left; width: 150px; text-align: center; height: 150px; border-right: 3px dashed #9B3B23;}
+header div{display: inline-block; margin-left: 5%; float: left; width: 150px; text-align: center; height: 150px; border-right: 3px dashed #9B3B23;}
 header img{width: 100%; background-image: radial-gradient(#9B3B23 0%, #E46F3B 75% 100%);}
-header h1{text-align: center; height: 150px; align-content: center; font-size: 300%;}
+header h1{text-align: center; height: 150px; align-content: center; font-size: 300%; width: 500px; float: left;}
 header h1 a{color: #190D08; font-family: "Luckiest Guy", cursive;}
 
-nav{margin-right: 5%; float: right; height: 150px; align-content: center; width: 800px; border-left: 3px dashed #9B3B23;}
-nav ul{padding-left: 0; text-align: center;}
-nav ul *{display: inline;}
-nav ul li{padding: 10px 20px; border: 3px #9B3B23 dashed; border-radius: 10px; cursor: pointer;}
+nav{width: calc(100% - 925px);float: left; height: 150px; align-content: center; border-left: 3px dashed #9B3B23; border-right: 3px dashed #9B3B23; display: inline;}
+nav ul{padding: 10px; text-align: center;}
+nav ul *{display: inline-block;}
+nav ul li{padding: 5px 20px; border: 3px #9B3B23 dashed; border-radius: 10px; cursor: pointer; margin: 2px;}
 nav ul li *{font-family: "Mulish", sans-serif; font-weight: 900;}
 
 header ul li a{color: #9B3B23; transition: 0.25s;}
@@ -95,7 +109,7 @@ header ul li a:hover{color: #bc472a;}
 .CurrentlyOn{color: #190D08;}
 .CurrentlyOn:hover{color: #4e2919;}
 
-#Profile{margin-left: 20px; padding: 0; width: 100px; height: 100px; border-radius: 100px; display: inline-block; border: 3px #9B3B23 dashed; cursor: pointer; position: absolute; top: 50%; transform: translateY(-50%); background-size: 100%;}
+#Profile{margin-left: 25px; padding: 0; width: 100px; height: 100px; border-radius: 100px; display: inline; border: 3px #9B3B23 dashed; cursor: pointer; position: relative; top: 50%; transform: translateY(-50%); background-size: 100%; float: left;}
 
 /* Article */
 article{background-color: rgba(255, 255, 255, 0.1); margin: 5%; padding: 5%; margin-top: calc(5% + 150px); border-radius: 100px;}
@@ -150,6 +164,104 @@ footer a:hover{color: #bc472a;}
 section {
     text-align: center;
 }
+
+/* Sidebar */
+#sidebar-menu * {outline: red solid 1px;}
+
+#sidebar-menu{
+    outline: green solid 1px;
+    display: none;
+    position: absolute;
+    width: 100%;
+    height: 100vh;
+    top: 0;
+    right: 0;
+    left: 0;
+    background-color: #E46F3B;
+    flex-direction: row;
+    justify-content: space-evenly;
+    padding: 2rem 0;
+    border-left: 5px dashed #9B3B23;
+    border-radius: 0 0 0 50px;
+    box-shadow: -5px 0 20px rgba(0,0,0,0.5);
+    transition: right 0.3s ease;
+    z-index: 1001;
+}
+
+#sidebar-menu div
+{
+    top: 0;
+    margin: 10px;
+    position: absolute;
+}
+
+#sidebar-menu.active{
+    display: flex;
+}
+
+#sidebar-menu ul{
+    width: 100%;
+    list-style: none;
+    gap: 2rem;
+    padding: 5px;
+    text-align: center;
+}
+
+#sidebar-menu ul li{
+    margin: 5px;
+    padding: 0;
+}
+
+#sidebar-menu ul li a{
+    color: #9B3B23;
+    font-size: 1.5rem;
+    font-family: "Mulish", sans-serif;
+    font-weight: 700;
+    text-decoration: none;
+    padding: 0.5rem 1rem;
+    border-radius: 20px;
+    transition: all 0.3s;
+}
+
+#sidebar-menu ul li a:hover{
+    color: #4e2919;
+    text-shadow: 0 0 8px #190D08;
+    transform: scale(1.1);
+    text-shadow: 0 0 8px #E46F3B;
+}
+
+.close-btn{
+    position: absolute;
+    left: 0;
+    right: 0;
+    bottom: 0%;
+    font-size: 2rem;
+    background: none;
+    border: none;
+    background-color: white;
+    border: 5px solid black;
+    color: #190D08;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.close-btn:hover{
+    transform: scale(1.2);
+    background-color: #190D08;
+    color: white;
+    border: 5px solid white;
+}
+
+.hamburger .bar{
+    background-color: #190D08;
+}
+
+#Profile2{background-size: 100%; border-radius: 100%; float: right; right: 0;}
+.Link{color: #9B3B23;}
+.Link:hover{color: #bc472a;}
+.TransformCenter{position: relative; left: 50%; transform: translateX(-50%);}
+#ManageLink{display: none;}
+#ManageLink2{display: none;}
 
 /*MENU PREVIEW*/
 #menuCarouselContainer {
@@ -212,4 +324,78 @@ section {
 
 .next {
     right: -45px;
+}
+
+/* Tablets and Small Laptops */
+@media screen and (max-width: 1150px) {
+    header{
+        height: auto;
+        padding: 10px 0;
+        text-align: center;
+    }
+
+    header div{
+        margin: 0 auto 10px auto;
+        width: 120;
+        height: 120;
+        border-right: none;
+    }
+
+    header img{
+        width: 100%;
+        height: auto;
+    }
+
+    nav{
+        display: none;
+    }
+
+    .hamburger{
+        display: flex;
+    }
+
+    #sidebar-menu{
+        border-left: 5px dashed #9B3B23;
+        border-radius: 0 0 0 40px;
+    }
+
+    #sidebar-menu ul li a{
+        font-size: 1.3rem;
+        padding: 0.5rem 1rem;
+    }
+
+    nav ul{
+        display: block;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+    }
+
+    nav ul li{
+        display: inline-block;
+        padding: 8px 12px;
+        border: 3px #9B3B23 dashed;
+    }
+
+    header h1{
+        font-size: 2.2rem;
+        margin: 10px 0;
+    }
+}
+
+/* Mobile Phone */
+@media screen and (max-width: 480px){
+    header div{
+        width: 100px;
+        height: 100px;
+    }
+
+    header h1{
+        font-size: 1.8rem;
+    }
+
+    nav ul li{
+        padding: 6px 8px;
+        font-size: 0.9rem;
+    }
 }

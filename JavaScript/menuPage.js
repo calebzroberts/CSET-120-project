@@ -1,5 +1,4 @@
 let cart = JSON.parse(localStorage.getItem("cart")) || [];
-const isLoggedIn = !!localStorage.getItem("wb_email")
 
 // Load the menu items from local storage
 function LoadMenu() {
@@ -61,12 +60,9 @@ function PurchaseItems(){
         return;
     }
 
-    if (isLoggedIn) {
-        window.location.href = "../../Wacky/Checkout/User/" // User Checkout
-    } else{
-        window.location.href = "../../Wacky/Checkout/Guest" // Guest Checkout
-    }
     SaveCart();
+    
+    window.location.href = "../../Wacky/Checkout/"
 }
 
 // Cart Management Fuctions
