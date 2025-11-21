@@ -50,48 +50,33 @@
 
             </nav>
 
-            <div id="Profile"></div>
-
-            <nav id="sidebar-menu">
-
-                <div>
-
-                    <img src="../../images/Wacky_Burger_Character_Logo-transparent.png" alt="Wacky Logo">
-
-                </div>
-
-                <div id="Profile2">
-
-                    <p>My Account</p>
-
-                </div>
-
-                <ul>
-
-                    <li><a class="CurrentlyOn" onclick="SmartHref('Home')">Home</a></li>
-                    
-                    <li><a onclick="SmartHref('Menu')">Menu</a></li>
-
-                    <li><a onclick="SmartHref('About')">About</a></li>
-
-                    <li id="ManageLink2"><a onclick="SmartHref('Manage')">Manage</a></li>
-
-                    <li><a id="logInOutButton2" onclick="LogInOut(); SmartHref('Login')">Login</a></li>
-
-                </ul>
-
-                <button class="close-btn">&times;</button>
-
-            </nav>
-
-
             <div class="hamburger" id="hamburger">
-                <span class="bar"></span>
-                <span class="bar"></span>
-                <span class="bar"></span>
+                <h1>☰</h1>
             </div>
+
+            <div id="Profile"></div>
             
         </header>
+
+        <nav id="sidebar-menu">
+
+            <ul>
+
+                <li><a class="CurrentlyOn" onclick="SmartHref('Home')">Home</a></li>
+                    
+                <li><a onclick="SmartHref('Menu')">Menu</a></li>
+
+                <li><a onclick="SmartHref('About')">About</a></li>
+
+                <li id="ManageLink2"><a onclick="SmartHref('Manage')">Manage</a></li>
+
+                <li><a id="logInOutButton2" onclick="LogInOut(); SmartHref('Login')">Login</a></li>
+
+            </ul>
+
+            <button class="close-btn">&times;</button>
+
+        </nav>
 
         <article>
 
@@ -186,9 +171,11 @@
 
         </footer>
         
+        <script src="../../JavaScript/sidebar.js"></script>
+        
         <script src="../../JavaScript/menuDatabase.js"></script>
 
-        <script src="../../JavaScript/javascript.js"></script>
+        <script src="../../JavaScript/home.js"></script>
 
         <script src="../../JavaScript/SHref.js"></script>
 

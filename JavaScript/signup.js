@@ -42,7 +42,8 @@ if (signupForm){
             firstName: firstName,
             lastName: lastName,
             email: email,
-            password: password
+            password: password,
+            rewardPoints: 200
         };
 
         usersList.push(newUser);

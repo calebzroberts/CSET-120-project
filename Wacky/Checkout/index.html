@@ -24,6 +24,8 @@
 
             </div>
 
+            <h1><a class="HH1">W</a><a class="HH2">a</a><a class="HH3">c</a><a class="HH4">k</a><a class="HH5">y</a> <a class="HH6">B</a><a class="HH7">u</a><a class="HH8">r</a><a class="HH9">g</a><a class="HH10">e</a><a class="HH11">r</a></h1>
+
             <nav>
 
                 <ul>
@@ -38,15 +40,37 @@
 
                     <li><a id="logInOutButton" onclick="LogInOut(); SmartHref('Login')">Login</a></li>
 
-                    <li id="Profile"></li>
-
                 </ul>
 
             </nav>
 
-            <h1><a class="HH1">W</a><a class="HH2">a</a><a class="HH3">c</a><a class="HH4">k</a><a class="HH5">y</a> <a class="HH6">B</a><a class="HH7">u</a><a class="HH8">r</a><a class="HH9">g</a><a class="HH10">e</a><a class="HH11">r</a></h1>
+            <div class="hamburger" id="hamburger">
+                <h1>☰</h1>
+            </div>
+
+            <div id="Profile"></div>
             
         </header>
+
+        <nav id="sidebar-menu">
+
+            <ul>
+
+                <li><a class="CurrentlyOn" onclick="SmartHref('Home')">Home</a></li>
+                    
+                <li><a onclick="SmartHref('Menu')">Menu</a></li>
+
+                <li><a onclick="SmartHref('About')">About</a></li>
+
+                <li id="ManageLink2"><a onclick="SmartHref('Manage')">Manage</a></li>
+
+                <li><a id="logInOutButton2" onclick="LogInOut(); SmartHref('Login')">Login</a></li>
+
+            </ul>
+
+            <button class="close-btn">&times;</button>
+
+        </nav>
 
         <article id="main">
             <h1>Check Out</h1>
@@ -70,7 +94,7 @@
                 <input type="email"  id="email" placeholder="Email" required>
 
                 <h3>Delivery Info</h3>
-                <select name="pickupDelivery" id="pickupDelivery" onchange="ToggleAddress()" required>
+                <select name="pickupDelivery" id="pickupDelivery" onchange="ToggleAddress(); TogglePayment();" required>
                     <option value="pickup">Pickup</option>
                     <option value="delivery">Delivery</option>
                 </select>
@@ -79,8 +103,33 @@
                     <input type="number"  id="zipcode" placeholder="ZIP" name="userZIP">
                     <input type="text"  id="state" placeholder="State" name="userState">
                 </div>
+
+                <h3>Payment Info</h3>
+                <select name="paymentType" id="paymentType" onchange="TogglePayment()" required>
+                    <option value="inPerson">Pay In Person</option>
+                    <option value="card">Pay With Card</option>
+                </select>
+
+                <div id="paymentInfo">
+                    <input type="text" id="cardName" placeholder="Name on Card" autocomplete="cc-name" required>
+                    <input type="text" id="cardNumber" placeholder="Card Number" maxlength="19"
+                    autocomplete="cc-number" inputmode="numeric" required>
+                    <div id="expCvvRow">
+                        <input type="text" id="expDate" placeholder="MM/YY" maxlength="5"
+                        autocomplete="cc-exp" required>
+                        <input type="text" id="cvv" placeholder="CVV" maxlength="4"
+                        autocomplete="cc-csc" inputmode="numeric" required>
+                    </div>
+                </div>
                 
-                <p id="extraLoginText">Want to earn extra points on your purchase? <a onclick="SmartHref('Login')">Log In</a> or <a onclick="SmartHref('Signup')">Sign Up</a> today!</p>
+                <div id="usePointsContainer" style="display: none; margin-top:10px;">
+                    <label id="useWackyPointsLabel">
+                        <input type="checkbox" id="useWackyPoints">
+                        Use my Wacky Points balance
+                    </label>
+                    <p id="extraLoginText">Want to earn extra points on your purchase? <a onclick="SmartHref('Login')">Log In</a> or <a onclick="SmartHref('Signup')">Sign Up</a> today!</p>
+
+                </div>
 
                 <button type="submit">Place Order</button>
             </form>
@@ -90,7 +139,7 @@
 
             <ul>
 
-                <li><a class="CurrentlyOn" onclick="SmartHref('Home')">Home</a></li>
+                <li><a onclick="SmartHref('Home')">Home</a></li>
                         
                 <li><a onclick="SmartHref('Menu')">Menu</a></li>
 
@@ -117,6 +166,8 @@
             </div>
 
         </footer>
+
+        <script src="../../JavaScript/sidebar.js"></script>
 
         <script src="../../JavaScript/menuDatabase.js"></script>
         

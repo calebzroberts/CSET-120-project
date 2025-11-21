@@ -23,11 +23,13 @@
 
             </div>
 
+            <h1><a class="HH1">W</a><a class="HH2">a</a><a class="HH3">c</a><a class="HH4">k</a><a class="HH5">y</a> <a class="HH6">B</a><a class="HH7">u</a><a class="HH8">r</a><a class="HH9">g</a><a class="HH10">e</a><a class="HH11">r</a></h1>
+
             <nav>
 
                 <ul>
 
-                    <li><a class="CurrentlyOn" onclick="SmartHref('Home')">Home</a></li>
+                    <li><a onclick="SmartHref('Home')">Home</a></li>
                     
                     <li><a onclick="SmartHref('Menu')">Menu</a></li>
 
@@ -37,15 +39,37 @@
 
                     <li><a id="logInOutButton" onclick="LogInOut(); SmartHref('Login')">Login</a></li>
 
-                    <li id="Profile"></li>
-
                 </ul>
 
             </nav>
 
-            <h1><a class="HH1">W</a><a class="HH2">a</a><a class="HH3">c</a><a class="HH4">k</a><a class="HH5">y</a> <a class="HH6">B</a><a class="HH7">u</a><a class="HH8">r</a><a class="HH9">g</a><a class="HH10">e</a><a class="HH11">r</a></h1>
+            <div class="hamburger" id="hamburger">
+                <h1>☰</h1>
+            </div>
+
+            <div id="Profile"></div>
             
         </header>
+
+        <nav id="sidebar-menu">
+
+            <ul>
+
+                <li><a class="CurrentlyOn" onclick="SmartHref('Home')">Home</a></li>
+                    
+                <li><a onclick="SmartHref('Menu')">Menu</a></li>
+
+                <li><a onclick="SmartHref('About')">About</a></li>
+
+                <li id="ManageLink2"><a onclick="SmartHref('Manage')">Manage</a></li>
+
+                <li><a id="logInOutButton2" onclick="LogInOut(); SmartHref('Login')">Login</a></li>
+
+            </ul>
+
+            <button class="close-btn">&times;</button>
+
+        </nav>
 
         <article>
             
@@ -75,11 +99,40 @@
 
         </article>
         
-        <footer>
-            <p>Copyright &copy; 2025 by Wacky Burger. All rights reserved.</p>
-            <p>This page was last updated on xx/xx/20xx</p>
+          <footer>
+
+            <ul>
+
+                <li><a onclick="SmartHref('Home')">Home</a></li>
+                        
+                <li><a onclick="SmartHref('Menu')">Menu</a></li>
+
+                <li><a onclick="SmartHref('About')">About</a></li>
+
+                <li><a onclick="SmartHref('Login')">Login</a></li>
+
+                <li id="ManageLink2"><a onclick="SmartHref('Manage')">Manage</a></li>
+
+            </ul>
+
+            <div>
+
+                <p>Copyright &copy; 2025 by Wacky Burger. All rights reserved.</p>
+
+                <p>This page was last updated on xx/xx/20xx</p>
+                
+            </div>
+
+            <div>
+                
+                <h3 id="FunFact">Sample Text That Has A Wolfy That Ragebaits Owen :3</h3>
+
+            </div>
+
         </footer>
         
+        <script src="../../JavaScript/sidebar.js"></script>
+
         <script src="../../JavaScript/signup.js"></script>
 
         <script src="../../JavaScript/SHref.js"></script>

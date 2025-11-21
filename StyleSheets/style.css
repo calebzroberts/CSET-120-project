@@ -56,7 +56,6 @@ button {
     font-size: 1.4rem;
     transform: scale(1);
     margin: 0.5rem;
-
     transition: all .3s;
 }
 
@@ -75,11 +74,15 @@ button:hover {
 /* Hamburger Icon */
 .hamburger{
     display: none;
-    flex-direction: column;
-    justify-content: space-between;
-    width: 30px;
-    height: 25px;
     cursor: pointer;
+    width: calc(100% - 925px);
+    margin: 0;
+}
+.hamburger h1
+{
+    text-align: center;
+    width: 100px;
+    height: 100px;
 }
 
 .bar{
@@ -90,25 +93,28 @@ button:hover {
     transition: all 0.3s ease;
 }
 
-/* Header */
-header * {outline: red 1px solid;}
-header{top: 0; box-shadow: 0px -100px 10px 100px; background-color: #E46F3B; position: fixed; left: 0; right: 0; height: 150px; z-index: 1000;}
-header div{display: inline-block; margin-left: 5%; float: left; width: 150px; text-align: center; height: 150px; border-right: 3px dashed #9B3B23;}
-header img{width: 100%; background-image: radial-gradient(#9B3B23 0%, #E46F3B 75% 100%);}
-header h1{text-align: center; height: 150px; align-content: center; font-size: 300%; width: 500px; float: left;}
-header h1 a{color: #190D08; font-family: "Luckiest Guy", cursive;}
+a {
+    cursor: pointer;
+}
 
-nav{width: calc(100% - 925px);float: left; height: 150px; align-content: center; border-left: 3px dashed #9B3B23; border-right: 3px dashed #9B3B23; display: inline;}
-nav ul{padding: 10px; text-align: center;}
-nav ul *{display: inline-block;}
-nav ul li{padding: 5px 20px; border: 3px #9B3B23 dashed; border-radius: 10px; cursor: pointer; margin: 2px;}
-nav ul li *{font-family: "Mulish", sans-serif; font-weight: 900;}
+/* Header */
+header{z-index: 10; top: 0; box-shadow: 0px -100px 10px 100px; background-color: #E46F3B; position: fixed; left: 0; right: 0; height: 150px;}
+header div{z-index: 1; display: inline; margin-left: 5%; float: left; width: 150px; text-align: center; height: 150px; border-right: 3px dashed #9B3B23;}
+header img{z-index: 1; width: 100%; background-image: radial-gradient(#9B3B23 0%, #E46F3B 75% 100%);}
+header h1{z-index: 1; text-align: center; height: 150px; align-content: center; font-size: 300%; width: 500px; float: left;}
+header h1 a{z-index: 1; color: #190D08; font-family: "Luckiest Guy", cursive;}
+
+nav{z-index: 1; width: calc(100% - 925px);float: left; height: 150px; align-content: center; border-left: 3px dashed #9B3B23; border-right: 3px dashed #9B3B23; display: inline;}
+nav ul{z-index: 1; padding: 10px; text-align: center;}
+nav ul *{z-index: 1; display: inline-block;}
+nav ul li{z-index: 1; padding: 5px 20px; border: 3px #9B3B23 dashed; border-radius: 10px; cursor: pointer; margin: 2px;}
+nav ul li *{z-index: 1; font-family: "Mulish", sans-serif; font-weight: 900;}
 
 header ul li a{color: #9B3B23; transition: 0.25s;}
 header ul li a:hover{color: #bc472a;}
+
 .CurrentlyOn{color: #190D08;}
 .CurrentlyOn:hover{color: #4e2919;}
-
 #Profile{margin-left: 25px; padding: 0; width: 100px; height: 100px; border-radius: 100px; display: inline; border: 3px #9B3B23 dashed; cursor: pointer; position: relative; top: 50%; transform: translateY(-50%); background-size: 100%; float: left;}
 
 /* Article */
@@ -166,95 +172,22 @@ section {
 }
 
 /* Sidebar */
-#sidebar-menu * {outline: red solid 1px;}
+#sidebar-menu{align-content: start; display: block; position: fixed; width: 100%; height: calc(100vh - 150px); top: -100%; right: 0; left: 0; background-color: #E46F3B; transition: 0.5s; z-index: 5; border: none; border-top: #9B3B23 3px dashed;}
+#sidebar-menu.active{top: 150px;}
 
-#sidebar-menu{
-    outline: green solid 1px;
-    display: none;
-    position: absolute;
-    width: 100%;
-    height: 100vh;
-    top: 0;
-    right: 0;
-    left: 0;
-    background-color: #E46F3B;
-    flex-direction: row;
-    justify-content: space-evenly;
-    padding: 2rem 0;
-    border-left: 5px dashed #9B3B23;
-    border-radius: 0 0 0 50px;
-    box-shadow: -5px 0 20px rgba(0,0,0,0.5);
-    transition: right 0.3s ease;
-    z-index: 1001;
-}
+#sidebar-menu ul{z-index: 1; padding: 10px; text-align: center; display: flex; margin: 10px; justify-content: space-evenly; flex-wrap: wrap; align-items: center;}
+#sidebar-menu ul li{z-index: 1; border: 3px #9B3B23 dashed; border-radius: 20px; cursor: pointer; display: inline; float: left; background-color: #fd7b43; transition: 0.3s; padding: 0;}
+#sidebar-menu ul li a{color: #9B3B23; font-size: 1.5rem; font-family: "Mulish", sans-serif; font-weight: 700; text-decoration: none; padding: 1.5rem 1rem; border-radius: 20px; transition: all 0.3s; min-width: 200px;}
+#sidebar-menu ul li a:hover{color: #bc472a; text-shadow: 0 0 8px #190D08; transform: scale(1.1); text-shadow: 0 0 8px #E46F3B;}
 
-#sidebar-menu div
-{
-    top: 0;
-    margin: 10px;
-    position: absolute;
-}
+#sidebar-menu ul li:hover{background-color: #ff8551;}
+#sidebar-menu .CurrentlyOn{color: #190D08;}
+#sidebar-menu .CurrentlyOn:hover{color: #4e2919;}
 
-#sidebar-menu.active{
-    display: flex;
-}
+.close-btn{width: calc(200px + 25%); position: absolute; display: flex; justify-self: center; justify-content: center; bottom: 5%; font-size: 2rem; background: none; border: none; background-color: #fd7b43; border: 3px dashed #9B3B23; color: #190D08; cursor: pointer; transition: all 0.3s;}
 
-#sidebar-menu ul{
-    width: 100%;
-    list-style: none;
-    gap: 2rem;
-    padding: 5px;
-    text-align: center;
-}
+.close-btn:hover{background-color: #190D08; font-size: 2rem; color: #4e2919; border: 3px dashed #9B3B23; background-color: #ff8551;}
 
-#sidebar-menu ul li{
-    margin: 5px;
-    padding: 0;
-}
-
-#sidebar-menu ul li a{
-    color: #9B3B23;
-    font-size: 1.5rem;
-    font-family: "Mulish", sans-serif;
-    font-weight: 700;
-    text-decoration: none;
-    padding: 0.5rem 1rem;
-    border-radius: 20px;
-    transition: all 0.3s;
-}
-
-#sidebar-menu ul li a:hover{
-    color: #4e2919;
-    text-shadow: 0 0 8px #190D08;
-    transform: scale(1.1);
-    text-shadow: 0 0 8px #E46F3B;
-}
-
-.close-btn{
-    position: absolute;
-    left: 0;
-    right: 0;
-    bottom: 0%;
-    font-size: 2rem;
-    background: none;
-    border: none;
-    background-color: white;
-    border: 5px solid black;
-    color: #190D08;
-    cursor: pointer;
-    transition: all 0.3s;
-}
-
-.close-btn:hover{
-    transform: scale(1.2);
-    background-color: #190D08;
-    color: white;
-    border: 5px solid white;
-}
-
-.hamburger .bar{
-    background-color: #190D08;
-}
 
 #Profile2{background-size: 100%; border-radius: 100%; float: right; right: 0;}
 .Link{color: #9B3B23;}
@@ -310,7 +243,7 @@ section {
     padding: 14px 18px;
     border-radius: 50%;
     user-select: none;
-    z-index: 5;
+    z-index: 2;
     transition: 0.3s;
 }
 
@@ -327,75 +260,22 @@ section {
 }
 
 /* Tablets and Small Laptops */
-@media screen and (max-width: 1150px) {
-    header{
-        height: auto;
-        padding: 10px 0;
-        text-align: center;
-    }
+@media screen and (max-width: 1250px) {
 
-    header div{
-        margin: 0 auto 10px auto;
-        width: 120;
-        height: 120;
-        border-right: none;
-    }
+    header h1{border-right: #9B3B23 3px dashed;}
 
-    header img{
-        width: 100%;
-        height: auto;
-    }
+    .hamburger h1{border: none;}
 
-    nav{
-        display: none;
-    }
+    nav{display: none;}
 
-    .hamburger{
-        display: flex;
-    }
-
-    #sidebar-menu{
-        border-left: 5px dashed #9B3B23;
-        border-radius: 0 0 0 40px;
-    }
-
-    #sidebar-menu ul li a{
-        font-size: 1.3rem;
-        padding: 0.5rem 1rem;
-    }
-
-    nav ul{
-        display: block;
-        flex-wrap: wrap;
-        justify-content: center;
-        gap: 10px;
-    }
-
-    nav ul li{
-        display: inline-block;
-        padding: 8px 12px;
-        border: 3px #9B3B23 dashed;
-    }
-
-    header h1{
-        font-size: 2.2rem;
-        margin: 10px 0;
-    }
+    .hamburger{display: flex; float: left; align-items: center; justify-content: center;}
 }
 
 /* Mobile Phone */
-@media screen and (max-width: 480px){
-    header div{
-        width: 100px;
-        height: 100px;
-    }
+@media screen and (max-width: 1025px){
+    header h1{display: none;}
 
-    header h1{
-        font-size: 1.8rem;
-    }
+    .hamburger h1{display: block;}
 
-    nav ul li{
-        padding: 6px 8px;
-        font-size: 0.9rem;
-    }
+    .hamburger{width: calc(100% - 375px);}
 }

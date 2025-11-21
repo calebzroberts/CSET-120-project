@@ -15,15 +15,11 @@ function CheckIfManagerThenShowATags(){
         ManageATag2.style.display = "inline"
         ManageATagFooter.style.display = "block"
         Profile.style.backgroundImage = "url('../../images/manager-headshot.png')"
-        Profile2.style.backgroundImage = "url('../../images/manager-headshot.png')"
         Profile.style.display = "inline"
-        Profile2.style.display = "inline"
         Profile.onclick = function() {
             SmartHref('Manage');
         };
-        Profile2.onclick = function() {
-            SmartHref('Manage');
-        };
+
         //change it to say logout
         LoginATag.innerText = "Log Out";
         LoginATag2.innerText = "Log Out";
@@ -32,15 +28,11 @@ function CheckIfManagerThenShowATags(){
         ManageATag2.style.display = "none"
         ManageATagFooter.style.display = "none"
         Profile.style.backgroundImage = "url('../../images/user-headshot.png')"
-        Profile2.style.backgroundImage = "url('../../images/user-headshot.png')"
         Profile.style.display = "inline"
-        Profile2.style.display = "inline"
         Profile.onclick = function() {
             SmartHref('Account');
         };
-        Profile2.onclick = function() {
-            SmartHref('Account');
-        };
+
         //change it to say logout
         LoginATag.innerText = "Log Out";
         LoginATag2.innerText = "Log Out";
@@ -49,11 +41,9 @@ function CheckIfManagerThenShowATags(){
         ManageATag2.style.display = "none"
         ManageATagFooter.style.display = "none"
         Profile.style.backgroundImage = "url('')"
-        Profile2.style.backgroundImage = "url('')"
         Profile.style.display = "none"
-        Profile2.style.display = "none"
         Profile.onclick = '';
-        Profile2.onclick = '';
+        
         //change it to say login
         LoginATag.innerText = "Log In";
         LoginATag2.innerText = "Log In";

@@ -45,6 +45,7 @@ function FillAccountInfo()
     currentLastName = localStorage.getItem('currentLastName');
 
     document.getElementById("editInfoSection").innerHTML = `
+    <p>Wacky Rewards points: ${GetPointsWithEmail(currentEmail)}</p>
     <div id="custInfoContainer">
         <div>
             <p><strong>First Name:</strong> ${currentFirstName}</p>
@@ -68,6 +69,18 @@ function GetPasswordWithEmail(email)
         if (usersList[i].email === email)
         {
             return usersList[i].password;
+        }
+    }
+}
+
+//get points from email
+function GetPointsWithEmail(email)
+{
+    for (let i = 0; i < usersList.length; i++)
+    {
+        if (usersList[i].email === email)
+        {
+            return usersList[i].rewardPoints;
         }
     }
 }

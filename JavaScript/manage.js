@@ -96,18 +96,34 @@ function FillOrdersList()
             newOrderItem.classList.add(`mgrOrderItem`);
             newOrderItem.onclick = () => ToggleOrderInfo(newOrderItem);
 
+
             newOrderItemText = `
                 <div class="primaryInfo">
                     <h3 class="orderId">Order #${ordersList[i].orderId}</h3>
                     <p class="orderCustName">Customer: ${ordersList[i].customerName}</p>
-                    <p class="orderCustEmail">Email: ${ordersList[i].customerEmail}</p>
-                    <p class="orderTotal">Total: $${ordersList[i].total}</p>
+                    <p class="orderTotal">Total: $${ordersList[i].total.toFixed(2)}</p>
                     <p class="orderDate">Placed on ${ordersList[i].placementDate}</p>
                     <p class="pickupDelivery">${ordersList[i].pickupOrDelivery}</p>
-                </div>
-
-                <div class="secondaryInfo">
             `;
+
+            if (ordersList[i].fulfilled === true)
+            {
+                newOrderItemText += `
+                        <button class="btn" onclick="EmailCustomer(this)">Send Notification</button>
+                    </div>
+
+                    <div class="secondaryInfo">
+                `;
+            }
+            else
+            {
+                newOrderItemText += `
+                        <button class="btn" onclick="MarkFulfilled(${i}, this)">Mark Fulfilled</button>
+                    </div>
+
+                    <div class="secondaryInfo">
+                `;
+            }
 
             //add food items individually and dynamically
             for (let j = 0; j < ordersList[i].items.length; j++)
@@ -155,14 +171,29 @@ function FillOrdersList()
                 <div class="primaryInfo">
                     <h3 class="orderId">Order #${ordersList[i].orderId}</h3>
                     <p class="orderCustName">Customer: ${ordersList[i].customerName}</p>
-                    <p class="orderCustEmail">Email: ${ordersList[i].customerEmail}</p>
                     <p class="orderTotal">Total: $${ordersList[i].total}</p>
                     <p class="orderDate">Placed on ${ordersList[i].placementDate}</p>
                     <p class="pickupDelivery">${ordersList[i].pickupOrDelivery}</p>
-                </div>
-
-                <div class="secondaryInfo">
             `;
+
+            if (ordersList[i].fulfilled === true)
+            {
+                newOrderItemText += `
+                        <button class="btn" onclick="EmailCustomer(this)">Send Notification</button>
+                    </div>
+
+                    <div class="secondaryInfo">
+                `;
+            }
+            else
+            {
+                newOrderItemText += `
+                        <button class="btn" onclick="MarkFulfilled(${i}, this)">Mark Fulfilled</button>
+                    </div>
+
+                    <div class="secondaryInfo">
+                `;
+            }
 
             //add food items individually and dynamically
             for (let j = 0; j < ordersList[i].items.length; j++)
@@ -205,6 +236,24 @@ function ChangeOrderFiltering(value)
 {
     orderShow = value;
     FillOrdersList();
+}
+
+//marks an order as fulfilled, allowing the manager to then send an email to the customer
+//and marks the order as fulfilled in the backend array
+function MarkFulfilled(orderIndex, thisButton)
+{
+    ordersList[orderIndex].fulfilled = true;
+    localStorage.setItem('orders', JSON.stringify(ordersList));
+
+    thisButton.onclick = () => EmailCustomer(thisButton);
+    thisButton.innerText = "Send Notification";
+
+}
+
+function EmailCustomer(thisButton)
+{
+    thisButton.disabled = true;
+    thisButton.innerText = "Email Sent!"
 }
 
 //puts menu item in edit mode with text boxes

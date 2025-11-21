@@ -14,15 +14,10 @@
         <link rel="stylesheet" type="text/css" href="../../StyleSheets/animations.css">
         <link rel="stylesheet" type="text/css" href="../../StyleSheets/style.css">
         <link rel="stylesheet" type="text/css" href="../../StyleSheets/flexboxclasses.css">
+        <link rel="stylesheet" type="text/css" href="../../StyleSheets/about.css">
 
         <link rel="shortcut icon" href="../../images/Wacky_Burger_Character_Logo-transparent.png" type="image/x-icon">
         <link rel="icon" type="x-icon" href="../../images/Wacky_Burger_Character_Logo-transparent.png">
-
-        <style>
-
-            [class*=flex]{outline: 1px solid red; margin-top: 50px;}
-
-        </style>
 
     </head>
 
@@ -35,6 +30,8 @@
                 <img src="../../images/Wacky_Burger_Character_Logo-transparent.png" alt="Wacky Logo">
 
             </div>
+
+            <h1><a class="HH1">W</a><a class="HH2">a</a><a class="HH3">c</a><a class="HH4">k</a><a class="HH5">y</a> <a class="HH6">B</a><a class="HH7">u</a><a class="HH8">r</a><a class="HH9">g</a><a class="HH10">e</a><a class="HH11">r</a></h1>
 
             <nav>
 
@@ -50,31 +47,49 @@
 
                     <li><a id="logInOutButton" onclick="LogInOut(); SmartHref('Login')">Login</a></li>
 
-                    <li id="Profile"></li>
-
                 </ul>
 
             </nav>
 
-            <h1><a class="HH1">W</a><a class="HH2">a</a><a class="HH3">c</a><a class="HH4">k</a><a class="HH5">y</a> <a class="HH6">B</a><a class="HH7">u</a><a class="HH8">r</a><a class="HH9">g</a><a class="HH10">e</a><a class="HH11">r</a></h1>
+            <div class="hamburger" id="hamburger">
+                <h1>☰</h1>
+            </div>
+
+            <div id="Profile"></div>
             
         </header>
+
+        <nav id="sidebar-menu">
+
+            <ul>
+
+                <li><a class="CurrentlyOn" onclick="SmartHref('Home')">Home</a></li>
+                    
+                <li><a onclick="SmartHref('Menu')">Menu</a></li>
+
+                <li><a onclick="SmartHref('About')">About</a></li>
+
+                <li id="ManageLink2"><a onclick="SmartHref('Manage')">Manage</a></li>
+
+                <li><a id="logInOutButton2" onclick="LogInOut(); SmartHref('Login')">Login</a></li>
+
+            </ul>
+
+            <button class="close-btn">&times;</button>
+
+        </nav>
 
         <article>
 
             <section>
 
                 <div style="display: flex;">
-
+                <div class="about-wrapper">
                     <div class="flexBoxContainer">
 
                         <div class="flex1">
-
-                            <h1>What is Wacky Burger About?</h1>
-
-                            <br>
-
-                            <img src="../../images/monster-burger.jpg" width="15%" alt="Wacky Jr"> 
+                          
+                            <h2>What is Wacky Burger About?</h2>
 
                             <br>
 
@@ -87,15 +102,14 @@
                                 Being a simple yet wacky Burger Resturant that you can go out and eat at.
                                 Which you can even surprise your friends with the burger you got!
                             </p>
-
                         </div>
 
-                        <div class="flex2">
+                        
+                        <div class="flex2 about-style">
 
-                            <h1>How It Started</h1>
+                            <h3>How It Started</h3>
 
                             <br>
-
                             <img src="../../images/Wacky_Burger_Character_Logo-transparent.png" width="30%" alt="Wacky Burger Logo">
 
                             <br>
@@ -105,7 +119,7 @@
                                 Serving up burgers to people that wanted them.
                                 The burgers were grilled and made carefully.
                                 But basically Wacky Burger originated from Texas,
-                                Founded by <strong>John Wacky</strong>.
+                                Founded by <strong>John Wacky Sr.</strong>.
                                 His first food item he ever made. <em>Wacky Burger Jr.</em>
                                 Was a success. Then he proceeded to make French Fries like no other place could do.
                                 You can say they are Freaking good french fries.
@@ -114,12 +128,11 @@
                                 Wacky Burger has become a proud Burger Resturant ever sense then.
                                 Suriving all the way till current date.
                             </p>
-
                         </div>
 
-                        <div class="flex2">
+                        <div class="flex2 about-style">
 
-                            <h1>The Founder Himself</h1>
+                            <h3>The Founder Himself</h3>
 
                             <br>
 
@@ -141,13 +154,31 @@
 
                         </div>
 
+                        
+
                         <div class="flex1">
 
-                            <h1>What Our Food Is About Too</h1>
+                            <h3>What Our Food Is About</h3>
 
-                            <div class="flex4">
+                            <div class="flex3 about-style">
 
-                                <h2>Freaky French Fries</h2>
+                                <h4>Wacky Burger Jr.</h4>
+
+                                <img src="../../images/monster-burger.jpg" width="75%">
+
+                                <p>
+                                    The classic Wacky Burger food item, <em>Wacky Burger Jr.</em>
+                                    is based on Mr. Wacky's son, John Wacky Jr. He thought it would
+                                    be nice to name the first burger he created for the restruant
+                                    after his son who has a love for burgers. The wackiness of the 
+                                    burger also perfectly captures the same energy of John Jr.
+                                </p>
+
+                            </div>
+
+                            <div class="flex3 about-style">
+
+                                <h4>Freaky French Fries</h4>
 
                                 <img src="../../images/funky-french-fries.jpg" width="75%">
 
@@ -162,9 +193,62 @@
 
                             </div>
 
-                            <div class="flex4">
+                            <div class="flex3 about-style">
 
-                                <h2>Tomater Hater Burger</h2>
+                                <h4>Yummers Lettuce Burger</h4>
+
+                                <img src="../../images/lettuce-burger.jpg" width="75%">
+
+                                <p>
+                                    Mr. Wacky is a huge fan of <em>The Boys</em> while his son is a huge fan of lettuce on
+                                    his burger and thinks it is, and I quote, "yummers". Mr. Wacky found this hilarious and
+                                    started getting a bit creative by utilizing 200% fresh lettuce that has been locally sourced
+                                    from a nearby farm owned by Owem Yummers. Replacing the burger buns entirely. Sure it is just regular looking burger lettuce,
+                                    as opposed to iceberg lettuce. However, that is the point, he thought it would be totally wacky to make 
+                                    a burger made up of mostly lettuce.
+                                </p>
+
+                            </div>
+
+                            <div class="flex1"></div>
+
+                            <div class="flex3 about-style">
+
+                                <h4>Titanic Burger</h4>
+
+                                <img src="../../images/lettuce-wrap-burger.jpg" width="75%">
+
+                                <p>
+                                   It may look like just a normal iceberg burger, but it isn't. The <strong>Titanic Burger</strong> is a giant
+                                   and ice cold burger that Mr. Wacky made as a "challenge item" where you have to eat this 
+                                   cold giant in under a minute. The reward for the item is a hat that reads, "I Sank the Titanic (Burger)".
+                                   It is a (not so) hot item at Wacky Burger that requires pure courage to eat such a beast of a burger.
+                                    
+                                </p>
+
+                            </div>
+                            
+                            <div class="flex3 about-style">
+
+                                <h4>Pickley Burger</h4>
+
+                                <img src="../../images/pickle-burger.jpg" width="75%">
+
+                                <p>
+                                  Mr. Wacky noticed how many people go absolutely bonkers over pickles, but also
+                                  knows how much people hate pickles on their burger. This caused Mr. Wacky to make
+                                  the <strong>Pickely Burger</strong> and aim it towards Pickle lovers and in spite
+                                  of those who hate pickles. However, unlike the <em>Tomato Hater Burger</em>, the <strong>Pickely
+                                  Burger</strong> is meant to be a more lighthearted take because people tend to love their pickles
+                                  more than their tomatos. Additionally, pickles are good to have on a burger as they are contain
+                                  vitamin C from their many antioxidants.
+                                </p>
+
+                            </div>
+
+                            <div class="flex3 about-style">
+
+                                <h4>Tomater Hater Burger</h4>
 
                                 <img src="../../images/tomato-burger.jpg" width="75%">
 
@@ -175,30 +259,6 @@
                                     This burger if for the people who love tomatos!
                                     And to show people who hate tomatos too!
                                     Show your friends this burger he thought.
-                                </p>
-
-                            </div>
-
-                            <div class="flex4">
-
-                                <h2>Pickley Burger</h2>
-
-                                <img src="../../images/pickle-burger.jpg" width="75%">
-
-                                <p>
-                                    
-                                </p>
-
-                            </div>
-
-                            <div class="flex4">
-
-                                <h2>Yummers Lettuce Burger</h2>
-
-                                <img src="../../images/lettuce-burger.jpg" width="75%">
-
-                                <p>
-                                    
                                 </p>
 
                             </div>
@@ -219,11 +279,11 @@
 
             <ul>
 
-                <li><a class="CurrentlyOn" onclick="SmartHref('Home')">Home</a></li>
+                <li><a onclick="SmartHref('Home')">Home</a></li>
                         
                 <li><a onclick="SmartHref('Menu')">Menu</a></li>
 
-                <li><a onclick="SmartHref('About')">About</a></li>
+                <li><a class="CurrentlyOn" onclick="SmartHref('About')">About</a></li>
 
                 <li><a onclick="SmartHref('Login')">Login</a></li>
 
@@ -247,7 +307,7 @@
 
         </footer>
         
-        <script src="../../JavaScript/javascript.js"></script>
+        <script src="../../JavaScript/sidebar.js"></script>
 
         <script src="../../JavaScript/SHref.js"></script>
 

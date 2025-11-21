@@ -157,7 +157,6 @@
 /* Highlight totals */
 #cartSummary p strong, #receiptContainer p strong{
     font-size: 1.4rem;
-    color: #e46f3b;
 }
 
 button{
@@ -196,4 +195,66 @@ button{
 
 #deliveryInfo input {
     margin: .3rem;
+}
+
+/*payment details*/
+#paymentInfo input, #deliveryInfo input {
+    width: 100%;
+    margin-bottom: 10px;
+}
+
+#expCvvRow {
+    display: flex;
+    gap:10px;
+}
+
+#expCvvRow input {
+    flex: 1;
+}
+
+/*checkbox styling*/
+#usePointsContainer {
+    display: flex;
+    align-items: center;
+    justify-content: flex-start;
+    gap: 0.5rem;
+    margin-bottom: 1rem;
+    font-family: "Mulish", Arial, Helvetica, sans-serif;
+    font-size: 1.2rem;
+    color: #190D08;
+}
+
+#usePointsContainer input[type="checkbox"] {
+    width: 20px;
+    height: 30px;
+    border: 3px solid #190D08;
+    appearance: none;
+    cursor: pointer;
+    position: relative;
+    background-color: white;
+    transition: all 0.2s ease;
+
+    margin-right: .3rem;
+}
+
+#usePointsContainer input[type="checkbox"]:checked {
+    background-color: #e46f3b;
+    border-color: #e46f3b;
+}
+
+#usePointsContainer input[type="checkbox"]:checked::after {
+    content: "✔";
+    position: absolute;
+    top: 0;
+    left: 30%;
+    color: white;
+    font-size: 16px;
+}
+
+#useWackyPointsLabel {
+    cursor: pointer;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    margin: 1rem 0;
 }

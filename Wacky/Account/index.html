@@ -29,6 +29,8 @@
 
             </div>
 
+            <h1><a class="HH1">W</a><a class="HH2">a</a><a class="HH3">c</a><a class="HH4">k</a><a class="HH5">y</a> <a class="HH6">B</a><a class="HH7">u</a><a class="HH8">r</a><a class="HH9">g</a><a class="HH10">e</a><a class="HH11">r</a></h1>
+
             <nav>
 
                 <ul>
@@ -43,20 +45,42 @@
 
                     <li><a id="logInOutButton" onclick="LogInOut(); SmartHref('Login')">Login</a></li>
 
-                    <li id="Profile"></li>
-
                 </ul>
 
             </nav>
 
-            <h1><a class="HH1">W</a><a class="HH2">a</a><a class="HH3">c</a><a class="HH4">k</a><a class="HH5">y</a> <a class="HH6">B</a><a class="HH7">u</a><a class="HH8">r</a><a class="HH9">g</a><a class="HH10">e</a><a class="HH11">r</a></h1>
+            <div class="hamburger" id="hamburger">
+                <h1>☰</h1>
+            </div>
+
+            <div id="Profile"></div>
             
         </header>
+
+        <nav id="sidebar-menu">
+
+            <ul>
+
+                <li><a class="CurrentlyOn" onclick="SmartHref('Home')">Home</a></li>
+                    
+                <li><a onclick="SmartHref('Menu')">Menu</a></li>
+
+                <li><a onclick="SmartHref('About')">About</a></li>
+
+                <li id="ManageLink2"><a onclick="SmartHref('Manage')">Manage</a></li>
+
+                <li><a id="logInOutButton2" onclick="LogInOut(); SmartHref('Login')">Login</a></li>
+
+            </ul>
+
+            <button class="close-btn">&times;</button>
+
+        </nav>
 
         <article>
         
             <h1>Account Dashboard</h1>
-            <p>Welcome, Manager! Here you can manage menu items and check orders.</p>
+            <p>Welcome! Here you can manage menu items and check orders.</p>
             
             <button class="custInfoButton" onclick="DisplayAccountDetails();">Change Your Info</button>
 
@@ -151,7 +175,7 @@
 
             <ul>
 
-                <li><a class="CurrentlyOn" onclick="SmartHref('Home')">Home</a></li>
+                <li><a onclick="SmartHref('Home')">Home</a></li>
                         
                 <li><a onclick="SmartHref('Menu')">Menu</a></li>
 
@@ -178,6 +202,8 @@
             </div>
 
         </footer>
+
+        <script src="../../JavaScript/sidebar.js"></script>
 
         <script src="../../JavaScript/customerAccount.js"></script>
 

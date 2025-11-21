@@ -17,7 +17,9 @@ const orderItems = [
     }*/
 ];
 
-
-localStorage.setItem("orders", JSON.stringify(orderItems));
+if (!localStorage.getItem("orders"))
+{
+    localStorage.setItem("orders", JSON.stringify(orderItems));
+}
 // Load the orders from localStorage
 let orders = JSON.parse(localStorage.getItem("orders"));
