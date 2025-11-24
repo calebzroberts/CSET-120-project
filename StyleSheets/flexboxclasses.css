@@ -2,7 +2,7 @@
 [class*="flex"]{display: block; box-sizing: border-box; float: left; padding: 25px;}
 
 /* Main Container that contains the FlexBoxClasses */
-.flexBoxContainer{display: block;}
+.flexBoxContainer{display: flex; flex-wrap: wrap; justify-content: center; gap: 20;}
 
 /* FlexBox Classes */
 .flex1{width: 100%;}
@@ -40,3 +40,4 @@
 .flex41{width: 41%;}
 .flex42{width: 42%;}
 .flex21{width: 21%;}
+

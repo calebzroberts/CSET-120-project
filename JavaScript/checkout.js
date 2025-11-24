@@ -12,6 +12,11 @@ var deliveryFee = 0.00;
 
 var rewardPoints = 0;
 var totalPrice = 0;
+var subtotal = 0;
+
+var pointsToUse = 0;
+
+var useWackyPoints = false;
 
 //variables from on page items
 const loginBlock = document.getElementById("loginBlock");
@@ -28,22 +33,70 @@ function displayCart(){
     }
 
     let html = "<ul>";
-    let subtotal = 0;
+    subtotal = 0;
 
     cart.forEach(item => {
         html += `<li>${item.itemName} - $${item.itemPrice} x ${item.itemQuantity}</li>`;
         subtotal += item.itemPrice * item.itemQuantity;
     });
-    html += `</ul><p><strong>Subtotal: $${subtotal.toFixed(2)}</strong></p>`;
-    html += `<p><strong>Delivery Fee: $${deliveryFee.toFixed(2)}</strong></p>`;
-    html += `<p><strong>Total: $${(subtotal + deliveryFee).toFixed(2)}</strong></p>`;
+    html += `</ul>`;
+    //html += `<p><strong>Delivery Fee: $${deliveryFee.toFixed(2)}</strong></p>`;
+    //html += `<p><strong>Total: $${(subtotal + deliveryFee).toFixed(2)}</strong></p>`;
     cartSummary.innerHTML = html;
 
     
     totalPrice = subtotal + deliveryFee;
 
+    UpdateTotal();
+
     CheckLoggedIn();
     
+}
+
+//Update the total text
+function UpdateTotal()
+{
+    totalSection = document.getElementById("totalSection");
+
+    totalSection.innerHTML = `
+        <div>   
+            <p class="totalText">Subtotal:</p>
+            <p>$${subtotal}</p>
+        </div>
+        <div>   
+            <p class="totalText">Delivery Fee:</p>
+            <p>$${deliveryFee.toFixed(2)}</p>
+        </div>
+        <div>   
+            <p class="totalText">Wacky Point Discount:</p>
+            <p>-$${(pointsToUse/100).toFixed(2)}</p>
+        </div>
+        <hr>
+        <div>   
+            <p class="totalText">Total:</p>
+            <p>$${totalPrice}</p>
+        </div>
+    `;
+}
+
+//toggles on or off using customer's wacky points
+function ToggleUsePoints()
+{
+    const user = usersList.find(u => u.email === currentEmail);
+    if (useWackyPoints)
+    {
+        useWackyPoints = false;
+        pointsToUse = 0;
+        totalPrice = Number(subtotal) + Number(deliveryFee);
+    }
+    else
+    {
+        useWackyPoints = true;
+        pointsToUse = user.rewardPoints;
+        totalPrice = ((Number(subtotal) + Number(deliveryFee)) - Number((pointsToUse/100).toFixed(2))).toFixed(2);
+    }
+
+    UpdateTotal();
 }
 
 // Handle form submission
@@ -79,7 +132,11 @@ guestCheckoutForm.addEventListener("submit", function(e){
     }
 
     const subtotal = cart.reduce((sum, item) => sum + item.itemPrice * item.itemQuantity, 0);
-    const total = subtotal + deliveryFee;
+    const total = ((Number(subtotal) + Number(deliveryFee)) - Number(pointsToUse/100)).toFixed(2);
+    rewardPoints -= pointsToUse;
+
+    //reset the order done so next page shows the animation
+    localStorage.setItem('currentOrderDone', JSON.stringify(0))
 
     const order = {
         orderId:Date.now(),
@@ -97,6 +154,7 @@ guestCheckoutForm.addEventListener("submit", function(e){
         })),
         subtotal: subtotal,
         deliveryFee: deliveryFee,
+        pointsUsed: pointsToUse,
         total: total,
         fulfilled: false,
         placementDate: new Date().toLocaleDateString(),
@@ -108,7 +166,6 @@ guestCheckoutForm.addEventListener("submit", function(e){
     localStorage.setItem("orders", JSON.stringify(existingOrders));
     localStorage.setItem("currentOrder", JSON.stringify(order));
 
-    alert("Order placed successfully!")
     localStorage.removeItem("cart");
     cart.length = 0;
     displayCart();
@@ -188,7 +245,7 @@ function TogglePayment()
 //Calculates the rewards points the customer will get from this transaction
 function CalculateRewards()
 {
-    rewardPoints = totalPrice * 67;
+    rewardPoints = totalPrice * .67;
     rewardPoints = rewardPoints.toFixed();
     return rewardPoints;
 }
@@ -202,13 +259,13 @@ function HideLoginButtons()
         'Want to earn 200 extra points on your purchase? <a onclick="SmartHref(\'Login\')">Log In</a> or <a onclick="SmartHref(\'Signup\')">Sign Up</a> today!';
 
     //hide points checkbox if guest checkout
-    document.getElementById("usePointsContainer").style.display = "none";
+    document.getElementById("useWackyPointsLabel").style.display = "none";
 }
 
 //display login buttons if user not logged in
 function CheckLoggedIn()
 {
-    const pointsBox = document.getElementById("usePointsContainer");
+    const pointsBox = document.getElementById("useWackyPointsLabel");
 
     if (currentEmail !== "" && currentEmail !== null)
     {
@@ -217,12 +274,12 @@ function CheckLoggedIn()
         extraLoginText.innerHTML = `Place your order today to get ${CalculateRewards()} Wacky Points!`;
         
         //show checkbox
-        pointsBox.style.display = "block";
+        pointsBox.style.display = "flex";
 
         //update points balance
         const user = usersList.find(u => u.email === currentEmail);
         if (user) {
-            document.getElementById("useWackyPointsLabel").innerHTML = `<input type="checkbox" id="useWackyPoints"> Use my ${user.rewardPoints} Wacky Points.`;
+            document.getElementById("useWackyPointsLabel").innerHTML = `<input type="checkbox" id="useWackyPoints" onclick="ToggleUsePoints()"> Use my ${user.rewardPoints} Wacky Points.`;
         }
 
         FillUserData();
@@ -241,7 +298,12 @@ function FillUserData()
 {
     firstName.value = currentFirstName;
     lastName.value = currentLastName;
-    email.value = currentEmail;
+    if (currentEmail === 'YldGdVlXZGxja0IzWVdOcmVXSjFjbWRsY2k1amIyMD0=')
+    {
+        email.value = 'manager@wackyburger.com'
+    }
+    else
+        email.value = currentEmail;
 }
 
 //find user by email and add points to their total

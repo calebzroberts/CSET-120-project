@@ -17,11 +17,19 @@
 
 .flex2{
     width: 45%;
-    margin: 0 2%;
+    margin: 1%;
 }
 
-.flex2 img{
-    width: 40%;
+.flex2 img, .flex3 img{
+    max-width: 100%;
+    height: auto;
+    display: block;
+    margin: 0 auto;
+}
+
+.flex2 p, .flex3 p{
+    width: 90%;
+    margin: 0 auto
 }
 
 .about-style{
@@ -38,4 +46,24 @@
 
 .about-wrapper img{
     margin-bottom: 30px;
+}
+
+.aboutRow {
+    margin: 3rem;
+}
+
+@media screen and (max-width: 768px){
+    
+}
+
+@media screen and (max-width:480px){
+    .flex2, .flex3{
+        width:100%
+    }
+    .aboutRow{
+        margin: 3rem 0;
+    }
+    .flexBoxContainer {
+        padding: .1rem;
+    }
 }

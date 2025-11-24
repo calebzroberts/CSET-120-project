@@ -126,6 +126,28 @@
     text-shadow: 0 0 5px #948474;
 }
 
+/*Total text on checkout*/
+#totalSection {
+    width: 100%;
+    padding: 0 1rem;
+}
+
+#totalSection div {
+    display: flex;
+    justify-content: space-between;
+    margin: .3rem 0;
+}
+
+#totalSection hr {
+    border: 2px dashed #9B3B23;
+}
+
+#totalSection .totalText {
+    font-weight: 900;
+    font-style: italic;
+    font-size: 1.1rem;
+}
+
 /* Cart and Receipt Summary */
 
 #cartSummary, #receiptContainer{
@@ -214,9 +236,6 @@ button{
 
 /*checkbox styling*/
 #usePointsContainer {
-    display: flex;
-    align-items: center;
-    justify-content: flex-start;
     gap: 0.5rem;
     margin-bottom: 1rem;
     font-family: "Mulish", Arial, Helvetica, sans-serif;

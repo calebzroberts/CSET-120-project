@@ -4,6 +4,10 @@ const downloadPDFBtn = document.getElementById("downloadPDF");
 // Load order from local storage
 const order = JSON.parse(localStorage.getItem("currentOrder"));
 
+if (!localStorage.getItem('currentOrderDone'))
+    localStorage.setItem('currentOrderDone', JSON.stringify(0));
+let currentOrderDone = Number(JSON.parse(localStorage.getItem('currentOrderDone')));
+
 
 
 if (!order){
@@ -36,14 +40,24 @@ if (!order){
     <ul>
         ${order.items.map(i => `<li>${i.itemName} - $${i.itemPrice.toFixed(2)} x ${i.itemQuantity} = $${(i.itemPrice * i.itemQuantity).toFixed(2)}</li>`).join('')}
     </ul>
-    <p><strong>Subtotal: $${order.subtotal.toFixed(2)}</strong></p>
-    <p><strong>Delivery Fee: $${order.deliveryFee.toFixed(2)}</strong></p>
-    <p><strong>Total: $${order.total.toFixed(2)}</strong></p>
+    <div class="totals">
+        <p>Subtotal: $${order.subtotal.toFixed(2)}</p>
+        <p>Delivery Fee: $${order.deliveryFee.toFixed(2)}</p>
+        <p>Wacky Points Discount: $${(order.pointsUsed/100).toFixed(2)}</p>
+        <p>Total: $${order.total}</p>
+    </div>
     `;
     receiptContainer.innerHTML = html;
 
+    let orderItemsQuantity = 0;
+    //calculate total items (including quantities) to detect food prep time
+    for (let i = 0; i < order.items.length; i++)
+    {
+        orderItemsQuantity += order.items[i].itemQuantity;
+    }
+
     //food prep takes longer with more items
-    AnimateProgressToFull((1/order.items.length) * 0.3);
+    AnimateProgressToFull((1/orderItemsQuantity) * 0.3, currentOrderDone);
 }
 
 // PDF download
@@ -116,7 +130,7 @@ if (downloadPDFBtn && order){
         
             doc.text(`Subtotal: $${order.subtotal.toFixed(2)}`, 10, y += 10);
             doc.text(`Delivery Fee: $${order.deliveryFee.toFixed(2)}`, 10, y += 10);
-            doc.text(`Total: $${order.total.toFixed(2)}`, 10, y += 10);
+            doc.text(`Total: $${Number(order.total).toFixed(2)}`, 10, y += 10);
             
             //Footer
             doc.setFont("helvetica", "italic");
@@ -132,11 +146,11 @@ if (downloadPDFBtn && order){
 
 
 //slowly tick up the delivery progress
-function AnimateProgressToFull(speed)
+function AnimateProgressToFull(speed, startingValue)
 {
     const progress = document.getElementById("deliveryProgress");
     const max = Number(progress.max) || 100;
-    let current = Number(progress.value) || 0;
+    let current = Number(progress.value) || startingValue;
 
     const step = 1 * speed;
     const intervalMs = 30;
@@ -151,11 +165,15 @@ function AnimateProgressToFull(speed)
 
             // Buttons show once complete
             document.getElementById("buttons").style.display = "block";
+            
         }
 
         progress.value = current;
+
+        //assign the current order status for reloading the page
+        currentOrderDone = current;
+        localStorage.setItem('currentOrderDone', JSON.stringify(currentOrderDone));
     }, intervalMs);
 
 }
 
-document.getElementById("buttons").style.display = "none";

@@ -101,7 +101,7 @@ function FillOrdersList()
                 <div class="primaryInfo">
                     <h3 class="orderId">Order #${ordersList[i].orderId}</h3>
                     <p class="orderCustName">Customer: ${ordersList[i].customerName}</p>
-                    <p class="orderTotal">Total: $${ordersList[i].total.toFixed(2)}</p>
+                    <p class="orderTotal">Total: $${Number(ordersList[i].total).toFixed(2)}</p>
                     <p class="orderDate">Placed on ${ordersList[i].placementDate}</p>
                     <p class="pickupDelivery">${ordersList[i].pickupOrDelivery}</p>
             `;
@@ -137,7 +137,7 @@ function FillOrdersList()
                 `;
             }
 
-            newOrderItemText += `</div`;
+            newOrderItemText += `</div>`;
             
             
 
@@ -148,7 +148,7 @@ function FillOrdersList()
         //only display the "No orders" if nothing is displaying
         if (orderSection.innerHTML === "")
         {
-            orderSection.innerHTML = `<p>No Orders to Show!</p>`;
+            orderSection.innerHTML = `<p id="noOrdersText">No Orders to Show!</p>`;
         }
     }
     else
