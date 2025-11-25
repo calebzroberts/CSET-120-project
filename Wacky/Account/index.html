@@ -7,7 +7,7 @@
 
         <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-        <title>Wacky Burger - Manager Dashboard</title>
+        <title>Wacky Burger - Account</title>
 
         <link rel="stylesheet" type="text/css" href="../../StyleSheets/imports.css">
         <link rel="stylesheet" type="text/css" href="../../StyleSheets/animations.css">
@@ -41,6 +41,8 @@
 
                     <li><a onclick="SmartHref('About')">About</a></li>
 
+                    <li id="CheckoutBtn"><a onclick="SmartCheckout()">Checkout</a></li>
+
                     <li id="ManageLink"><a onclick="SmartHref('Manage')">Manage</a></li>
 
                     <li><a id="logInOutButton" onclick="LogInOut(); SmartHref('Login')">Login</a></li>
@@ -66,6 +68,8 @@
                 <li><a onclick="SmartHref('Menu')">Menu</a></li>
 
                 <li><a onclick="SmartHref('About')">About</a></li>
+
+                <li id="CheckoutBtn"><a onclick="SmartCheckout()">Checkout</a></li>
 
                 <li id="ManageLink2"><a onclick="SmartHref('Manage')">Manage</a></li>
 
@@ -202,6 +206,9 @@
             </div>
 
         </footer>
+
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/jspdf/2.5.1/jspdf.umd.min.js"></script>
+
 
         <script src="../../JavaScript/sidebar.js"></script>
 

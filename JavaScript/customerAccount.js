@@ -271,6 +271,11 @@ function CreateOrder(orderListId)
 
     newOrderHtml += `
         </div>
+
+        <button class="downloadReceiptBtn"
+            onclick="DownloadReceipt(${orderListId}); event.stopPropagation();">
+            Download Receipt
+        </button>
     `;
 
     newOrderItem.innerHTML = newOrderHtml;
@@ -320,7 +325,68 @@ function ChangeOrderFiltering(value)
     FillOrders();
 }
 
+function DownloadReceipt(index) {
+    const order = ordersList[index];
+    const { jsPDF } = window.jspdf;
+    const doc = new jsPDF();
+
+    let y = 15;
+
+    //diagonal line background
+    doc.setDrawColor(230, 230, 230);
+    doc.setLineWidth(0.3);
+    for (let i = -doc.internal.pageSize.height; i < doc.internal.pageSize.width; i += 10){
+        doc.line(i, 0, i + doc.internal.pageSize.height, doc.internal.pageSize.height);
+    }
+
+    //Border
+    doc.setDrawColor("#e46f3b")
+    doc.setLineWidth(2);
+    doc.rect(5, 5, doc.internal.pageSize.width - 10, doc.internal.pageSize.height - 10);
+    
+
+    //Logo
+    const logo = new Image();
+    logo.src="../images/Wacky_Burger_Character_Logo-transparent.png";
+        
+
+    doc.setFont("helvetica", "bold");
+    doc.setFontSize(18);
+    doc.text("Wacky Burger Receipt", 10, y);
+    y += 10;
+
+    doc.setFont("helvetica", "normal");
+    doc.setFontSize(12);
+
+    doc.text(`Order #: ${order.orderId}`, 10, y); y += 8;
+    doc.text(`Date: ${order.placementDate || new Date().toLocaleString()}`, 10, y); y += 8;
+    doc.text(`Customer: ${order.customerName}`, 10, y); y += 8;
+    doc.text(`Email: ${order.customerEmail}`, 10, y); y += 8;
+    doc.text(`Pickup/Delivery: ${order.pickupOrDelivery}`, 10, y); y += 12;
+
+    doc.text("Items:", 10, y); 
+    y += 8;
+
+    for (let i = 0; i < order.items.length; i++)
+    {
+        let item = order.items[i];
+        const line = `${item.itemName} x${item.itemQuantity} - $${(item.itemPrice * item.itemQuantity).toFixed(2)}`;
+        doc.text(line, 10, y);
+        y += 8;
+    };
+
+    y += 5;
+    doc.line(10, y, 200, y);
+    y += 10;
+
+    doc.text(`Total: $${order.total}`, 10, y);
+
+    doc.save(`WackyBurger_Receipt_${order.orderId}.pdf`);
+}
+
+
 //at page load, display customer info
 DisplayAccountDetails();
 
 FillAccountInfo();
+

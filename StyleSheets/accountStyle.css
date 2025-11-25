@@ -94,3 +94,10 @@
     font-size: 1.1rem;
     font-family: "Mulish", Arial, Helvetica, sans-serif;
 }
+
+@media screen and (max-width: 500px)
+{
+    #custInfoEditBoxes {
+        margin-left: .5rem;
+    }
+}

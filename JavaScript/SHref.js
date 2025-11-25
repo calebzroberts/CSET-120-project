@@ -33,3 +33,8 @@ function ChangeFunFact(){
 }
 
 ChangeFunFact()
+
+function SmartCheckout()
+{
+    window.location = "../Checkout/"
+}

@@ -36,6 +36,8 @@
 
                     <li><a onclick="SmartHref('About')">About</a></li>
 
+                    <li id="CheckoutBtn"><a class="CurrentlyOn" onclick="SmartCheckout()">Checkout</a></li>
+
                     <li id="ManageLink"><a onclick="SmartHref('Manage')">Manage</a></li>
 
                     <li><a id="logInOutButton" onclick="LogInOut(); SmartHref('Login')">Login</a></li>
@@ -56,11 +58,13 @@
 
             <ul>
 
-                <li><a class="CurrentlyOn" onclick="SmartHref('Home')">Home</a></li>
+                <li><a onclick="SmartHref('Home')">Home</a></li>
                     
                 <li><a onclick="SmartHref('Menu')">Menu</a></li>
 
                 <li><a onclick="SmartHref('About')">About</a></li>
+
+                <li id="CheckoutBtn"><a class="CurrentlyOn" onclick="SmartCheckout()">Checkout</a></li>
 
                 <li id="ManageLink2"><a onclick="SmartHref('Manage')">Manage</a></li>
 
@@ -76,6 +80,7 @@
             <h1>Check Out</h1>
 
             <div id="cartSummary"></div>
+            <button onclick="window.location='../Menu/#userCart'">Edit Cart</button>
 
 
             <div id="loginBlock">

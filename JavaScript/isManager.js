@@ -1,4 +1,5 @@
-// Variable
+
+
 // Global variable, safely reused across all pages
 window.currentEmail = window.currentEmail || localStorage.getItem('currentEmail') || "";
 const ManageATag = document.getElementById("ManageLink")
@@ -50,7 +51,23 @@ function CheckIfManagerThenShowATags(){
     }
 }
 
+function CheckUserCheckout()
+{
+    // Variable
+    let cart = JSON.parse(localStorage.getItem("cart")) || [];
+
+    if (cart.length === 0)
+    {
+        document.getElementById("CheckoutBtn").style.display = "none";
+    }
+    else
+    {
+        document.getElementById("CheckoutBtn").style.display = "inline";
+    }
+}
+
 CheckIfManagerThenShowATags()
+CheckUserCheckout();
 
 //detect if user is logged in or out and do the appropriate action
 function LogInOut() 

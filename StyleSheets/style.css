@@ -459,7 +459,7 @@ section {
     }
 
     .about-wrapper img{
-        width: 100% !important;
+        width: 50%;
         height: auto;
         margin: 0 auto 20px auto;
     }

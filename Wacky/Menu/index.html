@@ -36,6 +36,8 @@
 
                     <li><a onclick="SmartHref('About')">About</a></li>
 
+                    <li id="CheckoutBtn"><a onclick="SmartCheckout()">Checkout</a></li>
+
                     <li id="ManageLink"><a onclick="SmartHref('Manage')">Manage</a></li>
 
                     <li><a id="logInOutButton" onclick="LogInOut(); SmartHref('Login')">Login</a></li>
@@ -62,6 +64,8 @@
 
                 <li><a onclick="SmartHref('About')">About</a></li>
 
+                <li id="CheckoutBtn"><a onclick="SmartCheckout()">Checkout</a></li>
+
                 <li id="ManageLink2"><a onclick="SmartHref('Manage')">Manage</a></li>
 
                 <li><a id="logInOutButton2" onclick="LogInOut(); SmartHref('Login')">Login</a></li>
@@ -72,13 +76,15 @@
 
         </nav>
 
-        <article id="main">
+        <article id="main" style="text-align: center;">
             <h1>Menu</h1>
             <h2>Check out our food items we have for sale!</h2>
 
             <div id="menuContainer">
                 
             </div>
+
+            <h2 id="userCart">Cart:</h2>
 
             <div id="cartSection">
             </div>

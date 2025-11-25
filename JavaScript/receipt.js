@@ -165,7 +165,6 @@ function AnimateProgressToFull(speed, startingValue)
 
             // Buttons show once complete
             document.getElementById("buttons").style.display = "block";
-            
         }
 
         progress.value = current;
@@ -176,4 +175,3 @@ function AnimateProgressToFull(speed, startingValue)
     }, intervalMs);
 
 }
-
