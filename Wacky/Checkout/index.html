@@ -125,7 +125,14 @@
                         <input type="text" id="cvv" placeholder="CVV" maxlength="4"
                         autocomplete="cc-csc" inputmode="numeric" required>
                     </div>
+                    
                 </div>
+
+                <h3>Tip</h3>
+                <input type="number" step="0.01" min="0" id="tip" placeholder="Tip" name="userTip" onchange="UpdateTotal()">
+                
+
+                <h3>Wacky Points</h3>
                 
                 <div id="usePointsContainer">
                     <label id="useWackyPointsLabel">

@@ -13,10 +13,12 @@ var deliveryFee = 0.00;
 var rewardPoints = 0;
 var totalPrice = 0;
 var subtotal = 0;
+var tip = 0;
 
 var pointsToUse = 0;
 
 var useWackyPoints = false;
+
 
 //variables from on page items
 const loginBlock = document.getElementById("loginBlock");
@@ -56,6 +58,12 @@ function displayCart(){
 //Update the total text
 function UpdateTotal()
 {
+    //gets rid of old tip and adds new value
+    totalPrice -= tip;
+    if (document.getElementById("tip").value > 0)
+        tip = Number(document.getElementById("tip").value);
+    totalPrice += tip;
+
     totalSection = document.getElementById("totalSection");
 
     totalSection.innerHTML = `
@@ -66,6 +74,10 @@ function UpdateTotal()
         <div>   
             <p class="totalText">Delivery Fee:</p>
             <p>$${deliveryFee.toFixed(2)}</p>
+        </div>
+        <div>   
+            <p class="totalText">Tip:</p>
+            <p>$${(tip.toFixed(2))}</p>
         </div>
         <div>   
             <p class="totalText">Wacky Point Discount:</p>
@@ -132,7 +144,7 @@ guestCheckoutForm.addEventListener("submit", function(e){
     }
 
     const subtotal = cart.reduce((sum, item) => sum + item.itemPrice * item.itemQuantity, 0);
-    const total = ((Number(subtotal) + Number(deliveryFee)) - Number(pointsToUse/100)).toFixed(2);
+    const total = ((Number(subtotal) + Number(deliveryFee)) + Number(tip) - Number(pointsToUse/100)).toFixed(2);
     rewardPoints -= pointsToUse;
 
     //reset the order done so next page shows the animation
@@ -154,9 +166,11 @@ guestCheckoutForm.addEventListener("submit", function(e){
         })),
         subtotal: subtotal,
         deliveryFee: deliveryFee,
+        tip: tip,
         pointsUsed: pointsToUse,
         total: total,
         fulfilled: false,
+        progressValue: 0,
         placementDate: new Date().toLocaleDateString(),
         pickupOrDelivery: pickupOrDelivery
     };

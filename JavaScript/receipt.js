@@ -4,9 +4,6 @@ const downloadPDFBtn = document.getElementById("downloadPDF");
 // Load order from local storage
 const order = JSON.parse(localStorage.getItem("currentOrder"));
 
-if (!localStorage.getItem('currentOrderDone'))
-    localStorage.setItem('currentOrderDone', JSON.stringify(0));
-let currentOrderDone = Number(JSON.parse(localStorage.getItem('currentOrderDone')));
 
 
 
@@ -43,6 +40,7 @@ if (!order){
     <div class="totals">
         <p>Subtotal: $${order.subtotal.toFixed(2)}</p>
         <p>Delivery Fee: $${order.deliveryFee.toFixed(2)}</p>
+        <p>Tip: $${order.tip.toFixed(2)}</p>
         <p>Wacky Points Discount: $${(order.pointsUsed/100).toFixed(2)}</p>
         <p>Total: $${order.total}</p>
     </div>
@@ -57,7 +55,10 @@ if (!order){
     }
 
     //food prep takes longer with more items
-    AnimateProgressToFull((1/orderItemsQuantity) * 0.3, currentOrderDone);
+    const perItemSpeed = 0.7; // tweak this
+    const speed = perItemSpeed / orderItemsQuantity;
+    AnimateProgressToFull(speed, order.progressValue);
+
 }
 
 // PDF download
@@ -130,6 +131,8 @@ if (downloadPDFBtn && order){
         
             doc.text(`Subtotal: $${order.subtotal.toFixed(2)}`, 10, y += 10);
             doc.text(`Delivery Fee: $${order.deliveryFee.toFixed(2)}`, 10, y += 10);
+            doc.text(`Tip: $${order.tip.toFixed(2)}`, 10, y += 10);
+            doc.text(`Wacky Points Used: ${order.pointsUsed}`, 10, y += 10);
             doc.text(`Total: $${Number(order.total).toFixed(2)}`, 10, y += 10);
             
             //Footer
@@ -169,9 +172,18 @@ function AnimateProgressToFull(speed, startingValue)
 
         progress.value = current;
 
-        //assign the current order status for reloading the page
-        currentOrderDone = current;
-        localStorage.setItem('currentOrderDone', JSON.stringify(currentOrderDone));
+        // Update this order's stored progress instead of a single global value
+        let orders = JSON.parse(localStorage.getItem("orders")) || [];
+        let stored = orders.find(o => o.orderId === order.orderId);
+
+        if (stored) {
+            stored.progressValue = current;
+            localStorage.setItem("orders", JSON.stringify(orders));
+        }
+
+        order.progressValue = current;
+localStorage.setItem("currentOrder", JSON.stringify(order));
+
     }, intervalMs);
 
 }

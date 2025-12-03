@@ -47,3 +47,27 @@ LoadMenu();
 setInterval(() => {
     slideMenu(1);
 }, 4000);
+
+//Behavior for submitting form
+document.addEventListener('DOMContentLoaded', () => {
+    const form = document.getElementById('contactForm');
+
+    form.addEventListener('submit', (event) => {
+        // Prevent the default form submission
+        event.preventDefault();
+
+        const submitButton = document.getElementById("submit");
+
+        submitButton.innerText = "Sent! Thanks!";
+        submitButton.style.cursor = "wait";
+        submitButton.disabled = true;
+        
+        setTimeout(() => {
+            form.reset();
+            submitButton.innerText = "Send Message";
+            submitButton.disabled = false;
+            submitButton.style.cursor = "pointer";
+        }, 2000);
+
+    });
+  });

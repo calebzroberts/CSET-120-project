@@ -272,10 +272,20 @@ function CreateOrder(orderListId)
     newOrderHtml += `
         </div>
 
-        <button class="downloadReceiptBtn"
-            onclick="DownloadReceipt(${orderListId}); event.stopPropagation();">
-            Download Receipt
-        </button>
+        ${ordersList[orderListId].progressValue === 100
+            ? `
+                <button class="downloadReceiptBtn"
+                    onclick="DownloadReceipt(${orderListId}); event.stopPropagation();">
+                    Download Receipt
+                </button>
+            `
+            : `
+                <div class="orderProgressContainer">
+                    <label><strong>Food Prep Progress:</strong></label><br>
+                    <progress value="${ordersList[orderListId].progressValue || 0}" max="100"></progress>
+                </div>
+            `
+        }
     `;
 
     newOrderItem.innerHTML = newOrderHtml;
@@ -330,7 +340,7 @@ function DownloadReceipt(index) {
     const { jsPDF } = window.jspdf;
     const doc = new jsPDF();
 
-    let y = 15;
+    let y = 20;
 
     //diagonal line background
     doc.setDrawColor(230, 230, 230);
@@ -347,46 +357,80 @@ function DownloadReceipt(index) {
 
     //Logo
     const logo = new Image();
-    logo.src="../images/Wacky_Burger_Character_Logo-transparent.png";
-        
+    logo.src="/images/Wacky_Burger_Character_Logo-transparent.png";
 
+    logo.onload = function(){
+        doc.addImage(logo, "PNG", 150, 10, 40, 40);
+        doc.save(`WackyBurger_Receipt_${order.orderId}.pdf`);
+    };
+
+
+    logo.onerror = function(){
+        doc.save(`WackyBurger_Receipt_${order.orderId}.pdf`);
+    }
+
+    //Title and colors    
     doc.setFont("helvetica", "bold");
-    doc.setFontSize(18);
-    doc.text("Wacky Burger Receipt", 10, y);
-    y += 10;
+    doc.setFontSize(20);
+    doc.setTextColor("#190d08");
+    doc.text("Wacky Burger Receipt", 10, 20);
 
+    //Divider
+    doc.setDrawColor("#9b3b23");
+    doc.setLineWidth(0.5);
+    doc.line(10, 25, 200, 25);
+
+    y = 35;
+    
     doc.setFont("helvetica", "normal");
     doc.setFontSize(12);
+    doc.setTextColor("#190d08");
 
+    //Order details
     doc.text(`Order #: ${order.orderId}`, 10, y); y += 8;
     doc.text(`Date: ${order.placementDate || new Date().toLocaleString()}`, 10, y); y += 8;
     doc.text(`Customer: ${order.customerName}`, 10, y); y += 8;
     doc.text(`Email: ${order.customerEmail}`, 10, y); y += 8;
     doc.text(`Pickup/Delivery: ${order.pickupOrDelivery}`, 10, y); y += 12;
+    
+    //Delivery address
+    if (order.pickupOrDelivery === "delivery" && order.customerAddress){
+        doc.text(
+            `Delivery Address: ${order.customerAddress.address}, ` +
+            `${order.customerAddress.state} ${order.customerAddress.zipcode} USA`,
+            10, y
+        );
+        y += 10;
+    }
 
+    //Items
+    doc.setTextColor("#e46f3b");
     doc.text("Items:", 10, y); 
     y += 8;
 
-    for (let i = 0; i < order.items.length; i++)
-    {
-        let item = order.items[i];
-        const line = `${item.itemName} x${item.itemQuantity} - $${(item.itemPrice * item.itemQuantity).toFixed(2)}`;
-        doc.text(line, 10, y);
+    order.items.forEach(item => {
+        const t = item.itemPrice * item.itemQuantity;
+        doc.text(`${item.itemName} x${item.itemQuantity} - $${t.toFixed(2)}`, 10, y);
         y += 8;
-    };
+    });
 
+    //Totals
     y += 5;
+    doc.setDrawColor("#9b3b23");
     doc.line(10, y, 200, y);
     y += 10;
 
+    doc.setTextColor("#190d08");
     doc.text(`Total: $${order.total}`, 10, y);
 
-    doc.save(`WackyBurger_Receipt_${order.orderId}.pdf`);
+    //Footer
+    doc.setFont("helvetica", "italic");
+    doc.setFontSize(10);
+    doc.setTextColor("#88972d");
+    doc.text("Thank you for choosing Wacky Burger!", 10, y + 10);
 }
-
 
 //at page load, display customer info
 DisplayAccountDetails();
 
 FillAccountInfo();
-

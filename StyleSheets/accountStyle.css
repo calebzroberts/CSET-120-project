@@ -101,3 +101,13 @@
         margin-left: .5rem;
     }
 }
+
+.orderProgressContainer {
+    margin-top: 10px;
+    margin-bottom: 10px;
+}
+
+.orderProgressContainer progress {
+    width: 100%;
+    height: 20px;
+}
