@@ -189,7 +189,7 @@ guestCheckoutForm.addEventListener("submit", function(e){
         UpdateCustomerPoints();
 
     // Redirect to receipt page
-    setTimeout(() => {window.location.href = "../receipt/index.html";}, 500);
+    setTimeout(() => {window.location.href = "../Receipt/index.html";}, 500);
 });
 
 
