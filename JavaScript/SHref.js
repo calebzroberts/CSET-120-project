@@ -15,10 +15,10 @@ function ChangeFunFact(){
     
 
     const FunFactArray = [
-        "Wolfy is NOT appart of this website.",
+        "Wolfy is NOT a part of this website.",
         "Wacky Burger Jr. is the son of Wacky Burger!",
-        "Freaky French Fries is not the bad kind of freaky. Hes freaking good.",
-        "Yummers Lettuce is made with 200% more fresh lettuce locally sourced.",
+        "Freaky French Fries is not the bad kind of freaky. He's freaking good.",
+        "Yummers Lettuce is made with 200% more fresh lettuce - locally sourced.",
         "Titanic burger is related to the Titanic.",
         "Tomater Hater is for you to show your tomato hating friends! Or if you love tomatos.",
         "Caleb owes me lunch money. :(",
