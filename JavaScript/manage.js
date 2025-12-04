@@ -302,6 +302,16 @@ function ConfirmDetails(buttonObject, value)
 {
     //get parent object
     const parent = buttonObject.closest('.editingModeMenuItem');
+    if (Number(parent.querySelector('.priceEditBlock').value) < 0.01)
+    {
+        alert('Please enter a positive price!');
+        return;
+    } 
+    if (Number(parent.querySelector('.maxQuantityEditBlock').value) < 0.01)
+    {
+        alert('Please enter a positive quantity!');
+        return;
+    }
 
     //save other values in the parent object to temporary menu
     currentMenu[value].imageUrl = parent.querySelector('.imageUrlEditBlock').value;
@@ -324,6 +334,8 @@ function ConfirmDetails(buttonObject, value)
 
     FillMenuItems();
 }
+
+
 
 //add item to the list and puts it in edit mode
 function AddNewItem()
