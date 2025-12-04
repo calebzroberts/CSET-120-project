@@ -24,6 +24,7 @@ function CheckIfManagerThenShowATags(){
         //change it to say logout
         LoginATag.innerText = "Log Out";
         LoginATag2.innerText = "Log Out";
+        LoginATag3.innerText = "Log Out";
     } else if (currentEmail != "") {
         ManageATag.style.display = "none"
         ManageATag2.style.display = "none"
@@ -37,6 +38,7 @@ function CheckIfManagerThenShowATags(){
         //change it to say logout
         LoginATag.innerText = "Log Out";
         LoginATag2.innerText = "Log Out";
+        LoginATag3.innerText = "Log Out";
     } else {
         ManageATag.style.display = "none"
         ManageATag2.style.display = "none"
@@ -48,6 +50,7 @@ function CheckIfManagerThenShowATags(){
         //change it to say login
         LoginATag.innerText = "Log In";
         LoginATag2.innerText = "Log In";
+        LoginATag3.innerText = "Log In";
     }
 }
 
