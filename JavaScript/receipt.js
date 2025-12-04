@@ -168,7 +168,7 @@ function AnimateProgressToFull(speed, startingValue)
 
             // Buttons show once complete
             document.getElementById("buttons").style.display = "block";
-            window.location.href = "../Wacky/Receipt/index.html#buttons"
+            window.location.href = "../Receipt/index.html#buttons"
         }
 
         progress.value = current;
