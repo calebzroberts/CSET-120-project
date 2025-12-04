@@ -46,10 +46,10 @@ function FillMenuItems()
                 <input type="text" class="nameEditBlock" value="${currentMenu[i].name}">
 
                 <h4>Item Price:</h4>
-                <input type="number" class="priceEditBlock" value="${currentMenu[i].price}">
+                <input type="number" class="priceEditBlock" value="${currentMenu[i].price}" step="0.01" min="0.01">
 
                 <h4>Max Quantity:</h4>
-                <input type="number" class="maxQuantityEditBlock" value="${currentMenu[i].maxQuantity}">
+                <input type="number" class="maxQuantityEditBlock" value="${currentMenu[i].maxQuantity}" step="1" min="1">
 
                 <button class="cancelEditButton" onclick="CancelEdit(${i})">Cancel</button>
 
