@@ -28,6 +28,28 @@ function DisplayCustomerOrders()
     CancelEdit();
 }
 
+
+//animate progress bar for items
+function AnimateProgressToFull(speed, startingValue, onUpdate)
+{
+    let value = startingValue || 0;
+
+    function step()
+    {
+        value += speed;
+        if (value >= 100) value = 100;
+
+        onUpdate(value);
+
+        if (value < 100)
+        {
+            requestAnimationFrame(step);
+        }
+    }
+
+    requestAnimationFrame(step);
+}
+
 //Display account section
 function DisplayAccountDetails()
 {
@@ -291,6 +313,50 @@ function CreateOrder(orderListId)
     newOrderItem.innerHTML = newOrderHtml;
 
     orderSection.append(newOrderItem);
+
+    if (ordersList[orderListId].progressValue < 100)
+    {
+        const progressEl = newOrderItem.querySelector("progress");
+
+        let orderItemsQuantity = 0;
+        for (let j = 0; j < ordersList[orderListId].items.length; j++)
+        {
+            orderItemsQuantity += ordersList[orderListId].items[j].itemQuantity;
+        }
+
+        const perItemSpeed = 0.7;
+        const speed = perItemSpeed / orderItemsQuantity;
+
+        AnimateProgressToFull(speed, 
+            ordersList[orderListId].progressValue,
+            (newValue) => {
+                progressEl.value = newValue;
+
+                const allOrders = JSON.parse(localStorage.getItem("orders")) || [];
+                const stored = allOrders.find(o => o.orderId === ordersList[orderListId].orderId);
+
+                if (stored)
+                {
+                    stored.progressValue = newValue;
+                    localStorage.setItem("orders", JSON.stringify(allOrders));
+                }
+
+                const currentOrder = JSON.parse(localStorage.getItem("currentOrder"));
+                if (currentOrder && currentOrder.orderId === ordersList[orderListId].orderId)
+                {
+                    currentOrder.progressValue = newValue;
+                    localStorage.setItem("currentOrder", JSON.stringify(currentOrder));
+                }
+
+                if (newValue >= 100)
+                {
+                    //rerender the orders to show button instead of progress bar
+                    FillOrders();
+                }
+                
+            }
+        );
+    }
 }
 
 //Toggle the secondary info for the order (items, primarily)
@@ -429,6 +495,9 @@ function DownloadReceipt(index) {
     doc.setTextColor("#88972d");
     doc.text("Thank you for choosing Wacky Burger!", 10, y + 10);
 }
+
+
+
 
 //at page load, display customer info
 DisplayAccountDetails();

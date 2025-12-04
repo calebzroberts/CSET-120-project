@@ -111,3 +111,24 @@
     width: 100%;
     height: 20px;
 }
+
+/*progress bar*/
+progress {
+    margin: .5rem;
+    width: 80%;
+    height: 25px;
+    border-radius: 15px;
+    overflow:hidden;
+    appearance: none;
+    border: 4px solid #9B3B23;
+}
+
+progress::-webkit-progress-bar {
+    background-color: #000000;
+    border-radius: 15px;
+}
+
+progress::-webkit-progress-value {
+    background-color: #E46F3B;
+    border-radius: 15px;
+}

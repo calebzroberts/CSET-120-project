@@ -69,7 +69,7 @@ function UpdateTotal()
     totalSection.innerHTML = `
         <div>   
             <p class="totalText">Subtotal:</p>
-            <p>$${subtotal}</p>
+            <p>$${subtotal.toFixed(2)}</p>
         </div>
         <div>   
             <p class="totalText">Delivery Fee:</p>
@@ -86,7 +86,7 @@ function UpdateTotal()
         <hr>
         <div>   
             <p class="totalText">Total:</p>
-            <p>$${totalPrice}</p>
+            <p>$${totalPrice.toFixed(2)}</p>
         </div>
     `;
 }

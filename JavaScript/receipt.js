@@ -182,7 +182,7 @@ function AnimateProgressToFull(speed, startingValue)
         }
 
         order.progressValue = current;
-localStorage.setItem("currentOrder", JSON.stringify(order));
+        localStorage.setItem("currentOrder", JSON.stringify(order));
 
     }, intervalMs);
 
