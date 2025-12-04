@@ -58,14 +58,22 @@ function CheckUserCheckout()
 {
     // Variable
     let cart = JSON.parse(localStorage.getItem("cart")) || [];
+    let checkoutBtns = document.getElementsByClassName("CheckoutBtn");
 
     if (cart.length === 0)
     {
-        document.getElementById("CheckoutBtn").style.display = "none";
+
+        for (let i = 0; i < checkoutBtns.length; i++)
+        {
+            checkoutBtns[i].style.display = "none";
+        }
     }
     else
     {
-        document.getElementById("CheckoutBtn").style.display = "inline";
+        for (let i = 0; i < checkoutBtns.length; i++)
+        {
+            checkoutBtns[i].style.display = "inline";
+        }
     }
 }
 
