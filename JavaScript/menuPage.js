@@ -48,11 +48,29 @@ function AddToCart(button){
         return;
     }
 
+    if (quantity > FindMaxQuantity(title))
+    {
+        alert(`Please order less than ${FindMaxQuantity(title)} of the ${title}`);
+        return;
+    }
+
     cart.push(thisCartItem);
     UpdateVisibleCart();
     UpdatePurchaseText("Click below to purchase.");
     ResetItemQuantities();
 }
+
+function FindMaxQuantity(itemName)
+{
+    //find the menu item this is for the max quantity
+    let menu = JSON.parse(localStorage.getItem('menu')) || [];
+    for (let i=0; i < menu.length; i++)
+    {
+        if (menu[i].name === itemName)
+            return menu[i].maxQuantity;
+    }
+}
+
 
 function PurchaseItems(){
     if (cart.length === 0){
@@ -73,8 +91,17 @@ function UpdatePurchaseText(text)
     purchaseButton.innerText = text;
 }
 
-function UpdateItemQuantity(thisIndex, thisQuantity)
+function UpdateItemQuantity(thisIndex, thisQuantity, itemName)
 {
+    if (thisQuantity > FindMaxQuantity(itemName))
+    {
+        alert(`Please order less than ${FindMaxQuantity(itemName)} of this item!`);
+        cart[thisIndex].itemQuantity = Number(1);
+
+        UpdateVisibleCart();
+        return;
+    }
+
     cart[thisIndex].itemQuantity = Number(thisQuantity);
 
     //remove item if quantity becomes 0
@@ -109,7 +136,7 @@ function UpdateVisibleCart()
 
                 <div class="cartItemQuantityBlock">
                     <p>Quantity:</p>
-                    <input class="cartItemQuantity" type="number" value="${cart[i].itemQuantity}" onchange="UpdateItemQuantity(${i}, this.value)" min="0" max="${menu[i].maxQuantity}">
+                    <input class="cartItemQuantity" type="number" value="${cart[i].itemQuantity}" onchange="UpdateItemQuantity(${i}, this.value, '${cart[i].itemName}')" min="0" max="${FindMaxQuantity(cart[i].itemName)}">
                     <button onclick="RemoveItem(${i})">Remove</button>
                 </div>
             </div>

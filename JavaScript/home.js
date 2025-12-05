@@ -1,16 +1,18 @@
 //FOR HOME PAGE USE ONLY
-const fullMenu = JSON.parse(localStorage.getItem('menu')) || [];
 const visibleItems = 3;
 let currentIndex = 0;
 
 //dynamically loads menu from the database onto the home page
 function LoadMenu() {
+    const fullMenu = JSON.parse(localStorage.getItem('menu')) || [];
+
     const menuContainer = document.getElementById("menuPreviewWindow");
     menuContainer.innerHTML = "";
 
     for (let j = 0; j < fullMenu.length; j++) {
         const div = document.createElement("div");
         div.classList.add("homeMenuItem");
+
 
         div.innerHTML = `
             <img class="homeItemImage" src="${fullMenu[j].imageUrl}">

@@ -302,22 +302,29 @@ function ConfirmDetails(buttonObject, value)
 {
     //get parent object
     const parent = buttonObject.closest('.editingModeMenuItem');
+
+    //make sure that the numbers are valid
     if (Number(parent.querySelector('.priceEditBlock').value) < 0.01)
     {
         alert('Please enter a positive price!');
         return;
     } 
-    if (Number(parent.querySelector('.maxQuantityEditBlock').value) < 0.01)
+    else if (Number(parent.querySelector('.maxQuantityEditBlock').value) < 0.01)
     {
         alert('Please enter a positive quantity!');
+        return;
+    }
+    else if (parent.querySelector('.nameEditBlock').value === "")
+    {
+        alert('Please enter an item name!');
         return;
     }
 
     //save other values in the parent object to temporary menu
     currentMenu[value].imageUrl = parent.querySelector('.imageUrlEditBlock').value;
     currentMenu[value].name = parent.querySelector('.nameEditBlock').value;
-    currentMenu[value].price = parent.querySelector('.priceEditBlock').value;
-    currentMenu[value].maxQuantity = parent.querySelector('.maxQuantityEditBlock').value;
+    currentMenu[value].price = Number(parent.querySelector('.priceEditBlock').value);
+    currentMenu[value].maxQuantity = Number(parent.querySelector('.maxQuantityEditBlock').value);
 
     //remove item from edit list and reload visible menu
     editIndeces = editIndeces.filter(index => index !== value);
