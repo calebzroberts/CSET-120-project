@@ -150,6 +150,24 @@ footer a:hover{color: #bc472a;}
     margin-bottom: 10px;
 }
 
+#hero {
+    display: flex;
+    justify-content: center;
+}
+
+#hero img {
+    border-radius: 50px;
+    margin: 0 3rem;
+    width: 50vh;
+}
+
+#hero .heroText {
+    text-align: left;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+}
+
 
 section {
     text-align: center;
@@ -426,6 +444,13 @@ section {
     footer ul{width: 100%; float: none; position: relative; top: 0; transform: none; display: flex; justify-content: center; flex-wrap: wrap;}
     footer li{border-top: none; border-left: #9B3B23 3px dashed; padding: 10px 15px;}
     footer li:first-child{border-left: none;}
+
+    
+
+    #hero img {
+        
+        width: 30vh;
+    }
 }
 
 @media screen and (max-width: 768px){
@@ -473,6 +498,20 @@ section {
         margin-bottom: 10px;
     }
 
+    #hero {
+        flex-direction: column;
+        align-items: center;
+    }
+
+    #hero img {
+        width: 40vh;
+    }
+
+    #hero .heroText {
+        text-align: center;
+        margin-top: 1rem;
+    }
+
 }
 
 @media screen and (max-width: 480px){
@@ -499,5 +538,9 @@ section {
     #saveButton{
         width: 90%;
         padding: 0.8rem;
+    }
+
+    #hero img {
+        width: 100%;
     }
 }
