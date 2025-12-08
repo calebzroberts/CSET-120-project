@@ -136,9 +136,9 @@ let stored = JSON.parse(localStorage.getItem("menuData"));
 
 
 // Case 1: First load OR new version → overwrite with your updated menu
-if (!stored || stored.version !== MENU_VERSION) {
+if (!stored || stored.version !== menuVersion) {
     stored = {
-        version: MENU_VERSION,
+        version: menuVersion,
         items: menuItems
     };
     localStorage.setItem("menuData", JSON.stringify(stored));
