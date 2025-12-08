@@ -1,5 +1,5 @@
 //change when menu updated
-const menuVersion = 2;
+const menuVersion = 3;
 
 const menuItems = [
     {
