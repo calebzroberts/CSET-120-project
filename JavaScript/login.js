@@ -99,6 +99,26 @@ function CheckEmailExists(email)
     return false;
 }
 
+
+
+//switches page into manager mode
+function SwitchToManagerLogin()
+{
+    document.getElementById("loginHeader").innerText = "Manager Login";
+    document.getElementById("emailLabel").innerText = "Manager ID:";
+    document.getElementById("managerLoginButton").innerHTML = `
+    Are you a customer? <br><a onclick="SwitchToNormalLogin();" class="Link">Log in here</a>.
+    `;
+}
+function SwitchToNormalLogin()
+{
+    document.getElementById("loginHeader").innerText = "Login";
+    document.getElementById("emailLabel").innerText = "Email:";
+    document.getElementById("managerLoginButton").innerHTML = `
+    Are you a manager? <br><a onclick="SwitchToManagerLogin();" class="Link">Log in here</a>.
+    `;
+}
+
 //Makes sure password matches that email
 function CheckPasswordMatches(email, password)
 {

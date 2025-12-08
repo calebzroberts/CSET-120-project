@@ -77,11 +77,11 @@
 
         <article>
             
-            <h1>Login</h1>
+            <h1 id="loginHeader">Login</h1>
                 
                 <form id="loginForm">
 
-                    <label for="email">Email:</label>
+                    <label id="emailLabel" for="email">Email:</label>
                     <input type="email" name="email" id="email" placeholder="Email" required>
 
                     <label for="password">Password:</label>
@@ -91,6 +91,7 @@
                 </form>
 
                 <p id="loginMessage"></p>
+                <p id="managerLoginButton">Are you a manager? <br><a onclick="SwitchToManagerLogin()" class="Link">Log in here</a>.</p>
                 <p>Don't have an account? <br><a onclick="SmartHref('SignUp')" class="Link">Sign up here</a>.</p>
 
         </article>
