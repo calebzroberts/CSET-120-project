@@ -43,7 +43,11 @@ function slideMenu(direction) {
     menuContainer.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
 }
 
-LoadMenu();
+window.onload = () => {
+    LoadMenu();
+    setInterval(() => slideMenu(1), 4000);
+};
+
 
 // Auto-scroll every 4 seconds
 setInterval(() => {
