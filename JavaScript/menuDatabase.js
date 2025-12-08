@@ -1,3 +1,6 @@
+//change when menu updated
+const menuVersion = 2;
+
 const menuItems = [
     {
         name: "Wacky Burger Jr.",
@@ -128,8 +131,19 @@ const menuItems = [
 ];
 
 
-// Load or initialize menu
-let menu = JSON.parse(localStorage.getItem("menu")) || menuItems;
+// Load stored menu
+let stored = JSON.parse(localStorage.getItem("menuData"));
 
-// Save back in case localStorage was empty
-localStorage.setItem("menu", JSON.stringify(menu));
+
+// Case 1: First load OR new version → overwrite with your updated menu
+if (!stored || stored.version !== MENU_VERSION) {
+    stored = {
+        version: MENU_VERSION,
+        items: menuItems
+    };
+    localStorage.setItem("menuData", JSON.stringify(stored));
+}
+
+
+// Final working menu used everywhere in the site
+let menu = stored.items;
