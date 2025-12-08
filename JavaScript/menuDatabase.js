@@ -118,6 +118,12 @@ const menuItems = [
         price: 10.99,
         maxQuantity: 10,
         imageUrl: "../../images/beanie-burgers.jpg"
+    },
+    {
+        name: "Ohio Nuggets",
+        price: 10.99,
+        maxQuantity: 10,
+        imageUrl: "../../images/ohio-nugget.png"
     }
 ];
 

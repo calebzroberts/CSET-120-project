@@ -23,36 +23,36 @@ function LoadMenu() {
     }
 }
 
-
-//functions for moving the short menu section carousel on the home page
 function slideMenu(direction) {
     const menuContainer = document.getElementById("menuPreviewWindow");
     const items = menuContainer.querySelectorAll(".homeMenuItem");
     const totalItems = items.length;
 
+    if (totalItems === 0) return;
+
+    const itemWidth = items[0].offsetWidth;
+    const style = window.getComputedStyle(menuContainer);
+    const gap = parseFloat(style.columnGap || style.gap || 0);
+
+    const slideWidth = itemWidth + gap;
+
     currentIndex += direction;
 
-    // Infinite loop behavior
     if (currentIndex < 0) {
         currentIndex = totalItems - visibleItems;
     } else if (currentIndex > totalItems - visibleItems) {
         currentIndex = 0;
     }
 
-    const slideWidth = items[0].offsetWidth + 15; // margin spacing
     menuContainer.style.transform = `translateX(-${currentIndex * slideWidth}px)`;
 }
+
 
 window.onload = () => {
     LoadMenu();
     setInterval(() => slideMenu(1), 4000);
 };
 
-
-// Auto-scroll every 4 seconds
-setInterval(() => {
-    slideMenu(1);
-}, 4000);
 
 //Behavior for submitting form
 document.addEventListener('DOMContentLoaded', () => {

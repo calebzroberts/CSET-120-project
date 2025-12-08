@@ -209,7 +209,7 @@ section {
     overflow: hidden;
     padding: 5px;
     display: flex;
-    justify-content: center;
+    justify-content: flex-start;
 }
 
 #menuPreviewWindow {
@@ -219,7 +219,7 @@ section {
 }
 
 .homeMenuItem {
-    flex: 0 0 calc((100% - 2rem) / 3); /* accounts for gaps */
+    flex: 0 0 clamp(240px, 28%, 320px);
     box-sizing: border-box;
     padding: 1rem;
     background-color: white;
